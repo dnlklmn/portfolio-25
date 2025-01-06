@@ -10,6 +10,8 @@ import {
 import Project from "./components/Project";
 import Separator from "./components/Separator";
 import SettingsIcon from "./assets/Icons/SettingsIcon";
+import { useContext } from "react";
+import MyContext from "./components/Context";
 
 interface FixedLeftProps {
   clickFunction: () => void;
@@ -75,11 +77,7 @@ const Navigation = () => {
   const settingsRef = useRef<HTMLDivElement>(null);
 
   const toggleVisibility = () => {
-    if (settings) {
-      setSettings(false);
-    } else {
-      setSettings(true);
-    }
+    setSettings(!settings);
   };
 
   const handleClickOutside = (event: MouseEvent) => {
@@ -90,6 +88,33 @@ const Navigation = () => {
       setSettings(false);
     }
   };
+
+  const saveThemePreference = (isDark: boolean) => {
+    localStorage.setItem("theme", isDark ? "dark" : "light");
+  };
+
+  const [currentTheme, setCurrentTheme] = useState<"dark" | "light">("light");
+
+  const loadThemePreference = () => {
+    const theme = localStorage.getItem("theme");
+    if (theme === "dark") {
+      document.documentElement.classList.add("dark");
+      setCurrentTheme("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+      setCurrentTheme("light");
+    }
+  };
+
+  const toggleTheme = () => {
+    const isDark = document.documentElement.classList.toggle("dark");
+    saveThemePreference(isDark);
+    setCurrentTheme(isDark ? "dark" : "light");
+  };
+
+  useEffect(() => {
+    loadThemePreference();
+  }, []);
 
   useEffect(() => {
     if (settings) {
@@ -103,8 +128,26 @@ const Navigation = () => {
     };
   }, [settings]);
 
+  const { setState } = useContext(MyContext);
+
+  const decreaseSize = () => {
+    setState((prevState) => ({
+      ...prevState,
+      fontSize: prevState.fontSize - 2,
+      padding: prevState.padding - 4,
+    }));
+  };
+
+  const increaseSize = () => {
+    setState((prevState) => ({
+      ...prevState,
+      fontSize: prevState.fontSize + 2,
+      padding: prevState.padding + 4,
+    }));
+  };
+
   return (
-    <div className="font-Franklin text-sm font-medium flex w-full h-screen justify-between px-12 overflow-hidden">
+    <div className="primary leading-tight font-Franklin px-12 text-sm font-medium flex w-full h-screen justify-between overflow-hidden">
       <FixedLeft clickFunction={toggleVisibility} />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -113,11 +156,27 @@ const Navigation = () => {
       {settings && (
         <div
           ref={settingsRef}
-          className="fixed left-12 bottom-4 w-1/2 h-1/4 border-[1px] border-gray-800/30 bg-white p-4 flex flex-col"
+          className="primary text-sm font-Franklin fixed left-4 bottom-4 w-fit h-fit border-[1px] bord-secondary p-4 flex flex-col gap-4"
         >
-          <p>Settings</p>
-          <p>Padding</p>
-          <p>Dark/L</p>
+          <p className="uppercase font-medium">Settings</p>
+          <div className="div flex items-center justify-between">
+            Size
+            <div className="flex items-center gap-2">
+              <button onClick={decreaseSize}>T-</button>
+              <button onClick={increaseSize}>T+</button>
+            </div>
+          </div>
+          <div
+            onClick={toggleTheme}
+            className="select-none font-Gentium cursor-pointer flex items-center w-full gap-4 justify-between"
+          >
+            <p>Dark/Light</p>
+            <div
+              className={`transition-all w-12 flex items-center justify-${currentTheme === "dark" ? "end" : "start"} rounded-full h-fit p-1 border-[1px] bord-secondary`}
+            >
+              <div className="w-4 h-4 rounded-full inverted" />
+            </div>
+          </div>
         </div>
       )}
       <FixedRight />
