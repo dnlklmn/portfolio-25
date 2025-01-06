@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import RadicleDesignSystemIcon from "../assets/RadicleDesignSystemIcon";
 
 export default function Home() {
   return (
@@ -9,7 +10,7 @@ export default function Home() {
         </p>
         <p className="font-Gentium text-2xl">UX, UI, and Design Systems</p>
       </div>
-      <div className="flex gap-12 pb-8">
+      <div className="flex gap-12 pb-4">
         <Link
           to="/project"
           className="w-full flex flex-col gap-1 indent-8 align-start text-start"
@@ -20,6 +21,7 @@ export default function Home() {
           <p className="text-xl text-center italic text-gray-600 font-Gentium">
             Consistency By Design
           </p>
+          <RadicleDesignSystemIcon />
           <p className="font-Gentium pt-4">
             Consistency in design ensures a cohesive user experience, making
             interfaces intuitive and predictable. By adhering to design
