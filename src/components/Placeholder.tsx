@@ -23,7 +23,7 @@ export default function Home() {
         className="w-full text-center h-full items-center flex flex-col justify-center"
         style={{ gap: state.padding }}
       >
-        <p className="font-Franklin font-black text-6xl uppercase">Daniel Kalman</p>
+        <p className="font-Franklin font-black text-6xl uppercase">DANIEL KALMAN</p>
         <p className="font-Gentium text-2xl">Soon online.</p>
       </div>
       <div className="h-24" />
