@@ -27,10 +27,18 @@ export default {
       },
       secondary: {
         light: {
-          bg: colors.neutral[500],
+          bg: colors.neutral[400],
         },
         dark: {
           bg: colors.neutral[700],
+        },
+      },
+      light: {
+        light: {
+          bg: "#EBEBEB",
+        },
+        dark: {
+          bg: "#212121",
         },
       },
     },

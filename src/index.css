@@ -14,6 +14,17 @@
     }
 }
 
+.slider {
+    @apply [&::-webkit-slider-runnable-track]:rounded-full
+    [&::-webkit-slider-runnable-track]:bg-gray-800
+  [&::-webkit-slider-runnable-track]:h-[1px]
+  [&::-webkit-slider-thumb]:appearance-none
+  [&::-webkit-slider-thumb]:h-3
+  [&::-webkit-slider-thumb]:w-3
+  [&::-webkit-slider-thumb]:-mt-1.5
+  [&::-webkit-slider-thumb]:bg-gray-800;
+}
+
 :root {
     height: 100%;
     background: #f5f5f5;

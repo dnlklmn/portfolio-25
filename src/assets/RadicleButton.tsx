@@ -1,10 +1,20 @@
 interface RadicleButtonProps {
   children: React.ReactNode;
+  onHover?: () => void;
+  onPress?: () => void;
+  onOut?: () => void;
+  onUp?: () => void;
 }
 
-export default function RadicleButton({ children }: RadicleButtonProps) {
+export default function RadicleButton({
+  children,
+  onHover,
+  onPress,
+  onOut,
+  onUp,
+}: RadicleButtonProps) {
   return (
-    <button>
+    <button onMouseOver={onHover} onMouseDown={onPress} onMouseOut={onOut} onMouseUp={onUp}>
       <div className="font-Franklin font-semibold txt-primary group flex flex-col w-fit">
         <div className="flex">
           <div className="w-1 h-[2px]" />

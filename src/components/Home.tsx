@@ -15,23 +15,22 @@ export default function Home() {
         paddingRight: state.padding * 2,
       }}
     >
+      <div className="mt-4 w-full flex flex-col gap-2">
+        <div className="w-full h-1 inverted" />
+        <div className="w-full h-2 inverted" />
+        <div className="w-full h-4 inverted" />
+        <div className="w-full h-8 inverted" />
+      </div>
       <div
         className="w-full text-center h-full items-center flex flex-col justify-center"
         style={{ gap: state.padding }}
       >
-        <p className="font-Franklin font-black text-6xl">
-          DIGITAL PRODUCT DESIGNER
-        </p>
+        <p className="font-Franklin font-black text-6xl">DIGITAL PRODUCT DESIGNER</p>
         <p className="font-Gentium text-2xl">UX, UI, and Design Systems</p>
       </div>
-      <div
-        className="flex"
-        style={{ gap: state.padding * 3, paddingBottom: state.padding }}
-      >
-        <Link
-          to="/project"
-          className="w-full flex flex-col gap-1 indent-8 align-start text-start"
-        >
+      <div className="h-24" />
+      <div className="flex" style={{ gap: state.padding * 3, paddingBottom: state.padding }}>
+        <Link to="/project" className="w-full flex flex-col gap-1 indent-8 align-start text-start">
           <p className="text-xl uppercase text-center font-semibold font-Franklin">
             Radicle Design System
           </p>
@@ -40,16 +39,12 @@ export default function Home() {
           </p>
           <RadicleDesignSystemIcon />
           <p className="font-Gentium" style={{ paddingTop: state.padding }}>
-            Consistency not only enhances the user experience but also builds
-            trust. Ensuring consistency in an open-source project can be
-            particularly challenging, as it requires a universal framework that
-            contributors can easily work with.
+            Consistency not only enhances the user experience but also builds trust. Ensuring
+            consistency in an open-source project can be particularly challenging, as it requires a
+            universal framework that contributors can easily work with.
           </p>
         </Link>
-        <Link
-          to="/project"
-          className="w-full flex flex-col gap-1 indent-8 align-start text-start"
-        >
+        <Link to="/project" className="w-full flex flex-col gap-1 indent-8 align-start text-start">
           <p className="text-xl uppercase text-center font-semibold font-Franklin">
             RADICLE DESKTOP APP
           </p>
@@ -57,19 +52,14 @@ export default function Home() {
             Your Work Belongs on Your Machine
           </p>
           <p className="font-Gentium" style={{ paddingTop: state.padding }}>
-            This approach reduces dependency on constant internet connectivity,
-            allowing users to access and interact with their data even offline.
-            Additionally, local-first apps can offer better data security, as
-            sensitive information remains on the user's device rather than being
-            transmitted to and stored on remote servers. This can lead to a more
-            responsive and reliable user experience, fostering greater trust and
-            satisfaction.
+            This approach reduces dependency on constant internet connectivity, allowing users to
+            access and interact with their data even offline. Additionally, local-first apps can
+            offer better data security, as sensitive information remains on the user's device rather
+            than being transmitted to and stored on remote servers. This can lead to a more
+            responsive and reliable user experience, fostering greater trust and satisfaction.
           </p>
         </Link>
-        <Link
-          to="/project"
-          className="w-full flex flex-col gap-1 indent-8 align-start text-start"
-        >
+        <Link to="/project" className="w-full flex flex-col gap-1 indent-8 align-start text-start">
           <p className="text-xl uppercase text-center font-semibold font-Franklin">
             Polkadot Delegate Dashboard
           </p>
@@ -77,10 +67,9 @@ export default function Home() {
             Participate in Governance
           </p>
           <p className="font-Gentium" style={{ paddingTop: state.padding }}>
-            Local-first apps can offer better data security, as sensitive
-            information remains on the user's device rather than being
-            transmitted to and stored on remote servers. <br /> <br /> This can
-            lead to a more responsive and reliable user experience, fostering
+            Local-first apps can offer better data security, as sensitive information remains on the
+            user's device rather than being transmitted to and stored on remote servers. <br />{" "}
+            <br /> This can lead to a more responsive and reliable user experience, fostering
             greater trust and satisfaction.
           </p>
         </Link>
