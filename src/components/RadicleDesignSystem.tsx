@@ -14,6 +14,7 @@ import ExplorerBefore from "../assets/explorer-before.png";
 import ExplorerAfter from "../assets/explorer-after.png";
 import FontStyles from "../assets/token-font-styles";
 import RadicleIcons from "../assets/radicle-icons";
+import Lightbox from "./Lightbox";
 
 function Left() {
   const { state } = useContext(MyContext);
@@ -78,12 +79,8 @@ function Right() {
           className="z-50 w-full flex text-center flexoverflow-visible"
           style={{ gap: state.padding * 2 }}
         >
-          <div>
-            <img className="flex " src={ExplorerBefore} alt="Tokens Studio in Figma" />
-          </div>
-          <div>
-            <img src={ExplorerAfter} alt="Tokens Studio in Figma" />
-          </div>
+          <Lightbox image={ExplorerBefore} />
+          <Lightbox image={ExplorerAfter} />
         </div>
         <p className="italic text-center">
           Fig. 1.1 Radicle Explorer before and after implementing the design system

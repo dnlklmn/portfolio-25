@@ -46,6 +46,13 @@ export default {
       colors: {
         white: "#ffffff",
       },
+      zIndex: {
+        60: "60",
+        70: "70",
+        80: "80",
+        90: "90",
+        100: "100",
+      },
       fontFamily: {
         Franklin: ["Libre Franklin", "sans-serif"],
         Gentium: ["Gentium Book Plus", "sans-serif"],

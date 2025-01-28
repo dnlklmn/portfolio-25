@@ -1,9 +1,8 @@
 import Separator from "./Separator";
-import ChevronRightIcon from "../assets/Icons/ChevronRightIcon";
 import { useContext } from "react";
 import MyContext from "./Context";
-import GetInTouch from "./GetInTouch";
 import SectionBio from "./SectionBio";
+import ProfilePicture from "../assets/dk.png";
 
 function Left() {
   const { state } = useContext(MyContext);
@@ -14,43 +13,34 @@ function Left() {
         className={`w-full h-screen sticky top-4 font-Gentium flex h-100vh flex-col items-center gap-4 text-center`}
         style={{ fontSize: state.fontSize, paddingBottom: state.padding * 2 }}
       >
-        <p className="uppercase font-Franklin font-black md:text-5xl lg:text-6xl leading-none">
+        <img src={ProfilePicture} alt="Radicle Desktop App" />
+        <p className="uppercase font-Franklin font-black md:text-5xl lg:text-7xl leading-none">
           Daniel Kalman
         </p>
         <div
-          className="h-full flex flex-col align-left text-left indent-4"
+          className="h-full flex flex-col align-left text-left"
           style={{ gap: state.padding / 2 }}
         >
-          <p className="font-Franklin uppercase font-semibold">DESIGN ENGINEER</p>
           <p>
-            15 years of experience of UX design + 5 years of front end make for a flexible asset on
-            a team, or an all-rounder on a project.
+            I'm a design engineer with 15 years of UX design experience and 5 years on the front of
+            front end.
           </p>
+          <p>
+            I believe in a decentralized future where individuals have full ownership and control
+            over their personal data in the digital world.
+          </p>
+          <p>I'm a father of 2, based in Berlin, Germany.</p>
         </div>
-        <div className="flex flex-col gap-1 text-start items-start w-full">
-          <div className="flex items-center">
-            <ChevronRightIcon />
-            <a
-              href="https://app.radicle.xyz/nodes/seed.radicle.xyz/rad:z4D5UCArafTzTQpDZNQRuqswh3ury"
-              target="_blank"
-              className="underline"
-            >
-              Get the app
-            </a>
-          </div>
-          <div className="flex items-center">
-            <ChevronRightIcon />
-            <a href="https://radicle.xyz/" target="_blank" className="underline">
-              Get started with Radicle
-            </a>
-          </div>
-        </div>
-        <div
-          className="font-Gentium w-full flex align-left text-left"
-          style={{ gap: state.padding / 2 }}
-        >
-          <p className="font-Gentium uppercase font-semibold">2024</p>
-          <p>UX/UI Design</p>
+        <div className="flex gap-8 text-start justify-center w-full">
+          <a href="https://github.com/dnlklmn" target="_blank" className="underline">
+            Github
+          </a>
+          <a href="https://bsky.app/profile/dnlklmn.online" target="_blank" className="underline">
+            Bluesky
+          </a>
+          <a href="mailto:dnl.klmn@gmail.com" className="underline">
+            Email
+          </a>
         </div>
       </div>
     </div>
@@ -65,103 +55,81 @@ function Right() {
       className={`font-Gentium flex w-full flex-col leading-snug`}
       style={{ fontSize: state.fontSize, gap: state.padding }}
     >
-      <SectionBio months={19} title="May 2023 - present">
-        <div className="flex  justify-between">
-          <p>
-            <strong>Radicle - Sovereign Code Forge</strong>
-          </p>
-          <p>Berlin, Germany</p>
-        </div>
+      <SectionBio current location="Berlin, Germany" months={19} time="May 2023 - present">
         <p>
-          As a product designer at Radicle, I'm responsible for the design and development of the
-          blah blah
+          <strong>Radicle - Sovereign Code Forge</strong>
+        </p>
+        <p>
+          As a product designer at Radicle, I'm responsible for the UX of our web and desktop apps,
+          and the design system. I also help refine the front end, implement the design system and
+          work on the visual design of the apps.
         </p>
       </SectionBio>
-      <SectionBio months={27} title="Oct 2021 - Jan 2024">
-        <div className="flex  justify-between">
-          <p>
-            <strong>Parity Technologies - Maintainers of Polkadot Blockchain</strong>
-          </p>
-          <p>Berlin, Germany</p>
-        </div>
+      <SectionBio location="Berlin, Germany" months={27} time="Oct 2021 - Jan 2024">
         <p>
-          As a product designer at Radicle, I'm responsible for the design and development of the
-          blah blah
+          <strong>Parity Technologies - Maintainers of Polkadot Blockchain</strong>
+        </p>
+        <p>
+          As a product designer at Parity, I helped create the Polkadot design system, and worked on
+          decentralized apps like the Delegation Dashboard, and Multisig Commander.
         </p>
       </SectionBio>
-      <SectionBio months={6} title="November 2020 - May 2021">
-        <div className="flex  justify-between">
-          <p>
-            <strong>Quarters - Co-living</strong>
-          </p>
-          <p>Berlin, Germany</p>
-        </div>
+      <SectionBio location="Berlin, Germany" months={6} time="November 2020 - May 2021">
         <p>
-          As a product designer at Radicle, I'm responsible for the design and development of the
-          blah blah
+          <strong>Quarters - Co-living</strong>
+        </p>
+        <p>
+          I joined Quarters was a (failed) attempt to return to web2. I quickly realized my heart
+          lies with decenrtralization and distributed systems.
         </p>
       </SectionBio>
-      <SectionBio months={33} title="Mar 2018 - Nov 2020">
-        <div className="flex  justify-between">
-          <p>
-            <strong>Satoshipay - Content Monetization with Stellar</strong>
-          </p>
-          <p>Berlin, Germany</p>
-        </div>
+      <SectionBio location="Berlin, Germany" months={33} time="Mar 2018 - Nov 2020">
         <p>
-          As a product designer at Radicle, I'm responsible for the design and development of the
-          blah blah
+          <strong>Satoshipay - Content Monetization with Stellar</strong>
+        </p>
+        <p>
+          As the first product designer I designed and build prototypes for monetizing content using
+          cryptocurrency, and an app to facilitate cross-border payments.
         </p>
       </SectionBio>
-      <SectionBio months={6} title="January 2017 - July 2017">
-        <div className="flex  justify-between">
-          <p>
-            <strong>Linkurious - Data Visualisation</strong>
-          </p>
-          <p>Paris, France</p>
-        </div>
+      <SectionBio location="Paris, France" months={6} time="January 2017 - July 2017">
         <p>
-          As a product designer at Radicle, I'm responsible for the design and development of the
-          blah blah
+          <strong>Linkurious - Data Visualisation</strong>
+        </p>
+        <p>
+          As a UX consultant I helped Linkurious improve the usability of their graph visualization
+          tool.
         </p>
       </SectionBio>
-      <SectionBio months={22} title="January 2017 - July 2017">
-        <div className="flex  justify-between">
-          <p>
-            <strong>TOTL - Automatic Journaling</strong>
-          </p>
-          <p>San Francisco, CA</p>
-        </div>
+      <SectionBio location="San Francisco, CA" months={22} time="January 2017 - July 2017">
         <p>
-          As a product designer at Radicle, I'm responsible for the design and development of the
-          blah blah
+          <strong>TOTL - Automatic Journaling</strong>
+        </p>
+        <p>
+          Joining this experimental project helped refine my skills in data visualization and rapid
+          prototyping. I also learned a lot about the importance of user research and testing.
         </p>
       </SectionBio>
-      <SectionBio months={4} title="Jan 2015 - Apr 2015">
-        <div className="flex  justify-between">
-          <p>
-            <strong>Dotloop - Paperless Project Management for Real Estate</strong>
-          </p>
-          <p>San Francisco, CA</p>
-        </div>
+      <SectionBio location="San Francisco, CA" months={4} time="Jan 2015 - Apr 2015">
         <p>
-          As a product designer at Radicle, I'm responsible for the design and development of the
-          blah blah
+          <strong>Dotloop - Paperless Project Management for Real Estate</strong>
+        </p>
+        <p>
+          As a UX consultant I helped integrate a camera into the Dotloop app to make it easier for
+          real estate agents to document the acquisition of properties. The company was acquired by
+          Zillow shortly thereafter.
         </p>
       </SectionBio>
-      <SectionBio months={42} title="Jul 2011 - Dec 2014">
-        <div className="flex  justify-between">
-          <p>
-            <strong>Prezi - Zooming Presentations and Mindmapping Tool</strong>
-          </p>
-          <p>Budapest, Hungary</p>
-        </div>
+      <SectionBio location="Budapest, Hungary" months={42} time="Jul 2011 - Dec 2014">
         <p>
-          As a product designer at Radicle, I'm responsible for the design and development of the
-          blah blah
+          <strong>Prezi - Zooming Presentations and Mindmapping Tool</strong>
+        </p>
+        <p>
+          My first job with the time UX designer, I learned about the importance of user research,
+          A/B testing, and how rapid prototyping helps with these efforts. I designed the capability
+          to reuse content from previous presentations.
         </p>
       </SectionBio>
-      <GetInTouch />
     </div>
   );
 }
