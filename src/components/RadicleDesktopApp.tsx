@@ -3,6 +3,8 @@ import ChevronRightIcon from "../assets/Icons/ChevronRightIcon";
 import { useContext } from "react";
 import MyContext from "./Context";
 import GetInTouch from "./GetInTouch";
+import Section from "./Section";
+import radicleDesktopAppImage from "../assets/radicle-desktop-app.png";
 
 function Left() {
   const { state } = useContext(MyContext);
@@ -23,21 +25,23 @@ function Left() {
           <p className="font-Franklin uppercase font-semibold">Your Work on Your Machine</p>
           <p>
             Creating a local-first app for the Radicle code forge presents unique UX challenges due
-            to the shift from cloud-based services and the use of a peer-to-peer (p2p) network. The
-            Radicle desktop app allows you to manage issues and patches, review code, and receive
-            change notifications directly on your machine, whether you're online or offline.
+            to the shift from cloud-based services and the use of a peer-to-peer (p2p) network.
           </p>
         </div>
         <div className="flex flex-col gap-1 text-start items-start w-full">
           <div className="flex items-center">
             <ChevronRightIcon />
-            <a href="/" className="underline">
+            <a
+              href="https://app.radicle.xyz/nodes/seed.radicle.xyz/rad:z4D5UCArafTzTQpDZNQRuqswh3ury"
+              target="_blank"
+              className="underline"
+            >
               Get the app
             </a>
           </div>
           <div className="flex items-center">
             <ChevronRightIcon />
-            <a href="/" className="underline">
+            <a href="https://radicle.xyz/" target="_blank" className="underline">
               Get started with Radicle
             </a>
           </div>
@@ -63,67 +67,67 @@ function Right() {
       style={{ fontSize: state.fontSize, gap: state.padding * 2 }}
     >
       <div
-        className="w-full text-center flex flex-col overflow-visible"
-        style={{ gap: state.padding / 2 }}
+        className="z-50 w-full flex text-center flexoverflow-visible"
+        style={{ gap: state.padding * 2 }}
       >
-        <div className="flex  overflow-visible">
-          <p className="w-1/3 text-start font-bold">Local First</p>
-          <div className="w-2/3 flex flex-col" style={{ gap: state.padding * 2 }}>
-            <p className="text-start pr-[10%]">
-              Building a local-first app ensures seamless usage, whether offline or online, with
-              instant local saving and no waiting for spinners. When you or your peers go online,
-              updates sync automatically. Challenge: users need to always know if they are offline
-              or online, know what data is synced and what is only on their computer.
+        <div className="w-full flex flex-col gap-4">
+          <p className="text-start font-bold">Challenge and Goals</p>
+          <div className="flex flex-col text-start" style={{ gap: state.padding * 2 }}>
+            <p>
+              Radicle Explorer is an open-source web application that anyone can deploy on their
+              own. To ensure its success and usability, it is crucial that the design is consistent,
+              easy to extend, and low maintenance. Contributors should be able to navigate the
+              application effortlessly, match colors and text styles with specific use cases, and
+              utilize a variety of front-end implementations.
+            </p>
+          </div>
+        </div>
+        <div className="w-full  flex flex-col gap-4">
+          <p className="text-start font-bold">Process and Responsibilities</p>
+          <div className="flex flex-col text-start " style={{ gap: state.padding * 2 }}>
+            <p>
+              After carefully auditing the current UI and its patterns, I developed a color system,
+              a typographic scale, and a bunch of components.
             </p>
           </div>
         </div>
       </div>
       <Separator direction="horizontal" />
-      <div className="w-full text-center flex flex-col gap-8">
-        <div className="flex">
-          <p className="w-1/3 text-start font-bold">P2P UX</p>
-          <div className="w-2/3 flex flex-col" style={{ gap: state.padding * 2 }}>
-            <p className=" text-start pr-[10%]">
-              Radicle operates differently from centralized networks. Users won't receive updates
-              from unknown peers, even if they've both contributed to the same repository. Peer
-              discovery is challenging and doesn't occur within the app. However, since everything
-              is signed, you can always trace the source of information. To leverage this advantage,
-              we have to clearly indicate where data comes from and provide the necessary details
-              for verification.
-            </p>
-          </div>
-        </div>
-      </div>
-      <Separator direction="horizontal" />
-      <div className="w-full text-center flex flex-col gap-8 ">
-        <div className="flex">
-          <p className="w-1/3 text-start font-bold"></p>
-          <p className="w-2/3 text-start pr-[10%]">
-            Colors and font styles are managed in Figma, where they are incorporated into the UI kit
-            and optimized for both dark and light modes. These tokenized design elements are then
-            exported and converted into specific style sheets, which can be utilized in production
-            components. The tokens are stored in a shared repo on Radicle that serves as a single
-            source of truth.
-            <br /> <br /> We use Tokens Studio to manage tokens in Figma and store them in a shared
-            JSON file. From this JSON they get transformed automatically into separate style sheeets
-            for easier management. Whenever a token gets updated, the style sheets and with them the
-            components in production will also update.
+      <Section title="Local First">
+        <p>
+          The Radicle desktop app allows you to manage issues and patches, review code, and receive
+          change notifications directly on your machine, whether you're online or offline.
+        </p>
+        <div className="flex flex-col gap-0">
+          <img src={radicleDesktopAppImage} alt="Radicle Desktop App" />
+          <p className="italic text-center">
+            Fig. 2.1 Looking at a Patch in the Radicle Desktop App
           </p>
         </div>
-      </div>
-      <Separator direction="horizontal" />
-      <div className="w-full text-center flex flex-col gap-8 pb-8">
-        <div className="flex">
-          <p className="w-1/3 text-start font-bold">Delightful Details</p>
-          <p className="w-2/3 text-start pr-[10%]">
-            At Radicle we're' building developing developer tools. It's crucial to prioritize
-            readability and a clear, easy-to-understand hierarchy while keeping decorative elements
-            to a minimum. However, a design system should also have character. Radicle's style pays
-            homage to the barefoot developers, drawing inspiration from the aesthetics of 90s
-            programming games and interfaces.
-          </p>
-        </div>
-      </div>
+        <p>
+          Building a local-first app ensures seamless usage but users need to always know if they
+          are offline or online, where data comes from, what is synced and what is only on their
+          computer.
+        </p>
+      </Section>
+      <Section title="True to Code">
+        <p>
+          We envision the desktop app as an integral component of the Radicle toolchain, designed to
+          enhance your workflow. By aligning the app's architecture and functionality closely with
+          the underlying protocol and CLI tools, we aim to facilitate a smoother learning curve for
+          new users. Central to these concepts is the immutable nature of Radicle's collaborative
+          objects, which serves as the cornerstone of our system.
+        </p>
+      </Section>
+      <Section last title="P2P UX">
+        <p>
+          Radicle operates differently from centralized networks. Users won't receive updates from
+          unknown peers, even if they've both contributed to the same repository. Peer discovery is
+          challenging and doesn't occur within the app. However, since everything is signed, you can
+          always trace the source of information. To leverage this advantage, we have to clearly
+          indicate where data comes from and provide the necessary details for verification.
+        </p>
+      </Section>
       <GetInTouch />
     </div>
   );

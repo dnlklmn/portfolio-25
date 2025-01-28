@@ -7,7 +7,7 @@ import MyContext from "./components/Context";
 import RadicleDesktopApp from "./components/RadicleDesktopApp";
 import MoonIcon from "./assets/Icons/MoonIcon";
 import SunIcon from "./assets/Icons/SunIcon";
-import Placeholder from "./components/Placeholder";
+import About from "./components/About";
 
 function FixedLeft() {
   const { state, setState } = useContext(MyContext);
@@ -17,6 +17,7 @@ function FixedLeft() {
     setState((prevState) => ({
       ...prevState,
       fontSize: newFontSize,
+      padding: newFontSize,
     }));
   };
 
@@ -82,7 +83,7 @@ function FixedRight() {
     <div className="fixed top-0 right-0 py-4 h-full flex">
       <Separator direction="vertical" />
       <div className="flex flex-col justify-between items-center px-4">
-        <Link to="/" className="writing-mode-vertical-lr h-fit whitespace-nowrap">
+        <Link to="/about" className="writing-mode-vertical-lr h-fit whitespace-nowrap">
           ABOUT
         </Link>
         <Link to="/project" className="writing-mode-vertical-lr w-full h-fit whitespace-nowrap">
@@ -125,33 +126,31 @@ const Navigation = () => {
 
   return (
     <div className="primary leading-tight font-Franklin text-sm font-medium flex w-full h-screen justify-between overflow-hidden">
-      <Routes>
-        <Route path="/" element={<Placeholder />} />
-        <Route
-          path="/project"
-          element={
-            <div className="primary leading-tight font-Franklin px-12 text-sm font-medium flex w-full h-screen justify-between overflow-hidden">
-              <FixedLeft />
+      <div className="primary leading-tight font-Franklin px-12 text-sm font-medium flex w-full h-screen justify-between overflow-hidden">
+        <FixedLeft />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route
+            path="/project"
+            element={
               <div className="overflow-y-scroll px-8 flex flex-col gap-8">
                 <RadicleDesignSystem />
                 <Separator direction="horizontal" />
                 <RadicleDesktopApp />
               </div>
-              <FixedRight />
-            </div>
-          }
-        />
-        <Route
-          path="/home"
-          element={
-            <div className="primary leading-tight font-Franklin px-12 text-sm font-medium flex w-full h-screen justify-between overflow-hidden">
-              <FixedLeft />
-              <Home />
-              <FixedRight />
-            </div>
-          }
-        />
-      </Routes>
+            }
+          />
+          <Route
+            path="/about"
+            element={
+              <div className="overflow-y-scroll px-8 flex flex-col gap-8">
+                <About />
+              </div>
+            }
+          />
+        </Routes>
+        <FixedRight />
+      </div>
     </div>
   );
 };

@@ -1,7 +1,7 @@
 import React from "react";
-import RadicleButton from "../assets/RadicleButton";
-import MyContext from "./Context";
-import SeedIcon from "../assets/Icons/SeedIcon";
+import RadicleButton from "./RadicleButton";
+import MyContext from "../components/Context";
+import SeedIcon from "./Icons/SeedIcon";
 
 export default function RadicleSemanticIllustration() {
   const { state } = React.useContext(MyContext);
@@ -94,7 +94,6 @@ export default function RadicleSemanticIllustration() {
           </div>
         </div>
       </div>
-      <p className="italic">Fig. 1.2 Semantic Colors Used in the Primary Button</p>
     </div>
   );
 }
