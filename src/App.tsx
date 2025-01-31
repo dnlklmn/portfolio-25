@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import Home from "./components/Home";
 import { BrowserRouter as Router, Routes, Route, Link, useLocation } from "react-router-dom";
 import RadicleDesignSystem from "./components/RadicleDesignSystem";
@@ -8,6 +8,7 @@ import RadicleDesktopApp from "./components/RadicleDesktopApp";
 import MoonIcon from "./assets/Icons/MoonIcon";
 import SunIcon from "./assets/Icons/SunIcon";
 import About from "./components/About";
+import PolkadotDelegationDashboard from "./components/PolkadotDelegationDashboard";
 
 function FixedLeft() {
   const { state, setState } = useContext(MyContext);
@@ -103,26 +104,16 @@ function FixedRight() {
 }
 
 const Navigation = () => {
-  const [settings, setSettings] = useState(false);
-  const settingsRef = useRef<HTMLDivElement>(null);
-
-  const handleClickOutside = (event: MouseEvent) => {
-    if (settingsRef.current && !settingsRef.current.contains(event.target as Node)) {
-      setSettings(false);
-    }
-  };
+  const location = useLocation();
 
   useEffect(() => {
-    if (settings) {
-      document.addEventListener("mousedown", handleClickOutside);
-    } else {
-      document.removeEventListener("mousedown", handleClickOutside);
+    if (location.hash) {
+      const element = document.getElementById(location.hash.substring(1));
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
     }
-
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [settings]);
+  }, [location]);
 
   return (
     <div className="primary leading-tight font-Franklin text-sm font-medium flex w-full h-screen justify-between overflow-hidden">
@@ -134,9 +125,11 @@ const Navigation = () => {
             path="/project"
             element={
               <div className="overflow-y-scroll px-8 flex flex-col gap-8">
+                <RadicleDesktopApp />
+                <Separator direction="horizontal" />
                 <RadicleDesignSystem />
                 <Separator direction="horizontal" />
-                <RadicleDesktopApp />
+                <PolkadotDelegationDashboard />
               </div>
             }
           />

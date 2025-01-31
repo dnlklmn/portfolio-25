@@ -16,11 +16,13 @@ import FontStyles from "../assets/token-font-styles";
 import RadicleIcons from "../assets/radicle-icons";
 import Lightbox from "./Lightbox";
 
+
+
 function Left() {
   const { state } = useContext(MyContext);
 
   return (
-    <div className="w-1/3">
+    <div className="w-1/3" >
       <div
         className={`w-full h-screen sticky top-4 font-Gentium flex h-100vh flex-col items-center gap-4 text-center`}
         style={{ fontSize: state.fontSize, paddingBottom: state.padding * 2 }}
@@ -35,10 +37,9 @@ function Left() {
         >
           <p className="font-Franklin uppercase font-semibold">Consistency By Design</p>
           <p>
-            I joined Radicle as the first designer to improve consistency and create a consistent
-            design system. Design consistency is crucial in any project, but it can be particularly
-            challenging in open source projects due to the diverse and distributed nature of
-            contributors.
+            I joined Radicle to improve consistency and create a consistent design system. Design
+            consistency is crucial in any project, but it can be particularly challenging in open
+            source projects due to the diverse and distributed nature of contributors.
           </p>
         </div>
         <div className="flex flex-col gap-1 text-start items-start w-full">
@@ -71,6 +72,7 @@ function Right() {
   const { state } = useContext(MyContext);
   return (
     <div
+      id="radicle-design-system"
       className={`font-Gentium flex w-full flex-col leading-snug`}
       style={{ fontSize: state.fontSize, gap: state.padding * 2 }}
     >
@@ -213,8 +215,9 @@ function Right() {
 }
 
 export default function RadicleDesignSystem() {
+
   return (
-    <div className="w-full flex gap-8 text-center py-4 h-fit">
+    <div id='radicle-design-system' className="w-full flex gap-8 text-center py-4 h-fit">
       <Left />
       <Separator direction="vertical" />
       <Right />

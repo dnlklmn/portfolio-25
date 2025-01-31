@@ -1,13 +1,18 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import ReactDOM from "react-dom";
 
 interface LightboxProps {
   image: string;
+  className?: string;
+  enableMove?: boolean;
 }
 
-const Lightbox: React.FC<LightboxProps> = ({ image }) => {
+const Lightbox: React.FC<LightboxProps> = ({ image, className, enableMove = true }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [mouseY, setMouseY] = useState<number>(0);
+  const [imageHeight, setImageHeight] = useState<number>(0);
   const lightboxRef = useRef<HTMLDivElement>(null);
+  const imageRef = useRef<HTMLImageElement>(null);
 
   const openLightbox = () => {
     setIsOpen(true);
@@ -17,40 +22,51 @@ const Lightbox: React.FC<LightboxProps> = ({ image }) => {
     setIsOpen(false);
   };
 
-  const handleKeyDown = (event: KeyboardEvent) => {
+  const handleKeyDown = useCallback((event: KeyboardEvent) => {
     if (event.key === "Escape") {
-      console.log("Escape key pressed");
       closeLightbox();
     }
-  };
+  }, []);
 
-  const handleClickOutside = (event: MouseEvent) => {
-    console.log("Mouse event detected");
+  const handleClickOutside = useCallback((event: MouseEvent) => {
     if (lightboxRef.current && !lightboxRef.current.contains(event.target as Node)) {
-      console.log("Clicked outside lightbox");
       closeLightbox();
-    } else {
-      console.log("Clicked inside lightbox");
     }
-  };
+  }, []);
+
+  const handleMouseMove = useCallback((event: MouseEvent) => {
+    setMouseY(event.clientY);
+  }, []);
 
   useEffect(() => {
     if (isOpen) {
-      console.log("Adding event listeners");
       document.addEventListener("keydown", handleKeyDown);
       document.addEventListener("mousedown", handleClickOutside);
+      if (enableMove) {
+        document.addEventListener("mousemove", handleMouseMove);
+      }
+
+      if (imageRef.current) {
+        setImageHeight(imageRef.current.naturalHeight);
+      }
     } else {
-      console.log("Removing event listeners");
       document.removeEventListener("keydown", handleKeyDown);
       document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("mousemove", handleMouseMove);
     }
 
     return () => {
-      console.log("Cleanup event listeners");
       document.removeEventListener("keydown", handleKeyDown);
       document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("mousemove", handleMouseMove);
     };
-  });
+  }, [isOpen, enableMove, handleClickOutside, handleKeyDown, handleMouseMove]);
+
+  const handleImageLoad = () => {
+    if (imageRef.current) {
+      setImageHeight(imageRef.current.naturalHeight);
+    }
+  };
 
   const lightboxContent = (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-75">
@@ -58,8 +74,16 @@ const Lightbox: React.FC<LightboxProps> = ({ image }) => {
         <img
           src={image}
           alt="Full size"
-          className="max-w-full max-h-full cursor-pointer"
+          ref={imageRef}
+          onLoad={handleImageLoad}
+          className="max-w-full max-h-full cursor-pointer object-contain"
           onClick={closeLightbox}
+          style={{
+            transform:
+              enableMove && imageHeight > window.innerHeight
+                ? `translateY(${(window.innerHeight / 2 - mouseY) * 2}px)`
+                : "none",
+          }}
         />
       </div>
     </div>
@@ -67,7 +91,12 @@ const Lightbox: React.FC<LightboxProps> = ({ image }) => {
 
   return (
     <div>
-      <img src={image} alt="Thumbnail" className="cursor-pointer" onClick={openLightbox} />
+      <img
+        src={image}
+        alt="Thumbnail"
+        className={`cursor-pointer ${className}`}
+        onClick={openLightbox}
+      />
       {isOpen && ReactDOM.createPortal(lightboxContent, document.body)}
     </div>
   );

@@ -4,16 +4,19 @@ import Separator from "./Separator";
 
 interface SectionProps {
   title: string;
+  id?: string;
   children?: React.ReactNode;
   last?: boolean;
   bio?: boolean;
+  thick?: boolean;
 }
 
-export default function Section({ title, children, last, bio }: SectionProps) {
+export default function Section({ title, children, last, bio, thick, id }: SectionProps) {
   const { state } = useContext(MyContext);
 
   return (
     <div
+      id={id}
       className="z-50 w-full text-center flex flex-col overflow-visible"
       style={{ gap: state.padding * 2 }}
     >
@@ -26,7 +29,7 @@ export default function Section({ title, children, last, bio }: SectionProps) {
           {children}
         </div>
       </div>
-      {!last && <Separator direction="horizontal" />}
+      {!last && <Separator thick={thick} direction="horizontal" />}
     </div>
   );
 }
