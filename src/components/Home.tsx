@@ -7,7 +7,7 @@ export default function Home() {
 
   return (
     <div
-      className="primary w-full flex flex-col text-center"
+      className="h-full w-full flex flex-col text-center"
       style={{
         fontSize: state.fontSize,
         paddingLeft: state.padding * 2,
@@ -29,17 +29,16 @@ export default function Home() {
       </div>
 
       <div className="flex" style={{ gap: state.padding * 3, paddingBottom: state.padding, paddingLeft: state.padding * 2, paddingRight: state.padding * 2 }}>
-        <Teaser dark bgImage="url('src/assets/radicle-desktop-app.png')" link='/project#radicle-desktop-app' title='RADICLE DESKTOP APP'
+        <Teaser tags={["UX", "UI"]} dark link='/project#radicle-desktop-app' title='RADICLE DESKTOP APP'
           subtitle="Your Work Belongs on Your Machine"
         />
 
-        <Teaser dark bgImage="url('src/assets/tokens-in-figma.png')"
+        <Teaser tags={["UI", "Front End"]} dark //bgImage="url('src/assets/tokens-in-figma.png')"
           link='/project#radicle-design-system'
           title='Radicle Design System'
           subtitle="Consistency By Design"
         />
-        <Teaser
-          bgImage="url('src/assets/polkadot-delegation-dashboard.png')"
+        <Teaser tags={["UI", "Front End"]} dark
           link='/project#polkadot-delegation-dashboard'
           title='Polkadot Delegate Dashboard'
           subtitle="Participate in Governance"

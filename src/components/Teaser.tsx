@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+import MyContext from "./Context";
+import { useContext } from "react";
 
 
 interface TeaserProps {
@@ -7,30 +9,33 @@ interface TeaserProps {
     link: string;
     bgImage?: string;
     dark?: boolean;
+    tags?: string[];
 }
 
-export default function Teaser({ link, title, subtitle, bgImage, dark }: TeaserProps) {
+export default function Teaser({ link, title, subtitle, bgImage, dark, tags }: TeaserProps) {
 
-
+    const { state } = useContext(MyContext);
     return (
         <Link
             to={link}
-            className={`${dark ? "inverted" : 'primary'} w-full flex justify-end flex-col gap-1 text-start h-[25vh]`}
+            className={`${dark ? "inverted" : 'primary'} text-xl  justify-end  w-full flex flex-col text-start h-[25vh]`}
             style={{
+                gap: state.padding / 4,
+                padding: state.padding * 1.5,
                 backgroundImage: bgImage,
                 backgroundSize: "110%",
                 backgroundPosition: "center",
             }}
         >
 
-            <div className="flex flex-col items-start bg-linear-to-bl from-cyan-500 to-blue-500 p-4">
-                <p className="text-xl uppercase text-center font-semibold font-Franklin">
-                    {title}
-                </p>
-                <p className="txt-secondary text-xl text-center italic font-Gentium">
-                    {subtitle}
-                </p>
-            </div>
+            <p className="uppercase font-semibold font-Franklin ">
+                {title}
+            </p>
+            <p className="txt-secondary italic font-Gentium">
+                {subtitle}
+            </p>
+            <div className="text-sm font-semibold flex gap-2 pt-2">
+                {tags?.map((tag) => (<p className="px-2 py-1 primary rounded-full">{tag}</p>))}</div>
         </Link>
     );
 }

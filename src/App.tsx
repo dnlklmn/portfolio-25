@@ -83,7 +83,7 @@ function FixedRight() {
   return (
     <div className="fixed top-0 right-0 py-4 h-full flex">
       <Separator direction="vertical" />
-      <div className="flex flex-col justify-between items-center px-4">
+      <div className="w-16 flex flex-col justify-between items-center px-4">
         <Link to="/about" className="writing-mode-vertical-lr h-fit whitespace-nowrap">
           ABOUT
         </Link>
@@ -120,11 +120,11 @@ const Navigation = () => {
       <div className="primary leading-tight font-Franklin px-12 text-sm font-medium flex w-full h-screen justify-between overflow-hidden">
         <FixedLeft />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<div className="overflow-y-scroll px-4 w-full gap-8"><Home /></div>} />
           <Route
             path="/project"
             element={
-              <div className="overflow-y-scroll px-8 flex flex-col gap-8">
+              <div className="overflow-y-scroll w-full px-8 flex flex-col gap-8">
                 <RadicleDesktopApp />
                 <Separator direction="horizontal" />
                 <RadicleDesignSystem />
