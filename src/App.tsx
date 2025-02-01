@@ -151,7 +151,15 @@ const Navigation = () => {
             </div>
           }
         />
+        <Route
+          path="/micropub"
+          element={
+            <div className="primary leading-tight font-Franklin px-12 text-sm font-medium flex w-full h-screen justify-between overflow-hidden">
+            </div>
+          }
+        />
       </Routes>
+
     </div>
   );
 };
