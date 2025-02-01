@@ -11,17 +11,17 @@ function Left() {
   const { state } = useContext(MyContext);
 
   return (
-    <div className="w-1/3" id="radicle-desktop-app">
+    <div className="w-full md:w-1/3" id="radicle-desktop-app">
       <div
-        className={`w-full h-screen sticky top-4 font-Gentium flex h-100vh flex-col items-center gap-4 text-center`}
-        style={{ fontSize: state.fontSize, paddingBottom: state.padding * 2 }}
+        className={`w-full sticky top-4 font-Gentium flex md:h-screen flex-col items-center  text-center`}
+        style={{ fontSize: state.fontSize, paddingBottom: state.padding * 2, gap: state.padding * 2 }}
       >
-        <p className="uppercase font-Franklin font-black md:text-5xl lg:text-6xl leading-none">
+        <p className="uppercase font-Franklin font-black text-4xl md:text-5xl lg:text-6xl leading-none">
           Radicle Desktop App
         </p>
         <div
-          className="h-full flex flex-col align-left text-left indent-4"
-          style={{ gap: state.padding / 2 }}
+          className="h-full flex flex-col align-left text-left md:indent-4 mt-4 md:mt-0 "
+          style={{ gap: state.padding }}
         >
           <p className="font-Franklin uppercase font-semibold">Your Work on Your Machine</p>
           <p>
@@ -139,8 +139,11 @@ function Right() {
 }
 
 export default function RadicleDesktopApp() {
+
+  const { state } = useContext(MyContext);
+
   return (
-    <div id="radicle-desktop-app" className="w-full flex gap-8 text-center py-4 h-fit">
+    <div id="radicle-desktop-app" className="w-full flex flex-col md:flex-row text-center py-4 h-fit" style={{ gap: state.padding * 2 }}>
       <Left />
       <Separator direction="vertical" />
       <Right />

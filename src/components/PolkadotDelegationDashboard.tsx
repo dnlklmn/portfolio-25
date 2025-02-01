@@ -123,13 +123,13 @@ function Right() {
       <Section thick title="Evaluation">
         <div className="flex gap-16">
           <p>
-            <strong>Great </strong> <div className="h-2" /> Simple to use <div className="h-2" />{" "}
+            <strong>Great </strong> <br /> <br /> Simple to use <br /> <br />{" "}
             Focused on 1 referendum
           </p>
           <p>
-            <strong>Not great </strong> <div className="h-2" /> Swiping is strange on desktop{" "}
-            <div className="h-2" /> Difficult to filter for types of referenda
-            <div className="h-2" /> Might favor quick uninformed decisions
+            <strong>Not great </strong> <br /> <br /> Swiping is strange on desktop{" "}
+            <br /> <br /> Difficult to filter for types of referenda
+            <br /> <br /> Might favor quick uninformed decisions
           </p>
         </div>
       </Section>
@@ -151,14 +151,14 @@ function Right() {
       <Section thick title="Evaluation">
         <div className="flex gap-16">
           <p>
-            <strong>Great </strong> <div className="h-2" /> Everything in one place
-            <div className="h-2" /> Informative
-            <div className="h-2" />
+            <strong>Great </strong> <br /> <br /> Everything in one place
+            <br /> <br /> Informative
+            <br /> <br />
             Helpful for those fluent in governance
           </p>
           <p>
-            <strong>Not great </strong> <div className="h-2" /> Too much information
-            <div className="h-2" />
+            <strong>Not great </strong> <br /> <br /> Too much information
+            <br /> <br />
             Doesn’t help get started
           </p>
         </div>
@@ -174,18 +174,18 @@ function Right() {
       <Section thick title="2 Parallel Tracks">
         <div className="flex gap-16">
           <p>
-            <strong>Pick a delegate you trust </strong> <div className="h-2" /> Delegate them your
+            <strong>Pick a delegate you trust </strong> <br /> <br /> Delegate them your
             entire voting power
-            <div className="h-2" /> For less technical users
-            <div className="h-2" />
+            <br /> <br /> For less technical users
+            <br /> <br />
             DAOs can pool together their influence
           </p>
           <p>
-            <strong>Specify tracks to keep or delegate </strong> <div className="h-2" />
+            <strong>Specify tracks to keep or delegate </strong> <br /> <br />
             Narrow your focus
-            <div className="h-2" />
+            <br /> <br />
             Let a delegate vote for a particular track
-            <div className="h-2" />
+            <br /> <br />
             Let a delegate vote for everything else
           </p>
         </div>

@@ -35,7 +35,7 @@ export default function Teaser({ link, title, subtitle, bgImage, dark, tags }: T
                 {subtitle}
             </p>
             <div className="text-sm font-semibold flex gap-2 pt-2">
-                {tags?.map((tag) => (<p className="px-2 py-1 primary rounded-full">{tag}</p>))}</div>
+                {tags?.map((tag, index) => (<p className="px-2 py-1 primary rounded-full" key={index}>{tag}</p>))}</div>
         </Link>
     );
 }

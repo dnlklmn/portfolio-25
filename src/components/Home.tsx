@@ -10,11 +10,9 @@ export default function Home() {
       className="h-full w-full flex flex-col text-center"
       style={{
         fontSize: state.fontSize,
-        paddingLeft: state.padding * 2,
-        paddingRight: state.padding * 2,
       }}
     >
-      <div className="mt-4 w-full flex flex-col gap-2">
+      <div className="md:mt-4 w-full flex flex-col" style={{ gap: state.padding / 1.5 }}>
         <div className="w-full h-1 inverted" />
         <div className="w-full h-2 inverted" />
         <div className="w-full h-4 inverted" />
@@ -28,7 +26,7 @@ export default function Home() {
         <p className="font-Gentium text-2xl">UX, UI, and Design Systems</p>
       </div>
 
-      <div className="flex" style={{ gap: state.padding * 3, paddingBottom: state.padding, paddingLeft: state.padding * 2, paddingRight: state.padding * 2 }}>
+      <div className="flex" style={{ gap: state.padding * 2, paddingBottom: state.padding }}>
         <Teaser tags={["UX", "UI"]} dark link='/project#radicle-desktop-app' title='RADICLE DESKTOP APP'
           subtitle="Your Work Belongs on Your Machine"
         />
