@@ -1,5 +1,9 @@
-const MoonIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16">
+interface IconProps {
+  size?: number;
+}
+
+const MoonIcon = ({ size }: IconProps) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} fill="none" viewBox="0 0 16 16">
     <path
       fill="currentColor"
       d="M4 3h2v1H4zM3 4h1v2H3zM2 6h1v4H2zM3 10h1v2H3zM4 12h2v1H4zM6 13h4v1H6z"

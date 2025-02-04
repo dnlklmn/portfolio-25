@@ -1,6 +1,6 @@
 export default function GetInTouch() {
   return (
-    <div className="bg-neutral-300 flex flex-col items-start p-4 gap-4 z-50">
+    <div className="light flex flex-col items-start p-4 gap-4 z-50">
       <p className="w-full text-start font-Franklin uppercase">
         Need help with your design system?
       </p>
@@ -14,7 +14,7 @@ export default function GetInTouch() {
         <li>design tokens</li>
         <li>workflow improvements</li>
       </ul>
-      <button className="px-8 py-4 bg-white w-fit">Get in touch</button>
+      <button className="px-8 py-4 secondary w-fit">Get in touch</button>
     </div>
   );
 }

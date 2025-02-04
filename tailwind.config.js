@@ -23,7 +23,7 @@ export default {
         primary: {
           light: {
             bg: colors.neutral[100],
-            txt: colors.neutral[900],
+            txt: colors.neutral[800],
           },
           dark: {
             bg: colors.neutral[900],

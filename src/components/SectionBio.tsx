@@ -8,7 +8,6 @@ interface SectionProps {
   children?: React.ReactNode;
   current?: boolean;
 }
-
 export default function SectionBio({ time, children, months, location, current }: SectionProps) {
   const { state } = useContext(MyContext);
 

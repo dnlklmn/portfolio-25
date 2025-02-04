@@ -9,10 +9,10 @@ export default function Home() {
     <div
       className="h-full w-full flex flex-col text-center"
       style={{
-        fontSize: state.fontSize,
+        fontSize: state.fontSize, paddingTop: state.padding * 2, paddingBottom: state.padding * 2
       }}
     >
-      <div className="md:mt-4 w-full flex flex-col" style={{ gap: state.padding / 1.5 }}>
+      <div className=" w-full flex flex-col" style={{ gap: state.padding / 1.5 }}>
         <div className="w-full h-1 inverted" />
         <div className="w-full h-2 inverted" />
         <div className="w-full h-4 inverted" />
@@ -22,21 +22,21 @@ export default function Home() {
         className="w-full text-center h-full items-center flex flex-col justify-center"
         style={{ gap: state.padding }}
       >
-        <p className="font-Franklin font-black text-6xl">DIGITAL PRODUCT DESIGNER</p>
-        <p className="font-Gentium text-2xl">UX, UI, and Design Systems</p>
+        <p className="font-Franklin font-black leading-tight" style={{ fontSize: state.fontSize * 4 }}>DIGITAL PRODUCT DESIGNER</p>
+        <p className="font-Gentium" style={{ fontSize: state.fontSize * 2 }}>UX, UI, and Design Systems</p>
       </div>
 
-      <div className="flex" style={{ gap: state.padding * 2, paddingBottom: state.padding }}>
-        <Teaser tags={["UX", "UI"]} dark link='/project#radicle-desktop-app' title='RADICLE DESKTOP APP'
-          subtitle="Your Work Belongs on Your Machine"
+      <div className="flex" style={{ gap: state.padding * 2 }}>
+        <Teaser tags={["UX", "UI"]} draft link='/project#radicle-desktop-app' title='RADICLE DESKTOP APP'
+          subtitle="Soon online"
         />
 
-        <Teaser tags={["UI", "Front End"]} dark //bgImage="url('src/assets/tokens-in-figma.png')"
+        <Teaser tags={["UI", "Front End"]} //bgImage="url('src/assets/tokens-in-figma.png')"
           link='/project#radicle-design-system'
           title='Radicle Design System'
           subtitle="Consistency By Design"
         />
-        <Teaser tags={["UI", "Front End"]} dark
+        <Teaser tags={["UI", "Front End"]}
           link='/project#polkadot-delegation-dashboard'
           title='Polkadot Delegate Dashboard'
           subtitle="Participate in Governance"

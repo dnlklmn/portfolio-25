@@ -58,7 +58,7 @@ function Right() {
       style={{ fontSize: state.fontSize, gap: state.padding * 2 }}
     >
       <div className="flex flex-col gap-4 ">
-        <Lightbox enableMove={false} image={DelegationScreens} />
+        <Lightbox image={DelegationScreens} />
         <p className="italic text-center"> Delegation App Designs</p>
       </div>
       <Separator direction="horizontal" />
@@ -123,13 +123,13 @@ function Right() {
       <Section thick title="Evaluation">
         <div className="flex gap-16">
           <p>
-            <strong>Great </strong> <br /> <br /> Simple to use <br /> <br />{" "}
+            <strong>Great </strong> <div className="h-2" /> Simple to use <div className="h-2" />{" "}
             Focused on 1 referendum
           </p>
           <p>
-            <strong>Not great </strong> <br /> <br /> Swiping is strange on desktop{" "}
-            <br /> <br /> Difficult to filter for types of referenda
-            <br /> <br /> Might favor quick uninformed decisions
+            <strong>Not great </strong> <div className="h-2" /> Swiping is strange on desktop{" "}
+            <div className="h-2" /> Difficult to filter for types of referenda
+            <div className="h-2" /> Might favor quick uninformed decisions
           </p>
         </div>
       </Section>
@@ -151,14 +151,14 @@ function Right() {
       <Section thick title="Evaluation">
         <div className="flex gap-16">
           <p>
-            <strong>Great </strong> <br /> <br /> Everything in one place
-            <br /> <br /> Informative
-            <br /> <br />
+            <strong>Great </strong> <div className="h-2" /> Everything in one place
+            <div className="h-2" /> Informative
+            <div className="h-2" />
             Helpful for those fluent in governance
           </p>
           <p>
-            <strong>Not great </strong> <br /> <br /> Too much information
-            <br /> <br />
+            <strong>Not great </strong> <div className="h-2" /> Too much information
+            <div className="h-2" />
             Doesn’t help get started
           </p>
         </div>
@@ -174,18 +174,18 @@ function Right() {
       <Section thick title="2 Parallel Tracks">
         <div className="flex gap-16">
           <p>
-            <strong>Pick a delegate you trust </strong> <br /> <br /> Delegate them your
+            <strong>Pick a delegate you trust </strong> <div className="h-2" /> Delegate them your
             entire voting power
-            <br /> <br /> For less technical users
-            <br /> <br />
+            <div className="h-2" /> For less technical users
+            <div className="h-2" />
             DAOs can pool together their influence
           </p>
           <p>
-            <strong>Specify tracks to keep or delegate </strong> <br /> <br />
+            <strong>Specify tracks to keep or delegate </strong> <div className="h-2" />
             Narrow your focus
-            <br /> <br />
+            <div className="h-2" />
             Let a delegate vote for a particular track
-            <br /> <br />
+            <div className="h-2" />
             Let a delegate vote for everything else
           </p>
         </div>
@@ -211,7 +211,7 @@ function Right() {
 
 export default function PolkadotDelegationDashboard() {
   return (
-    <div id="polkadot-delegation-dashboard" className="w-full flex gap-8 text-center py-4 h-fit">
+    <div className="w-full flex gap-8 text-center py-4 h-fit">
       <Left />
       <Separator direction="vertical" />
       <Right />

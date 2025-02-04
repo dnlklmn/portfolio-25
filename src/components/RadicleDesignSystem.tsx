@@ -15,6 +15,7 @@ import ExplorerAfter from "../assets/explorer-after.png";
 import FontStyles from "../assets/token-font-styles";
 import RadicleIcons from "../assets/radicle-icons";
 import Lightbox from "./Lightbox";
+import Tags from "./Tags";
 
 
 
@@ -22,48 +23,40 @@ function Left() {
   const { state } = useContext(MyContext);
 
   return (
-    <div className="w-1/3" >
+    <div
+      className={`w-1/4 sticky font-Gentium flex flex-col items-center text-center`}
+      style={{ fontSize: state.fontSize, gap: state.padding * 2, top: state.padding * 2, height: `calc(100vh - ${state.padding * 4}px)` }}
+    >
+      <p className=" font-Franklin font-black md:text-5xl lg:text-6xl leading-none">
+        RADICLE DESIGN SYSTEM
+      </p>
+      <RadicleDesignSystemIcon />
       <div
-        className={`w-full h-screen sticky top-4 font-Gentium flex h-100vh flex-col items-center gap-4 text-center`}
-        style={{ fontSize: state.fontSize, paddingBottom: state.padding * 2 }}
+        className="h-full flex flex-col align-left text-left indent-4"
+        style={{ gap: state.padding / 2 }}
       >
-        <p className=" font-Franklin font-black md:text-5xl lg:text-6xl leading-none">
-          RADICLE DESIGN SYSTEM
+        <p className="font-Franklin uppercase font-semibold">Consistency By Design</p>
+        <p>
+          I joined Radicle to improve consistency and create a consistent design system. Design
+          consistency is crucial in any project, but it can be particularly challenging in open
+          source projects due to the diverse and distributed nature of contributors.
         </p>
-        <RadicleDesignSystemIcon />
-        <div
-          className="h-full flex flex-col align-left text-left indent-4"
-          style={{ gap: state.padding / 2 }}
-        >
-          <p className="font-Franklin uppercase font-semibold">Consistency By Design</p>
-          <p>
-            I joined Radicle to improve consistency and create a consistent design system. Design
-            consistency is crucial in any project, but it can be particularly challenging in open
-            source projects due to the diverse and distributed nature of contributors.
-          </p>
+      </div>
+      <div className="flex flex-col gap-1 text-start items-start w-full">
+        <div className="flex items-center">
+          <ChevronRightIcon />
+          <a href="/" className="underline">
+            Radicle Tokens on Radicle
+          </a>
         </div>
-        <div className="flex flex-col gap-1 text-start items-start w-full">
-          <div className="flex items-center">
-            <ChevronRightIcon />
-            <a href="/" className="underline">
-              Radicle Tokens on Radicle
-            </a>
-          </div>
-          <div className="flex items-center">
-            <ChevronRightIcon />
-            <a href="/" className="underline">
-              Radicle UI Kit in Figma
-            </a>
-          </div>
-        </div>
-        <div
-          className="font-Gentium w-full flex align-left text-left"
-          style={{ gap: state.padding / 2 }}
-        >
-          <p className="font-Gentium uppercase font-semibold">2024</p>
-          <p>Visual Design, UI, Front End</p>
+        <div className="flex items-center">
+          <ChevronRightIcon />
+          <a href="/" className="underline">
+            Radicle UI Kit in Figma
+          </a>
         </div>
       </div>
+      <Tags tags={["Visual Design", "UI", "Front End"]} year={2024} />
     </div>
   );
 }
@@ -73,7 +66,7 @@ function Right() {
   return (
     <div
       id="radicle-design-system"
-      className={`font-Gentium flex w-full flex-col leading-snug`}
+      className="w-3/4 font-Gentium flex flex-col leading-snug"
       style={{ fontSize: state.fontSize, gap: state.padding * 2 }}
     >
       <div className="flex flex-col gap-4">
@@ -216,8 +209,10 @@ function Right() {
 
 export default function RadicleDesignSystem() {
 
+  const { state } = useContext(MyContext);
+
   return (
-    <div id='radicle-design-system' className="w-full flex gap-8 text-center py-4 h-fit">
+    <div id='radicle-design-system' className="w-full flex text-center h-fit" style={{ gap: state.padding * 2, paddingTop: state.padding * 2, paddingBottom: state.padding * 2 }}>
       <Left />
       <Separator direction="vertical" />
       <Right />

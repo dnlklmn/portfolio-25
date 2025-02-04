@@ -8,10 +8,10 @@ function Left() {
   const { state } = useContext(MyContext);
 
   return (
-    <div className="w-1/3">
+    <div className="w-1/3 ">
       <div
-        className={`w-full h-screen sticky top-4 font-Gentium flex h-100vh flex-col items-center gap-4 text-center`}
-        style={{ fontSize: state.fontSize, paddingBottom: state.padding * 2 }}
+        className={`w-full sticky font-Gentium flex flex-col items-center text-center top-0`}
+        style={{ fontSize: state.fontSize, gap: state.padding * 2, height: `calc(100vh - ${state.padding * 4}px)` }}
       >
         <img src={ProfilePicture} alt="Radicle Desktop App" />
         <p className="uppercase font-Franklin font-black md:text-5xl lg:text-7xl leading-none">
@@ -136,7 +136,7 @@ function Right() {
 
 export default function RadicleDesktopApp() {
   return (
-    <div className="w-full flex gap-8 text-center py-4 h-fit">
+    <div className="w-full flex gap-8 text-center h-fit">
       <Right />
       <Separator direction="vertical" />
       <Left />
