@@ -1,12 +1,8 @@
 import ColorRange from "../assets/ColorRange";
 import { pinks, blues } from "../assets/BaseColors";
 import Separator from "./Separator";
-import RadicleDesignSystemIcon from "../assets/RadicleDesignSystemIcon";
-import ChevronRightIcon from "../assets/Icons/ChevronRightIcon";
 import { useContext } from "react";
-import MyContext from "./Context";
 import RadicleSemanticIllustration from "../assets/RadicleSemanticIllustration";
-import GetInTouch from "./GetInTouch";
 import Section from "./Section";
 import TokensImage from "../assets/tokens-in-figma.png";
 import TokensDocs from "../assets/tokens-documentation.png";
@@ -15,78 +11,60 @@ import ExplorerAfter from "../assets/explorer-after.png";
 import FontStyles from "../assets/token-font-styles";
 import RadicleIcons from "../assets/radicle-icons";
 import Lightbox from "./Lightbox";
-import Tags from "./Tags";
+import Project from "./Project";
+import MyContext from "./Context";
 
-
-
-function Left() {
+export default function RadicleDesignSystem() {
   const { state } = useContext(MyContext);
 
   return (
-    <div
-      className={`w-1/4 sticky font-Gentium flex flex-col items-center text-center`}
-      style={{ fontSize: state.fontSize, gap: state.padding * 2, top: state.padding * 2, height: `calc(100vh - ${state.padding * 4}px)` }}
-    >
-      <p className=" font-Franklin font-black md:text-5xl lg:text-6xl leading-none">
-        RADICLE DESIGN SYSTEM
-      </p>
-      <RadicleDesignSystemIcon />
-      <div
-        className="h-full flex flex-col align-left text-left indent-4"
-        style={{ gap: state.padding / 2 }}
-      >
-        <p className="font-Franklin uppercase font-semibold">Consistency By Design</p>
-        <p>
-          I joined Radicle to improve consistency and create a consistent design system. Design
-          consistency is crucial in any project, but it can be particularly challenging in open
-          source projects due to the diverse and distributed nature of contributors.
-        </p>
-      </div>
-      <div className="flex flex-col gap-1 text-start items-start w-full">
-        <div className="flex items-center">
-          <ChevronRightIcon />
-          <a href="/" className="underline">
-            Radicle Tokens on Radicle
-          </a>
-        </div>
-        <div className="flex items-center">
-          <ChevronRightIcon />
-          <a href="/" className="underline">
-            Radicle UI Kit in Figma
-          </a>
-        </div>
-      </div>
-      <Tags tags={["Visual Design", "UI", "Front End"]} year={2024} />
-    </div>
-  );
-}
-
-function Right() {
-  const { state } = useContext(MyContext);
-  return (
-    <div
+    <Project
       id="radicle-design-system"
-      className="w-3/4 font-Gentium flex flex-col leading-snug"
-      style={{ fontSize: state.fontSize, gap: state.padding * 2 }}
+      title="Radicle Design System"
+      subtitle="Consistency By Design"
+      description="  I joined Radicle to improve consistency and create a consistent design system. Design
+        consistency is crucial in any project, but it can be particularly challenging in open
+        source projects due to the diverse and distributed nature of contributors."
+      tags={["UI", "Front End"]}
+      year={2024}
+      links={[
+        {
+          link: "https://app.radicle.xyz/nodes/seed.radicle.garden/rad:z4Vy9mFPHWxFNrZxM6f1p8PXs6svF",
+          text: "Radicle Tokens on Radicle",
+        },
+        {
+          link: "https://www.figma.com/design/FfIFgrdXKq547NsdeGZIsp/%5BDark%5D-Radicle-Design-System?node-id=1027-290&p=f",
+          text: "Radicle UI Kit in Figma",
+        },
+      ]}
     >
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col " style={{ gap: state.padding }}>
         <div
-          className="z-50 w-full flex text-center flexoverflow-visible"
+          className="w-full flex text-center flexoverflow-visible"
           style={{ gap: state.padding * 2 }}
         >
-          <Lightbox image={ExplorerBefore} />
-          <Lightbox image={ExplorerAfter} />
+          <Lightbox
+            alt="The Radicle Explorer before implementing the design system"
+            image={ExplorerBefore}
+          />
+          <Lightbox
+            alt="The Radicle Explorer after implementing the design system"
+            image={ExplorerAfter}
+          />
         </div>
-        <p className="italic text-center">
-          Fig. 1.1 Radicle Explorer before and after implementing the design system
+        <p className="txt-secondary italic text-center">
+          Radicle Explorer before and after implementing the design system
         </p>
       </div>
-      <Separator direction="horizontal" />
       <div
-        className="z-50 w-full flex text-center flexoverflow-visible"
-        style={{ gap: state.padding * 2 }}
+        className="w-full flex text-center flexoverflow-visible"
+        style={{
+          gap: state.padding * 2,
+          paddingTop: state.padding * 2,
+          paddingBottom: state.padding * 2,
+        }}
       >
-        <div className="w-full flex flex-col gap-8">
+        <div className="w-full flex flex-col" style={{ gap: state.padding }}>
           <p className="text-start font-bold">Challenge and Goals</p>
           <div className="flex flex-col text-start" style={{ gap: state.padding }}>
             <p>
@@ -100,7 +78,7 @@ function Right() {
             </p>
           </div>
         </div>
-        <div className="w-full  flex flex-col gap-4">
+        <div className="w-full flex flex-col" style={{ gap: state.padding }}>
           <p className="text-start font-bold">Process and Responsibilities</p>
           <div className="flex flex-col text-start " style={{ gap: state.padding }}>
             <p>
@@ -126,7 +104,7 @@ function Right() {
         <div className="flex flex-col justify-center text-center" style={{ gap: state.padding }}>
           <ColorRange range={blues} />
           <ColorRange range={pinks} />
-          <p className="italic">Fig. 1.1 Primary and Secondary Color Ranges</p>
+          <p className="txt-secondary italic">Primary and Secondary Color Ranges</p>
         </div>
         <p>
           We use a simplified type scale with only the essential font styles. This ensures visual
@@ -134,14 +112,14 @@ function Right() {
           sizes, we maintain a consistent and balanced look, enhancing the user experience and
           streamlining the design process.
         </p>
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col" style={{ gap: state.padding }}>
           <div
-            className="light flex py-8 px-8 flex-col z-50 bg-neutral-200"
-            style={{ gap: state.padding * 2 }}
+            className="light flex flex-col bg-neutral-200"
+            style={{ gap: state.padding, padding: state.padding * 2 }}
           >
             <FontStyles />
           </div>
-          <p className="italic text-center">Fig. 1.2 Text styles used in the library</p>
+          <p className="txt-secondary italic text-center">Text styles used in the library</p>
         </div>
       </Section>
       <Section title="Semantic Definitions">
@@ -150,9 +128,11 @@ function Right() {
           between designers and developers by providing a common language. This streamlines the
           workflow and makes design systems more efficient.
         </p>
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col" style={{ gap: state.padding }}>
           <RadicleSemanticIllustration />
-          <p className="italic text-center">Fig. 1.3 Semantic colors Used in the primary button</p>
+          <p className="txt-secondary italic text-center">
+            Semantic colors Used in the primary button
+          </p>
         </div>
         <p>
           Semantic tokens should address known use cases, while global tokens are available for new
@@ -169,9 +149,9 @@ function Right() {
           components. The tokens are stored in a shared repo on Radicle that serves as a single
           source of truth.
         </p>
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col" style={{ gap: state.padding }}>
           <img src={TokensImage} alt="Tokens Studio in Figma" />
-          <p className="italic text-center">Fig. 1.4 Tokens Studio in Figma</p>
+          <p className="txt-secondary italic text-center">Tokens Studio in Figma</p>
         </div>
         <p>
           We use Tokens Studio to manage tokens in Figma and store them in a shared JSON file. From
@@ -184,9 +164,9 @@ function Right() {
           the tokens in the form of code comments.
         </p>
 
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col" style={{ gap: state.padding }}>
           <img src={TokensDocs} alt="Tokens Studio in Figma" />
-          <p className="italic text-center">Fig. 1.5 Documentation at the token level</p>
+          <p className="txt-secondary italic text-center">Documentation at the token level</p>
         </div>
       </Section>
       <Section last title="Delightful Details">
@@ -197,25 +177,12 @@ function Right() {
           homage to the barefoot developers, drawing inspiration from the aesthetics of 90s
           programming games and interfaces.
         </p>
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col" style={{ gap: state.padding }}>
           <RadicleIcons />
-          <p className="italic text-center">Fig. 1.6 16x16 pixel icons</p>
+          <p className="txt-secondary italic text-center">16x16 pixel icons</p>
         </div>
       </Section>
-      <GetInTouch />
-    </div>
-  );
-}
-
-export default function RadicleDesignSystem() {
-
-  const { state } = useContext(MyContext);
-
-  return (
-    <div id='radicle-design-system' className="w-full flex text-center h-fit" style={{ gap: state.padding * 2, paddingTop: state.padding * 2, paddingBottom: state.padding * 2 }}>
-      <Left />
-      <Separator direction="vertical" />
-      <Right />
-    </div>
+      {/* <GetInTouch /> */}
+    </Project>
   );
 }

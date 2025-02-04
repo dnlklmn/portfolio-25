@@ -7,29 +7,31 @@ interface SectionProps {
   id?: string;
   children?: React.ReactNode;
   last?: boolean;
-  bio?: boolean;
   thick?: boolean;
 }
 
-export default function Section({ title, children, last, bio, thick, id }: SectionProps) {
+export default function Section({ title, children, last, thick, id }: SectionProps) {
   const { state } = useContext(MyContext);
 
   return (
     <div
       id={id}
-      className="z-50 w-full text-center flex flex-col overflow-visible"
+      className="w-full text-center flex flex-col overflow-visible pt-4 md:py-0 "
       style={{ gap: state.padding * 2 }}
     >
-      <div className="flex overflow-visible">
-        <p className="w-1/3 text-start font-bold">{title}</p>
+      <div
+        className="flex flex-col md:flex-row overflow-visible"
+        style={{ gap: state.padding * 2 }}
+      >
+        <p className="w-full md:w-1/3 text-start font-bold">{title}</p>
         <div
-          className="w-2/3 flex flex-col text-start pr-[5%]"
-          style={bio ? { gap: state.padding * 0.75 } : { gap: state.padding * 2 }}
+          className="w-full md:w-2/3 flex flex-col text-start md:pr-[5%]"
+          style={{ gap: state.padding * 2 }}
         >
           {children}
         </div>
       </div>
-      {!last && <Separator thick={thick} direction="horizontal" />}
+      {!last && <Separator thick={thick} className="pt-4 md:pt-0" direction="horizontal" />}
     </div>
   );
 }

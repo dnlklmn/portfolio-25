@@ -9,9 +9,13 @@ import MoonIcon from "./assets/Icons/MoonIcon";
 import SunIcon from "./assets/Icons/SunIcon";
 import About from "./components/About";
 import PolkadotDelegationDashboard from "./components/PolkadotDelegationDashboard";
+import Tray from "./components/Tray";
+import MenuIcon from "./assets/MenuIcon";
+import CloseIcon from "./assets/CloseIcon";
 
 function FixedLeft() {
   const { state, setState } = useContext(MyContext);
+  const [isTrayOpen, setIsTrayOpen] = useState(false);
 
   const handleSliderChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newFontSize = parseInt(event.target.value, 10);
@@ -26,7 +30,7 @@ function FixedLeft() {
     localStorage.setItem("theme", isDark ? "dark" : "light");
   };
 
-  const [currentTheme, setCurrentTheme] = useState<"dark" | "light">("light");
+  const [currentTheme, setCurrentTheme] = useState("light");
 
   const toggleTheme = () => {
     const isDark = document.documentElement.classList.toggle("dark");
@@ -49,13 +53,28 @@ function FixedLeft() {
     loadThemePreference();
   }, []);
 
+  const toggleTray = () => {
+    setIsTrayOpen(!isTrayOpen);
+  };
+
   return (
-    <div id="fixed-left" className="fixed top-0 left-0 w-full md:w-fit h-fit md:h-full flex" style={{ paddingTop: state.padding * 2, paddingBottom: state.padding * 2 }}>
-      <div className="w-full h-12 md:h-full flex md:flex-col justify-between items-center mx-3 md:mx-0" style={{ paddingLeft: state.padding, paddingRight: state.padding }}>
-        <Link to="/" className="md:writing-mode-vertical-lr font-semibold h-[200px] whitespace-nowrap" style={{ fontSize: state.fontSize }}>
+    <div
+      id="fixed-left"
+      className="fixed top-0 left-0 w-full md:w-fit h-fit md:h-full flex"
+      style={{ paddingTop: state.padding * 2, paddingBottom: state.padding * 2 }}
+    >
+      <div
+        className="w-full h-12 md:h-full flex md:flex-col justify-between items-center mx-3 md:mx-0"
+        style={{ paddingLeft: state.padding, paddingRight: state.padding }}
+      >
+        <Link
+          to="/"
+          className="md:writing-mode-vertical-lr font-semibold md:h-[200px] whitespace-nowrap"
+          style={{ fontSize: state.fontSize }}
+        >
           DANIEL KALMAN
         </Link>
-        <div className="font-Gentium font-bold md:flex-col gap-6  items-center justify-between hidden md:flex">
+        <div className="font-Gentium font-bold md:flex-col gap-6 items-center justify-between hidden md:flex">
           <p className="font-bold text-xl">-</p>
           <div className="flex justify-center items-center p-4 w-8 h-fit">
             <input
@@ -70,26 +89,48 @@ function FixedLeft() {
           <p className="font-bold text-xl">+</p>
         </div>
         <div className="p-1 hidden md:flex h-[200px] items-end" onClick={toggleTheme}>
-          {currentTheme === "dark" ? <MoonIcon size={state.fontSize * 1.25} /> : <SunIcon size={state.fontSize * 1.25} />}
+          {currentTheme === "dark" ? (
+            <MoonIcon size={state.fontSize * 1.25} />
+          ) : (
+            <SunIcon size={state.fontSize * 1.25} />
+          )}
         </div>
+        <button className="md:hidden" onClick={toggleTray}>
+          {isTrayOpen ? <CloseIcon size={state.fontSize} /> : <MenuIcon size={state.fontSize} />}
+        </button>
       </div>
       <Separator direction="vertical" />
+      {isTrayOpen && <Tray toggleTray={toggleTray} />}
     </div>
   );
 }
 
 function FixedRight() {
-
   const { state } = useContext(MyContext);
   return (
-    <div className="fixed top-0 right-0 h-full justify-center hidden md:flex" style={{ paddingTop: state.padding * 2, paddingBottom: state.padding * 2 }}>
-      <Separator className='hidden md:block' direction="vertical" />
-      <Separator className='block md:hidden' direction="horizontal" />
-      <div className="w-fit h-12 md:h-full flex md:flex-col justify-between items-center md:mx-[6.75px] " style={{ paddingLeft: state.padding, paddingRight: state.padding }}>
-        <Link to="/about" className="md:writing-mode-vertical-lr font-semibold h-[200px] whitespace-nowrap" style={{ fontSize: state.fontSize }}>
+    <div
+      className="fixed top-0 right-0 h-full justify-center hidden md:flex"
+      style={{ paddingTop: state.padding * 2, paddingBottom: state.padding * 2 }}
+    >
+      <Separator className="hidden md:block" direction="vertical" />
+      <Separator className="block md:hidden" direction="horizontal" />
+      <div
+        className="w-fit h-12 md:h-full flex md:flex-col justify-between items-center md:mx-[6.75px] "
+        style={{ paddingLeft: state.padding, paddingRight: state.padding }}
+      >
+        <Link
+          to="/about"
+          className="md:writing-mode-vertical-lr font-semibold h-[200px] whitespace-nowrap"
+          style={{ fontSize: state.fontSize }}
+        >
           ABOUT
         </Link>
-        <p className="md:writing-mode-vertical-lr font-semibold h-[200px] whitespace-nowrap text-end txt-secondary" style={{ fontSize: state.fontSize }}>BLOG</p>
+        <p
+          className="md:writing-mode-vertical-lr font-semibold h-[200px] whitespace-nowrap text-end txt-secondary"
+          style={{ fontSize: state.fontSize }}
+        >
+          BLOG
+        </p>
       </div>
     </div>
   );
@@ -114,11 +155,28 @@ const Navigation = () => {
       <div className="primary leading-tight font-Franklin pt-12 md:pt-0 md:px-12 text-sm font-medium flex w-full h-screen justify-between overflow-hidden">
         <FixedLeft />
         <Routes>
-          <Route path="/" element={<div className="overflow-y-scroll w-full gap-8" style={{ paddingLeft: state.padding * 3, paddingRight: state.padding * 3 }}><Home /></div>} />
+          <Route
+            path="/"
+            element={
+              <div
+                className="overflow-y-scroll w-full gap-8"
+                style={{ paddingLeft: state.padding * 3, paddingRight: state.padding * 3 }}
+              >
+                <Home />
+              </div>
+            }
+          />
           <Route
             path="/project"
             element={
-              <div className="overflow-y-scroll w-full flex flex-col" style={{ paddingLeft: state.padding * 3, paddingRight: state.padding * 3, gap: state.padding * 2 }}>
+              <div
+                className="overflow-y-scroll w-full flex flex-col"
+                style={{
+                  paddingLeft: state.padding * 3,
+                  paddingRight: state.padding * 3,
+                  gap: state.padding * 2,
+                }}
+              >
                 <RadicleDesignSystem />
                 <Separator direction="horizontal" />
                 <PolkadotDelegationDashboard />
@@ -128,7 +186,16 @@ const Navigation = () => {
           <Route
             path="/about"
             element={
-              <div className="overflow-y-scroll w-full flex flex-col" style={{ paddingLeft: state.padding * 3, paddingRight: state.padding * 3, gap: state.padding * 2, paddingTop: state.padding * 2, paddingBottom: state.padding * 2 }}>
+              <div
+                className="overflow-y-scroll w-full flex flex-col"
+                style={{
+                  paddingLeft: state.padding * 3,
+                  paddingRight: state.padding * 3,
+                  gap: state.padding * 2,
+                  paddingTop: state.padding * 2,
+                  paddingBottom: state.padding * 2,
+                }}
+              >
                 <About />
               </div>
             }
@@ -136,7 +203,16 @@ const Navigation = () => {
           <Route
             path="/about"
             element={
-              <div className="overflow-y-scroll w-full flex flex-col" style={{ paddingLeft: state.padding * 3, paddingRight: state.padding * 3, gap: state.padding * 2, paddingTop: state.padding * 2, paddingBottom: state.padding * 2 }}>
+              <div
+                className="overflow-y-scroll w-full flex flex-col"
+                style={{
+                  paddingLeft: state.padding * 3,
+                  paddingRight: state.padding * 3,
+                  gap: state.padding * 2,
+                  paddingTop: state.padding * 2,
+                  paddingBottom: state.padding * 2,
+                }}
+              >
                 <About />
               </div>
             }
@@ -144,7 +220,14 @@ const Navigation = () => {
           <Route
             path="/with-desktop"
             element={
-              <div className="overflow-y-scroll w-full flex flex-col" style={{ paddingLeft: state.padding * 3, paddingRight: state.padding * 3, gap: state.padding }}>
+              <div
+                className="overflow-y-scroll w-full flex flex-col"
+                style={{
+                  paddingLeft: state.padding * 3,
+                  paddingRight: state.padding * 3,
+                  gap: state.padding,
+                }}
+              >
                 <RadicleDesktopApp />
                 <Separator direction="horizontal" />
                 <RadicleDesignSystem />
@@ -153,7 +236,6 @@ const Navigation = () => {
               </div>
             }
           />
-
         </Routes>
         <FixedRight />
       </div>

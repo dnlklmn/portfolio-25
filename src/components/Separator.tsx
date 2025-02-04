@@ -10,9 +10,13 @@ export default function Separator({ direction, thick, className }: SeparatorProp
   return (
     <React.Fragment>
       {direction === "horizontal" ? (
-        <div className={`w-full bord-secondary ${thick ? "border-b-[2px]" : "border-b-[1px]"} ${className}`} />
+        <div
+          className={`w-full bord-secondary ${thick ? "border-b-[2px]" : "border-b-[1px]"} ${className}`}
+        />
       ) : (
-        <div className={`h-full bord-secondary ${thick ? "border-r-[2px]" : "border-r-[1px]"} ${className}`} />
+        <div
+          className={`h-full bord-secondary ${thick ? "border-r-[2px]" : "border-r-[1px]"} ${className}`}
+        />
       )}
     </React.Fragment>
   );

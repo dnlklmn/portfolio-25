@@ -1,47 +1,62 @@
+import { useState, useContext } from "react";
 import Separator from "./Separator";
-import { useContext } from "react";
 import MyContext from "./Context";
 import SectionBio from "./SectionBio";
 import ProfilePicture from "../assets/dk.png";
 
 function Left() {
   const { state } = useContext(MyContext);
+  const [isLoading, setIsLoading] = useState(true);
 
   return (
-    <div className="w-1/3 ">
-      <div
-        className={`w-full sticky font-Gentium flex flex-col items-center text-center top-0`}
-        style={{ fontSize: state.fontSize, gap: state.padding * 2, height: `calc(100vh - ${state.padding * 4}px)` }}
+    <div
+      className="w-full md:w-1/3 md:sticky font-Gentium flex flex-col items-center text-center top-0"
+      style={{
+        fontSize: state.fontSize,
+        gap: state.padding * 2,
+        height: `calc(100vh - ${state.padding * 4}px)`,
+      }}
+    >
+      {isLoading && (
+        <div className="flex items-center justify-center h-1/4 w-full light ">Loading...</div>
+      )}
+      <img
+        src={ProfilePicture}
+        alt="Radicle Desktop App"
+        onLoad={() => setIsLoading(false)}
+        onError={() => setIsLoading(false)}
+        style={{ display: isLoading ? "none" : "block" }}
+      />
+      <p
+        className="uppercase font-Franklin font-black leading-none"
+        style={{ fontSize: state.fontSize * 2.5 }}
       >
-        <img src={ProfilePicture} alt="Radicle Desktop App" />
-        <p className="uppercase font-Franklin font-black md:text-5xl lg:text-7xl leading-none">
-          Daniel Kalman
+        Daniel Kalman
+      </p>
+      <div className="md:h-full flex flex-col align-left text-left" style={{ gap: state.padding }}>
+        <p>
+          I'm a design engineer with 15 years of UX design experience and 5 years on the front of
+          front end.
         </p>
-        <div
-          className="h-full flex flex-col align-left text-left"
-          style={{ gap: state.padding / 2 }}
-        >
-          <p>
-            I'm a design engineer with 15 years of UX design experience and 5 years on the front of
-            front end.
-          </p>
-          <p>
-            I believe in a decentralized future where individuals have full ownership and control
-            over their personal data in the digital world.
-          </p>
-          <p>I'm a father of 2, based in Berlin, Germany.</p>
-        </div>
-        <div className="flex gap-8 text-start justify-center w-full">
-          <a href="https://github.com/dnlklmn" target="_blank" className="underline">
-            Github
-          </a>
-          <a href="https://bsky.app/profile/dnlklmn.online" target="_blank" className="underline">
-            Bluesky
-          </a>
-          <a href="mailto:dnl.klmn@gmail.com" className="underline">
-            Email
-          </a>
-        </div>
+        <p>
+          I believe in a decentralized future where individuals have full ownership and control over
+          their personal data in the digital world.
+        </p>
+        <p>I'm a father of 2, based in Berlin, Germany.</p>
+      </div>
+      <div
+        className="flex text-start justify-start md:justify-center w-full"
+        style={{ gap: state.padding * 2 }}
+      >
+        <a href="https://github.com/dnlklmn" target="_blank" className="underline">
+          Github
+        </a>
+        <a href="https://bsky.app/profile/dnlklmn.online" target="_blank" className="underline">
+          Bluesky
+        </a>
+        <a href="mailto:dnl.klmn@gmail.com" className="underline">
+          Email
+        </a>
       </div>
     </div>
   );
@@ -136,9 +151,9 @@ function Right() {
 
 export default function RadicleDesktopApp() {
   return (
-    <div className="w-full flex gap-8 text-center h-fit">
+    <div className="w-full flex flex-col-reverse md:flex-row gap-8 text-center h-fit">
       <Right />
-      <Separator direction="vertical" />
+      <Separator className="hidden md:block" direction="vertical" />
       <Left />
     </div>
   );

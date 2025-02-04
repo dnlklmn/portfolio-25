@@ -1,75 +1,39 @@
 import Separator from "./Separator";
-import ChevronRightIcon from "../assets/Icons/ChevronRightIcon";
 import { useContext } from "react";
 import MyContext from "./Context";
-import GetInTouch from "./GetInTouch";
 import Section from "./Section";
 import radicleDesktopAppImage from "../assets/radicle-desktop-app.png";
 import Lightbox from "./Lightbox";
-import Tags from "./Tags";
+import Project from "./Project";
 
-function Left() {
+export default function RadicleDesktopApp() {
   const { state } = useContext(MyContext);
 
   return (
-    <div className="w-full md:w-1/4" id="radicle-desktop-app">
-      <div
-        className={`w-full sticky font-Gentium flex md:h-screen flex-col items-center  text-center`}
-        style={{ fontSize: state.fontSize, height: `calc(100vh - ${state.padding * 4}px)`, gap: state.padding * 2, top: state.padding * 2 }}
-      >
-        <p className="uppercase font-Franklin font-black text-4xl md:text-5xl lg:text-6xl leading-none">
-          Radicle Desktop App
-        </p>
-        <div
-          className="h-full flex flex-col align-left text-left md:indent-4  "
-          style={{ gap: state.padding / 2 }}
-        >
-          <p className="font-Franklin uppercase font-semibold">Your Work on Your Machine</p>
-          <p>
-            The Radicle desktop app allows you to manage issues and patches, review code, and
-            receive change notifications directly on your machine, whether you're online or offline.
-          </p>
-        </div>
-        <div className="flex flex-col gap-1 text-start items-start w-full">
-          <div className="flex items-center">
-            <ChevronRightIcon />
-            <a
-              href="https://app.radicle.xyz/nodes/seed.radicle.xyz/rad:z4D5UCArafTzTQpDZNQRuqswh3ury"
-              target="_blank"
-              className="underline"
-            >
-              Get the app
-            </a>
-          </div>
-          <div className="flex items-center">
-            <ChevronRightIcon />
-            <a href="https://radicle.xyz/" target="_blank" className="underline">
-              Get started with Radicle
-            </a>
-          </div>
-        </div>
-        <Tags tags={["UX", "UI"]} year={2025} />
-      </div>
-    </div>
-  );
-}
-
-function Right() {
-  const { state } = useContext(MyContext);
-
-  return (
-    <div
+    <Project
       id="radicle-desktop-app"
-      className="w-3/4 font-Gentium flex flex-col leading-snug"
-      style={{ fontSize: state.fontSize, gap: state.padding * 2 }}
+      title="Radicle Desktop App"
+      subtitle="Your Work on Your Machine"
+      description="The Radicle desktop app allows you to manage issues and patches, review code, and
+      receive change notifications directly on your machine, whether you're online or offline."
+      tags={["UI", "UX"]}
+      year={2024}
+      links={[
+        {
+          link: "https://app.radicle.xyz/nodes/seed.radicle.xyz/rad:z4D5UCArafTzTQpDZNQRuqswh3ury",
+          text: "Get the app",
+        },
+        {
+          link: "https://radicle.xyz",
+          text: "Get started with Radicle",
+        },
+      ]}
     >
       <Lightbox image={radicleDesktopAppImage} />
-
       <div
-        className="z-50 w-full flex text-center flexoverflow-visible"
+        className="w-full flex text-center flexoverflow-visible"
         style={{ gap: state.padding * 2 }}
       >
-
         <div className="w-full flex flex-col gap-4">
           <p className="text-start font-bold">Challenge and Goals</p>
           <div className="flex flex-col text-start" style={{ gap: state.padding }}>
@@ -112,7 +76,6 @@ function Right() {
           new users. Central to these concepts is the immutable nature of Radicle's collaborative
           objects, which serves as the cornerstone of our system.
         </p>
-
       </Section>
       <Section last title="Wireframes">
         <p>
@@ -128,20 +91,6 @@ function Right() {
           indicate where data comes from and provide the necessary details for verification.
         </p>
       </Section>
-      <GetInTouch />
-    </div>
-  );
-}
-
-export default function RadicleDesktopApp() {
-
-  const { state } = useContext(MyContext);
-
-  return (
-    <div id="radicle-desktop-app" className="w-full flex flex-col md:flex-row text-center py-4 h-fit" style={{ gap: state.padding * 2, paddingTop: state.padding * 2, paddingBottom: state.padding * 2 }}>
-      <Left />
-      <Separator direction="vertical" />
-      <Right />
-    </div>
+    </Project>
   );
 }
