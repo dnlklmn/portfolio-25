@@ -16,8 +16,11 @@ export default function Tray({ toggleTray }: TrayProps) {
         style={{
           top: state.padding * 9,
           right: state.padding * 2,
-          padding: state.padding * 3,
-          gap: state.padding * 2,
+          paddingTop: state.padding * 3,
+          paddingBottom: state.padding * 3,
+          paddingLeft: state.padding * 5,
+          paddingRight: state.padding * 3,
+          gap: state.padding * 4,
         }}
       >
         <Link onClick={toggleTray} to="/">

@@ -47,7 +47,7 @@ function Left({ title, subtitle, description, tags, year, links, id }: LeftProps
         <p className="font-Franklin uppercase font-semibold">{subtitle}</p>
         <p>{description}</p>
       </div>
-      <div className="flex flex-col gap-1 text-start items-start w-full">
+      <div className="flex flex-col gap-1 text-start items-start w-full py-2 md:py-0">
         {links?.map((link, index) => <Hyperlink link={link.link} text={link.text} key={index} />)}
       </div>
       <Tags tags={tags} year={year} />
