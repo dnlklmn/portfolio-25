@@ -12,7 +12,7 @@ export default function Tray({ toggleTray }: TrayProps) {
   return (
     <>
       <div
-        className="flex flex-col items-end fixed font-Franklin font-semibold uppercase inverted  z-50"
+        className="flex flex-col items-end fixed font-Franklin font-semibold uppercase inverted z-50"
         style={{
           top: state.padding * 9,
           right: state.padding * 2,
@@ -26,7 +26,6 @@ export default function Tray({ toggleTray }: TrayProps) {
         <Link onClick={toggleTray} to="/project">
           Works
         </Link>
-
         <Link onClick={toggleTray} to="/about">
           About
         </Link>

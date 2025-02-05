@@ -46,7 +46,7 @@ export default function PolkadotDelegationDashboard() {
             paddingBottom: state.padding * 2,
           }}
         >
-          <div className="w-full flex flex-col gap-8">
+          <div className="w-full flex flex-col" style={{ gap: state.padding }}>
             <p className="text-start font-bold">Challenge and Goals</p>
             <div className="flex flex-col text-start" style={{ gap: state.padding }}>
               <p>
@@ -60,7 +60,7 @@ export default function PolkadotDelegationDashboard() {
               </p>
             </div>
           </div>
-          <div className="w-full  flex flex-col gap-4">
+          <div className="w-full  flex flex-col " style={{ gap: state.padding }}>
             <p className="text-start font-bold">Process and Responsibilities</p>
             <div className="flex flex-col text-start " style={{ gap: state.padding }}>
               <p>
