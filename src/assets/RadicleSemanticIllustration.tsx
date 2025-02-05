@@ -1,17 +1,17 @@
 import React from "react";
-import RadicleButton from "../assets/RadicleButton";
-import MyContext from "./Context";
-import SeedIcon from "../assets/Icons/SeedIcon";
+import RadicleButton from "./RadicleButton";
+import MyContext from "../components/Context";
+import SeedIcon from "./Icons/SeedIcon";
 
 export default function RadicleSemanticIllustration() {
   const { state } = React.useContext(MyContext);
   const [buttonState, setButtonState] = React.useState("idle");
   return (
     <div
-      className="light flex py-8 px-8 flex-col z-50 bg-neutral-200"
-      style={{ gap: state.padding * 2 }}
+      className="light flex flex-col z-50 bg-neutral-200"
+      style={{ gap: state.padding * 2, padding: state.padding * 2 }}
     >
-      <div className="h-full flex flex-col gap-12 items-start">
+      <div className="h-full flex flex-col items-start" style={{ gap: state.padding * 3 }}>
         <div className="flex gap-4 items-center">
           <RadicleButton
             onHover={() => setButtonState("hover")}
@@ -94,7 +94,6 @@ export default function RadicleSemanticIllustration() {
           </div>
         </div>
       </div>
-      <p className="italic">Fig. 1.2 Semantic Colors Used in the Primary Button</p>
     </div>
   );
 }

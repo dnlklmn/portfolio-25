@@ -2,7 +2,7 @@ import Separator from "../components/Separator";
 // make overlay text wider?
 export default function LoremIpsum() {
   return (
-    <div className="w-full font-Gentium scale-x-[-1] opacity-[3%] h-0 overflow-visible -z-1 flex flex-col gap-8">
+    <div className="select-none w-full font-Gentium scale-x-[-1] opacity-[3%] h-0 overflow-visible -z-1 flex flex-col gap-8">
       <p className="py-8">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut
         labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco

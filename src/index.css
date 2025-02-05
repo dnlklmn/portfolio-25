@@ -3,26 +3,27 @@
 @tailwind utilities;
 
 @layer utilities {
+
     /* Hide scrollbar for Chrome, Safari and Opera */
     .no-scrollbar::-webkit-scrollbar {
         display: none;
     }
+
     /* Hide scrollbar for IE, Edge and Firefox */
     .no-scrollbar {
-        -ms-overflow-style: none; /* IE and Edge */
-        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none;
+        /* IE and Edge */
+        scrollbar-width: none;
+        /* Firefox */
     }
 }
 
 .slider {
-    @apply [&::-webkit-slider-runnable-track]:rounded-full
-    [&::-webkit-slider-runnable-track]:bg-gray-800
-  [&::-webkit-slider-runnable-track]:h-[1px]
-  [&::-webkit-slider-thumb]:appearance-none
-  [&::-webkit-slider-thumb]:h-3
-  [&::-webkit-slider-thumb]:w-3
-  [&::-webkit-slider-thumb]:-mt-1.5
-  [&::-webkit-slider-thumb]:bg-gray-800;
+    @apply [&::-webkit-slider-runnable-track]:rounded-full [&::-webkit-slider-runnable-track]:secondary [&::-webkit-slider-runnable-track]:h-[1px] [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-3 [&::-webkit-slider-thumb]:w-3 [&::-webkit-slider-thumb]:-mt-1.5 [&::-webkit-slider-thumb]:inverted;
+}
+
+.slider:hover {
+    @apply [&::-webkit-slider-runnable-track]:rounded-full [&::-webkit-slider-runnable-track]:inverted [&::-webkit-slider-runnable-track]:h-[1px] [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-3 [&::-webkit-slider-thumb]:w-3 [&::-webkit-slider-thumb]:-mt-1.5 [&::-webkit-slider-thumb]:inverted;
 }
 
 :root {

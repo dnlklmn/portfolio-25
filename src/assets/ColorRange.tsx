@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import MyContext from "../components/Context";
+import React from "react";
 
 interface Color {
   color: string;
@@ -24,8 +26,10 @@ export default function ColorRange({ range }: { range: Color[] }) {
     }
   }, [copiedColor]);
 
+  const { state } = React.useContext(MyContext);
+
   return (
-    <div className="w-full flex pr-8">
+    <div className="w-full flex" style={{ paddingRight: state.padding }}>
       {range.map((colorObj, index) => (
         <div key={index} className="group w-full h-12">
           <div
