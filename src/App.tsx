@@ -60,7 +60,7 @@ function FixedLeft() {
   return (
     <div
       id="fixed-left"
-      className="fixed top-0 left-0 w-full md:w-fit h-fit md:h-full flex"
+      className="primary fixed top-0 left-0 w-full md:w-fit h-fit md:h-full flex"
       style={{ paddingTop: state.padding * 2, paddingBottom: state.padding * 2 }}
     >
       <div
