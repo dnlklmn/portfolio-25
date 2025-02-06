@@ -236,7 +236,23 @@ const Navigation = () => {
               </div>
             }
           />
+          <Route
+            path="/notes"
+            element={
+              <div
+                className="overflow-y-scroll w-full flex flex-col"
+                style={{
+                  paddingLeft: state.padding * 3,
+                  paddingRight: state.padding * 3,
+                  gap: state.padding,
+                }}
+              >
+                Notes come here
+              </div>
+            }
+          />
         </Routes>
+
         <FixedRight />
       </div>
     </div>
