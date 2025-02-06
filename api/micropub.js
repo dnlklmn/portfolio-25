@@ -1,4 +1,4 @@
-import querystring from "node:querystring";
+import querystring from "querystring";
 import slugify from "@sindresorhus/slugify";
 import { Octokit } from "@octokit/rest";
 import commitPlugin from "octokit-commit-multiple-files";
@@ -26,6 +26,7 @@ export default async function handler(req, res) {
   if (req.method === "OPTIONS") {
     return res.status(200).end();
   }
+
   // Only allow POST requests
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Method not allowed" });
@@ -38,10 +39,11 @@ export default async function handler(req, res) {
       error: "Unauthorized: Invalid bearer token",
     });
   }
-  const body = typeof req.body === "string" ? req.body : JSON.stringify(req.body);
-  const { content } = querystring.parse(body);
+
   try {
-    const { content } = querystring.parse(req.body);
+    const body = typeof req.body === "string" ? req.body : JSON.stringify(req.body);
+    const { content } = querystring.parse(body);
+
     const date = new Date();
     const filename = slugify(getURLDate(date));
 
@@ -67,7 +69,7 @@ export default async function handler(req, res) {
     res.setHeader("Location", `http://${process.env.DOMAIN_NAME}/notes`);
     return res.status(201).end();
   } catch (error) {
-    console.error(error);
-    return res.status(400).json(error);
+    console.error("Error creating or updating files:", error);
+    return res.status(500).json({ error: "Internal Server Error" });
   }
 }
