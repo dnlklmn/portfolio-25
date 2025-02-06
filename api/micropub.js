@@ -42,7 +42,12 @@ export default async function handler(req, res) {
 
   try {
     const body = typeof req.body === "string" ? req.body : JSON.stringify(req.body);
-    const { content } = querystring.parse(body);
+    const parsedBody = querystring.parse(body);
+    const content = parsedBody.content || req.body.content;
+
+    if (!content) {
+      return res.status(400).json({ error: "Content is required" });
+    }
 
     const date = new Date();
     const filename = slugify(getURLDate(date));
