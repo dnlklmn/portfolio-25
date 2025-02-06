@@ -10,7 +10,7 @@ const octokit = new OctokitWithPlugin({
 
 const getURLDate = (str) => {
   const time = str.toLocaleString("sv-SE", {
-    timeZone: "America/Denver",
+    timeZone: "Europe/Berlin",
     hour12: false,
   });
   return time;
@@ -52,7 +52,7 @@ export default async function handler(req, res) {
     const date = new Date();
     const filename = slugify(getURLDate(date));
 
-    const template = `---\ndate: ${date.toISOString()}\n---\n${decodeURIComponent(content)}`;
+    const template = `---\ndate: ${date.toISOString()}\n---\n${decodeURIComponent(content)}\n${decodeURIComponent(body)}`;
 
     await octokit.createOrUpdateFiles({
       owner: process.env.GITHUB_USERNAME,
