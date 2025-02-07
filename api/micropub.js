@@ -53,7 +53,7 @@ export default async function handler(req, res) {
     const date = new Date();
     const filename = slugify(getURLDate(date));
 
-    const template = `---\ndate: ${date.toISOString()}\n---\n${body}`;
+    const template = `---\ndate: ${date.toISOString()}\n---\n${body.properties}`;
 
     await octokit.createOrUpdateFiles({
       owner: process.env.GITHUB_USERNAME,
