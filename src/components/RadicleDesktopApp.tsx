@@ -5,6 +5,18 @@ import Section from "./Section";
 import radicleDesktopAppImage from "../assets/radicle-desktop-app.png";
 import Lightbox from "./Lightbox";
 import Project from "./Project";
+import { MarkdownComponent } from "./MarkdownComponent";
+
+const noteContent = `
+---
+date: 2025-02-07T13:11:09.872Z
+---
+
+type: h-entry
+name: Hey
+content:
+
+<p>Hey ho</p>`;
 
 export default function RadicleDesktopApp() {
   const { state } = useContext(MyContext);
@@ -91,6 +103,7 @@ export default function RadicleDesktopApp() {
           indicate where data comes from and provide the necessary details for verification.
         </p>
       </Section>
+      <MarkdownComponent content={noteContent} />
     </Project>
   );
 }
