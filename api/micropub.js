@@ -43,16 +43,17 @@ export default async function handler(req, res) {
   try {
     const body = typeof req.body === "string" ? req.body : JSON.stringify(req.body);
     const parsedBody = querystring.parse(body);
-    const content = parsedBody.content || req.body.content;
+    // const content = parsedBody.content || req.body.content;
 
-    if (!content) {
-      return res.status(400).json({ error: "Content is required" });
-    }
+    // if (!content) {
+    //   return res.status(400).json({ error: "Content is required" });
+    // }
+    // \n${decodeURIComponent(content)}
 
     const date = new Date();
     const filename = slugify(getURLDate(date));
 
-    const template = `---\ndate: ${date.toISOString()}\n---\n${decodeURIComponent(content)}\n${decodeURIComponent(body)}`;
+    const template = `---\ndate: ${date.toISOString()}\n---\n${decodeURIComponent(body)}`;
 
     await octokit.createOrUpdateFiles({
       owner: process.env.GITHUB_USERNAME,
