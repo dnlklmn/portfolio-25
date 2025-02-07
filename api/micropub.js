@@ -58,10 +58,11 @@ export default async function handler(req, res) {
     const filename = slugify(getURLDate(date));
 
     const template = `---
-date: ${date.toISOString()}---
-type: ${type}
-name: ${name}
-content: |
+      date: ${date.toISOString()}
+      ---
+      type: ${type}
+      name: ${name}
+      content:
     ${content}
 `;
 
