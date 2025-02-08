@@ -42,47 +42,18 @@ export default async function handler(req, res) {
 
   try {
     const body = typeof req.body === "string" ? req.body : JSON.stringify(req.body);
-    let jsonBody;
-    try {
-      jsonBody = JSON.parse(decodeURIComponent(body));
-    } catch {
-      jsonBody = querystring.parse(body);
-    }
-    try {
-      const body = typeof req.body === "string" ? req.body : JSON.stringify(req.body);
-      let jsonBody;
-      try {
-        jsonBody = JSON.parse(decodeURIComponent(body));
-      } catch {
-        jsonBody = querystring.parse(body);
-      }
+    const parsedBody = querystring.parse(body);
+    // const content = parsedBody.content || req.body.content;
 
-      const type = jsonBody.type ? jsonBody.type[0] : "";
-      const name = jsonBody.properties?.name?.[0] || "";
-      const content = jsonBody.properties?.content?.[0]?.html ||
-        jsonBody.properties?.content?.[0] ||
-        "";
+    // if (!content) {
+    //   return res.status(400).json({ error: "Content is required" });
+    // }
+    // \n${decodeURIComponent(content)}
 
-      const date = new Date();
-      const filename = slugify(getURLDate(date));
-      const date = new Date();
-      const filename = slugify(getURLDate(date));
+    const date = new Date();
+    const filename = slugify(getURLDate(date));
 
-      const template = `---
-      date: ${date.toISOString()}
-      ---
-      type: ${type}
-      name: ${name}
-      content:
-    const template = `-- -
-        date: ${ date.toISOString()
-    }
-      ---
-      type: ${ type }
-    name: ${ name }
-    content:
-    ${ content }
-    `;
+    const template = `---\ndate: ${date.toISOString()}\n---\n${body}`;
 
     await octokit.createOrUpdateFiles({
       owner: process.env.GITHUB_USERNAME,
@@ -90,12 +61,12 @@ export default async function handler(req, res) {
       branch: "main",
       changes: [
         {
-          message: `📝 - Adding note: ${ filename } `,
+          message: `📝 - Adding note: ${filename}`,
           files: {
-            [`notes / ${ filename }.md`]: {
+            [`notes/${filename}.md`]: {
               contents: Buffer.from(template).toString("base64"),
             },
-            "functions/micropub-latest.json": `{ "latest": "notes/${filename}.md" } `,
+            "functions/micropub-latest.json": `{ "latest": "notes/${filename}.md" }`,
           },
         },
       ],
