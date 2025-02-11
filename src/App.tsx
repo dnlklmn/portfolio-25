@@ -83,7 +83,7 @@ function FixedLeft() {
               max="24"
               value={state.fontSize}
               onChange={handleSliderChange}
-              className="appearance-none md:rotate-90 slider w-16"
+              className="appearance-none md:rotate-90 slider w-16 cursor-pointer"
             />
           </div>
           <p className="font-bold text-xl">+</p>
@@ -160,7 +160,7 @@ const Navigation = () => {
             path="/"
             element={
               <div
-                className="overflow-y-scroll w-full gap-8"
+                className="overflow-y-scroll w-full gap-8 "
                 style={{ paddingLeft: state.padding * 3, paddingRight: state.padding * 3 }}
               >
                 <Home />
@@ -253,7 +253,6 @@ const Navigation = () => {
             }
           />
         </Routes>
-
         <FixedRight />
       </div>
     </div>
