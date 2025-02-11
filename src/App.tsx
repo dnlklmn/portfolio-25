@@ -109,13 +109,14 @@ function FixedRight() {
   const { state } = useContext(MyContext);
   return (
     <div
-      className="fixed top-0 right-0 h-full justify-center hidden md:flex"
+      id="fixed-right"
+      className="hidden fixed top-0 right-0 w-fit h-full md:flex"
       style={{ paddingTop: state.padding * 2, paddingBottom: state.padding * 2 }}
     >
       <Separator className="hidden md:block" direction="vertical" />
       <Separator className="block md:hidden" direction="horizontal" />
       <div
-        className="w-fit h-12 md:h-full flex md:flex-col justify-between items-center md:mx-[6.75px] "
+        className="w-fit h-12 md:h-full flex md:flex-col justify-between items-center md:mx-[6px] "
         style={{ paddingLeft: state.padding, paddingRight: state.padding }}
       >
         <Link
