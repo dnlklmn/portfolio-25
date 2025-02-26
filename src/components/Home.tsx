@@ -34,6 +34,20 @@ export default function Home() {
           UX, UI, and Design Systems
         </p>
       </div>
+      <form action="https://indielogin.com/auth" method="get">
+        <label htmlFor="url">Web Address:</label>
+        <input id="url" type="text" name="me" placeholder="dnlklmn.online" />
+        <p>
+          <button type="submit">Sign In</button>
+        </p>
+        <input type="hidden" name="client_id" value="https://dnlklmn.online/" />
+        <input
+          type="hidden"
+          name="redirect_uri"
+          value="https://dnlklmn.online/callback?state=jwiusuerujs&code=gk7n4opsyuUxhvF4"
+        />
+        <input type="hidden" name="state" value="jwiusuerujs" />
+      </form>
       <div className="flex md:h-fit flex-col md:flex-row " style={{ gap: state.padding * 1.5 }}>
         <Teaser
           tags={["UX", "UI"]}
