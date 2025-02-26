@@ -12,6 +12,7 @@ import PolkadotDelegationDashboard from "./components/PolkadotDelegationDashboar
 import Tray from "./components/Tray";
 import MenuIcon from "./assets/MenuIcon";
 import CloseIcon from "./assets/CloseIcon";
+import Boop from "./components/Boop";
 
 function FixedLeft() {
   const { state, setState } = useContext(MyContext);
@@ -60,21 +61,21 @@ function FixedLeft() {
   return (
     <div
       id="fixed-left"
-      className="fixed top-0 left-0 w-full md:w-fit h-fit md:h-full flex"
+      className="fixed top-0 left-0 w-full md:w-fit h-fit md:h-full flex "
       style={{ paddingTop: state.padding * 2, paddingBottom: state.padding * 2 }}
     >
       <div
-        className="w-full h-12 md:h-full flex md:flex-col justify-between items-center mx-3 md:mx-0"
+        className="w-full h-12 md:h-full flex md:flex-col justify-between items-center mx-3 md:mx-0  "
         style={{ paddingLeft: state.padding, paddingRight: state.padding }}
       >
         <Link
           to="/"
-          className="md:writing-mode-vertical-lr font-semibold md:h-[200px] whitespace-nowrap"
+          className="md:writing-mode-vertical-lr font-semibold md:h-[200px] whitespace-nowrap  "
           style={{ fontSize: state.fontSize }}
         >
           DANIEL KALMAN
         </Link>
-        <div className="font-Gentium font-bold md:flex-col gap-6 items-center justify-between hidden md:flex">
+        <div className="font-Gentium font-bold md:flex-col gap-6 items-center justify-between hidden md:flex  ">
           <p className="font-bold text-xl">-</p>
           <div className="flex justify-center items-center p-4 w-8 h-fit">
             <input
@@ -88,12 +89,17 @@ function FixedLeft() {
           </div>
           <p className="font-bold text-xl">+</p>
         </div>
+
         <div className="p-1 hidden md:flex h-[200px] items-end" onClick={toggleTheme}>
-          {currentTheme === "dark" ? (
-            <MoonIcon size={state.fontSize * 1.25} />
-          ) : (
-            <SunIcon size={state.fontSize * 1.25} />
-          )}
+          <div className="cursor-pointer">
+            <Boop>
+              {currentTheme === "dark" ? (
+                <MoonIcon size={state.fontSize * 1.25} />
+              ) : (
+                <SunIcon size={state.fontSize * 1.25} />
+              )}
+            </Boop>
+          </div>
         </div>
         <button className="md:hidden" onClick={toggleTray}>
           {isTrayOpen ? <CloseIcon size={state.fontSize} /> : <MenuIcon size={state.fontSize} />}
@@ -110,18 +116,18 @@ function FixedRight() {
   return (
     <div
       id="fixed-right"
-      className="hidden fixed top-0 right-0 w-fit h-full md:flex"
+      className="hidden fixed top-0 right-0 w-fit h-full md:flex  "
       style={{ paddingTop: state.padding * 2, paddingBottom: state.padding * 2 }}
     >
       <Separator className="hidden md:block" direction="vertical" />
       <Separator className="block md:hidden" direction="horizontal" />
       <div
-        className="w-fit h-12 md:h-full flex md:flex-col justify-between items-center md:mx-[6px] "
+        className="w-fit h-12 md:h-full flex md:flex-col justify-between items-center md:mx-[6px]  "
         style={{ paddingLeft: state.padding, paddingRight: state.padding }}
       >
         <Link
           to="/about"
-          className="md:writing-mode-vertical-lr font-semibold h-[200px] whitespace-nowrap"
+          className="md:writing-mode-vertical-lr font-semibold h-[200px] whitespace-nowrap  "
           style={{ fontSize: state.fontSize }}
         >
           ABOUT
