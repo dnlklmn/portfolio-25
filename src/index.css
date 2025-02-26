@@ -3,7 +3,6 @@
 @tailwind utilities;
 
 @layer utilities {
-
     /* Hide scrollbar for Chrome, Safari and Opera */
     .no-scrollbar::-webkit-scrollbar {
         display: none;
@@ -16,14 +15,28 @@
         scrollbar-width: none;
         /* Firefox */
     }
+
+    .transitionAll {
+        @apply transition-all duration-75 ease-linear;
+    }
+}
+
+div {
+    @apply transitionAll;
+}
+
+p {
+    @apply transitionAll;
 }
 
 .slider {
     @apply [&::-webkit-slider-runnable-track]:rounded-full [&::-webkit-slider-runnable-track]:secondary [&::-webkit-slider-runnable-track]:h-[1px] [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-3 [&::-webkit-slider-thumb]:w-3 [&::-webkit-slider-thumb]:-mt-1.5 [&::-webkit-slider-thumb]:inverted;
+    cursor: pointer;
 }
 
 .slider:hover {
     @apply [&::-webkit-slider-runnable-track]:rounded-full [&::-webkit-slider-runnable-track]:inverted [&::-webkit-slider-runnable-track]:h-[1px] [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-3 [&::-webkit-slider-thumb]:w-3 [&::-webkit-slider-thumb]:-mt-1.5 [&::-webkit-slider-thumb]:inverted;
+    cursor: pointer;
 }
 
 :root {
