@@ -183,110 +183,98 @@ const Navigation = () => {
   const { state } = useContext(MyContext);
 
   return (
-    <div className="primary leading-tight font-Franklin text-sm font-medium flex w-full h-screen justify-between overflow-hidden">
-      <div className="primary leading-tight font-Franklin pt-12 md:pt-0 md:px-12 text-sm font-medium flex w-full h-screen justify-between overflow-hidden">
-        <FixedLeft />
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <div
-                className="overflow-y-scroll w-full gap-8"
-                style={{ paddingLeft: state.padding * 3, paddingRight: state.padding * 3 }}
-              >
-                <Home />
-              </div>
-            }
-          />
-          <Route
-            path="/project"
-            element={
-              <div
-                className="overflow-y-scroll w-full flex flex-col"
-                style={{
-                  paddingLeft: state.padding * 3,
-                  paddingRight: state.padding * 3,
-                  gap: state.padding * 2,
-                }}
-              >
-                <RadicleDesignSystem />
-                <Separator direction="horizontal" />
-                <PolkadotDelegationDashboard />
-              </div>
-            }
-          />
-          <Route
-            path="/about"
-            element={
-              <div
-                className="overflow-y-scroll w-full flex flex-col"
-                style={{
-                  paddingLeft: state.padding * 3,
-                  paddingRight: state.padding * 3,
-                  gap: state.padding * 2,
-                  paddingTop: state.padding * 2,
-                  paddingBottom: state.padding * 2,
-                }}
-              >
-                <About />
-              </div>
-            }
-          />
-          <Route
-            path="/about"
-            element={
-              <div
-                className="overflow-y-scroll w-full flex flex-col"
-                style={{
-                  paddingLeft: state.padding * 3,
-                  paddingRight: state.padding * 3,
-                  gap: state.padding * 2,
-                  paddingTop: state.padding * 2,
-                  paddingBottom: state.padding * 2,
-                }}
-              >
-                <About />
-              </div>
-            }
-          />
-          <Route
-            path="/with-desktop"
-            element={
-              <div
-                className="overflow-y-scroll w-full flex flex-col"
-                style={{
-                  paddingLeft: state.padding * 3,
-                  paddingRight: state.padding * 3,
-                  gap: state.padding,
-                }}
-              >
-                <RadicleDesktopApp />
-                <Separator direction="horizontal" />
-                <RadicleDesignSystem />
-                <Separator direction="horizontal" />
-                <PolkadotDelegationDashboard />
-              </div>
-            }
-          />
-          <Route
-            path="/notes"
-            element={
-              <div
-                className="overflow-y-scroll w-full flex flex-col"
-                style={{
-                  paddingLeft: state.padding * 3,
-                  paddingRight: state.padding * 3,
-                  gap: state.padding,
-                }}
-              >
-                Notes come here
-              </div>
-            }
-          />
-        </Routes>
+    <div className="overscroll-none leading-tight font-Franklin pt-12 md:pt-0 md:px-12 text-sm font-medium flex w-full justify-between">
+      <FixedLeft />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route
+          path="/project"
+          element={
+            <div
+              className="overflow-y-scroll w-full flex flex-col"
+              style={{
+                paddingLeft: state.padding * 3,
+                paddingRight: state.padding * 3,
+                gap: state.padding * 2,
+              }}
+            >
+              <RadicleDesignSystem />
+              <Separator direction="horizontal" />
+              <PolkadotDelegationDashboard />
+            </div>
+          }
+        />
+        <Route
+          path="/about"
+          element={
+            <div
+              className="overflow-y-scroll w-full flex flex-col"
+              style={{
+                paddingLeft: state.padding * 3,
+                paddingRight: state.padding * 3,
+                gap: state.padding * 2,
+                paddingTop: state.padding * 2,
+                paddingBottom: state.padding * 2,
+              }}
+            >
+              <About />
+            </div>
+          }
+        />
+        <Route
+          path="/about"
+          element={
+            <div
+              className="overflow-y-scroll w-full flex flex-col"
+              style={{
+                paddingLeft: state.padding * 3,
+                paddingRight: state.padding * 3,
+                gap: state.padding * 2,
+                paddingTop: state.padding * 2,
+                paddingBottom: state.padding * 2,
+              }}
+            >
+              <About />
+            </div>
+          }
+        />
+        <Route
+          path="/with-desktop"
+          element={
+            <div
+              className="overflow-y-scroll w-full flex flex-col"
+              style={{
+                paddingLeft: state.padding * 3,
+                paddingRight: state.padding * 3,
+                gap: state.padding,
+              }}
+            >
+              <RadicleDesktopApp />
+              <Separator direction="horizontal" />
+              <RadicleDesignSystem />
+              <Separator direction="horizontal" />
+              <PolkadotDelegationDashboard />
+            </div>
+          }
+        />
+        <Route
+          path="/notes"
+          element={
+            <div
+              className="overflow-y-scroll w-full flex flex-col"
+              style={{
+                paddingLeft: state.padding * 3,
+                paddingRight: state.padding * 3,
+                gap: state.padding,
+              }}
+            >
+              Notes come here
+            </div>
+          }
+        />
+      </Routes>
 
-        <FixedRight />
-      </div>
+      <FixedRight />
     </div>
   );
 };

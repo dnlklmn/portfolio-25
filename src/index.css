@@ -21,12 +21,9 @@
     }
 }
 
-div {
-    @apply transitionAll;
-}
-
-p {
-    @apply transitionAll;
+.div {
+    transition: all;
+    transition-duration: 75;
 }
 
 .slider {
