@@ -8,6 +8,8 @@ import TokensImage from "../assets/tokens-in-figma.png";
 import TokensDocs from "../assets/tokens-documentation.png";
 import ExplorerBefore from "../assets/explorer-before.png";
 import ExplorerAfter from "../assets/explorer-after.png";
+import ComponentAPI from "../assets/RadicleDesignSystem/component-api.png";
+import UIKitDark from "../assets/RadicleDesignSystem/uikit-dark.png";
 import FontStyles from "../assets/token-font-styles";
 import RadicleIcons from "../assets/radicle-icons";
 import Lightbox from "./Lightbox";
@@ -140,6 +142,29 @@ export default function RadicleDesignSystem() {
           developers can easily select the appropriate styles without needing further consultation
           with designers.
         </p>
+      </Section>
+      <Section title="Components">
+        <p>
+          The UI kit consists only of the components currently used in the app. No unused button
+          variants or typography styles allowed.
+        </p>
+        <div className="flex flex-col gap-4">
+          <Lightbox
+            alt="Components from the Figma UI kit in dark mode"
+            image={UIKitDark}
+          ></Lightbox>
+          <p className="txt-secondary italic text-center">
+            Components from the Figma UI kit in dark mode
+          </p>
+        </div>
+        <p>
+          The behavior of components in Figma matches those in production. It is often quicker to
+          experiment with Figma’s properties to design the API than having to do it all in code.
+        </p>
+        <div className="flex flex-col" style={{ gap: state.padding }}>
+          <Lightbox alt="Component API" image={ComponentAPI}></Lightbox>
+          <p className="txt-secondary italic text-center">Component API</p>
+        </div>
       </Section>
       <Section title="Seamless Implementation">
         <p>
