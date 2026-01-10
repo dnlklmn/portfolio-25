@@ -43,6 +43,12 @@ export default function Home() {
         style={{ gap: state.padding * 1.5 }}
       >
         <Teaser
+          tags={["UX", "UI", "Front End", "Architecture"]}
+          link="/project#auto-workflow-builder"
+          title="Auto: Workflow Builder"
+          subtitle="Blockchain Automation Made Visual"
+        />
+        <Teaser
           tags={["UX", "UI"]}
           link="/project#radicle-desktop-app"
           title="RADICLE DESKTOP APP"

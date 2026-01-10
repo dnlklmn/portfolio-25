@@ -9,52 +9,57 @@ import {
 } from "react-router-dom";
 import RadicleDesignSystem from "./components/RadicleDesignSystem";
 import Separator from "./components/Separator";
-import MyContext from "./components/Context";
+import LayoutContext from "./components/Context";
 import RadicleDesktopApp from "./components/RadicleDesktopApp";
 import MoonIcon from "./assets/Icons/MoonIcon";
 import SunIcon from "./assets/Icons/SunIcon";
 import About from "./components/About";
 import PolkadotDelegationDashboard from "./components/PolkadotDelegationDashboard";
+import AutoProject from "./components/AutoProject";
 import Tray from "./components/Tray";
 import MenuIcon from "./assets/MenuIcon";
 import CloseIcon from "./assets/CloseIcon";
 import Boop from "./components/Boop";
 import MinusIcon from "./assets/Icons/MinusIcon";
 import PlusIcon from "./assets/Icons/PlusIcon";
+import RouteLayout from "./components/RouteLayout";
+import ErrorBoundary from "./components/ErrorBoundary";
 
 function FixedLeft() {
-  const { state, setState } = useContext(MyContext);
+  const { state, setState } = useContext(LayoutContext);
   const [isTrayOpen, setIsTrayOpen] = useState(false);
 
   const handleSliderChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newFontSize = parseInt(event.target.value, 10);
+    const offset = newFontSize - 16;
     setState((prevState) => ({
       ...prevState,
       fontSize: newFontSize,
-      padding: newFontSize,
+      userPaddingOffset: offset,
     }));
   };
 
-  const saveThemePreference = (isDark: boolean) => {
-    localStorage.setItem("theme", isDark ? "dark" : "light");
-  };
-
-  const [currentTheme, setCurrentTheme] = useState("light");
-
   const toggleTheme = () => {
-    const isDark = document.documentElement.classList.toggle("dark");
-    saveThemePreference(isDark);
-    setCurrentTheme(isDark ? "dark" : "light");
+    const root = document.documentElement;
+    const isDark = root.getAttribute("data-theme") === "dark";
+    const newTheme = isDark ? "light" : "dark";
+    root.setAttribute("data-theme", newTheme);
+    if (newTheme === "dark") {
+      root.classList.add("dark");
+    } else {
+      root.classList.remove("dark");
+    }
+    localStorage.setItem("theme", newTheme);
   };
 
   const loadThemePreference = () => {
-    const theme = localStorage.getItem("theme");
+    const theme = localStorage.getItem("theme") || "light";
+    const root = document.documentElement;
+    root.setAttribute("data-theme", theme);
     if (theme === "dark") {
-      document.documentElement.classList.add("dark");
-      setCurrentTheme("dark");
+      root.classList.add("dark");
     } else {
-      document.documentElement.classList.remove("dark");
-      setCurrentTheme("light");
+      root.classList.remove("dark");
     }
   };
 
@@ -70,14 +75,11 @@ function FixedLeft() {
     <div
       id="fixed-left"
       className="fixed top-0 left-0 w-full md:w-fit h-fit md:h-full flex "
-      style={{
-        paddingTop: state.padding * 2,
-        paddingBottom: state.padding * 2,
-      }}
+      style={{ paddingTop: (state.basePadding + state.userPaddingOffset) * 2, paddingBottom: (state.basePadding + state.userPaddingOffset) * 2 }}
     >
       <div
         className="w-full h-12 md:h-full flex md:flex-col justify-between items-center mx-3 md:mx-0  "
-        style={{ paddingLeft: state.padding, paddingRight: state.padding }}
+        style={{ paddingLeft: state.basePadding + state.userPaddingOffset, paddingRight: state.basePadding + state.userPaddingOffset }}
       >
         <Link
           to="/"
@@ -93,7 +95,7 @@ function FixedLeft() {
                 setState((prevState) => ({
                   ...prevState,
                   fontSize: prevState.fontSize - 1,
-                  padding: prevState.padding - 1,
+                  userPaddingOffset: prevState.userPaddingOffset - 1,
                 }));
               }}
             >
@@ -116,7 +118,7 @@ function FixedLeft() {
                 setState((prevState) => ({
                   ...prevState,
                   fontSize: prevState.fontSize + 1,
-                  padding: prevState.padding + 1,
+                  userPaddingOffset: prevState.userPaddingOffset + 1,
                 }));
               }}
             >
@@ -130,7 +132,7 @@ function FixedLeft() {
         >
           <div className="cursor-pointer">
             <Boop>
-              {currentTheme === "dark" ? (
+              {document.documentElement.getAttribute("data-theme") === "dark" ? (
                 <MoonIcon size={state.fontSize * 1.25} />
               ) : (
                 <SunIcon size={state.fontSize * 1.25} />
@@ -153,21 +155,18 @@ function FixedLeft() {
 }
 
 function FixedRight() {
-  const { state } = useContext(MyContext);
+  const { state } = useContext(LayoutContext);
   return (
     <div
       id="fixed-right"
       className="hidden fixed top-0 right-0 w-fit h-full md:flex  "
-      style={{
-        paddingTop: state.padding * 2,
-        paddingBottom: state.padding * 2,
-      }}
+      style={{ paddingTop: (state.basePadding + state.userPaddingOffset) * 2, paddingBottom: (state.basePadding + state.userPaddingOffset) * 2 }}
     >
       <Separator className="hidden md:block" direction="vertical" />
       <Separator className="block md:hidden" direction="horizontal" />
       <div
         className="w-fit h-12 md:h-full flex md:flex-col justify-between items-center md:mx-[6px]  "
-        style={{ paddingLeft: state.padding, paddingRight: state.padding }}
+        style={{ paddingLeft: state.basePadding + state.userPaddingOffset, paddingRight: state.basePadding + state.userPaddingOffset }}
       >
         <Link
           to="/about"
@@ -199,116 +198,50 @@ const Navigation = () => {
     }
   }, [location]);
 
-  const { state } = useContext(MyContext);
-
   return (
     <div className="primary leading-tight font-Franklin text-sm font-medium flex w-full h-screen justify-between overflow-hidden">
       <div className="primary leading-tight font-Franklin pt-12 md:pt-0 md:px-12 text-sm font-medium flex w-full h-screen justify-between overflow-hidden">
         <FixedLeft />
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <div
-                className="overflow-y-scroll w-full gap-8"
-                style={{
-                  paddingLeft: state.padding * 3,
-                  paddingRight: state.padding * 3,
-                }}
-              >
-                <Home />
-              </div>
-            }
-          />
-          <Route
-            path="/project"
-            element={
-              <div
-                className="overflow-y-scroll w-full flex flex-col"
-                style={{
-                  paddingLeft: state.padding * 3,
-                  paddingRight: state.padding * 3,
-                  gap: state.padding * 2,
-                }}
-              >
-                <RadicleDesktopApp />
-                <Separator direction="horizontal" />
-                <RadicleDesignSystem />
-                <Separator direction="horizontal" />
-                <PolkadotDelegationDashboard />
-              </div>
-            }
-          />
-          <Route
-            path="/about"
-            element={
-              <div
-                className="overflow-y-scroll w-full flex flex-col"
-                style={{
-                  paddingLeft: state.padding * 3,
-                  paddingRight: state.padding * 3,
-                  gap: state.padding * 2,
-                  paddingTop: state.padding * 2,
-                  paddingBottom: state.padding * 2,
-                }}
-              >
-                <About />
-              </div>
-            }
-          />
-          <Route
-            path="/about"
-            element={
-              <div
-                className="overflow-y-scroll w-full flex flex-col"
-                style={{
-                  paddingLeft: state.padding * 3,
-                  paddingRight: state.padding * 3,
-                  gap: state.padding * 2,
-                  paddingTop: state.padding * 2,
-                  paddingBottom: state.padding * 2,
-                }}
-              >
-                <About />
-              </div>
-            }
-          />
-          <Route
-            path="/with-desktop"
-            element={
-              <div
-                className="overflow-y-scroll w-full flex flex-col"
-                style={{
-                  paddingLeft: state.padding * 3,
-                  paddingRight: state.padding * 3,
-                  gap: state.padding,
-                }}
-              >
-                <RadicleDesktopApp />
-                <Separator direction="horizontal" />
-                <RadicleDesignSystem />
-                <Separator direction="horizontal" />
-                <PolkadotDelegationDashboard />
-              </div>
-            }
-          />
-          <Route
-            path="/notes"
-            element={
-              <div
-                className="overflow-y-scroll w-full flex flex-col"
-                style={{
-                  paddingLeft: state.padding * 3,
-                  paddingRight: state.padding * 3,
-                  gap: state.padding,
-                }}
-              >
-                Notes come here
-              </div>
-            }
-          />
-        </Routes>
-
+        <ErrorBoundary>
+          <Routes>
+            <Route path="/" element={<RouteLayout gap={4}><Home /></RouteLayout>} />
+            <Route
+              path="/project"
+              element={
+                <RouteLayout>
+                  <AutoProject />
+                  <Separator direction="horizontal" />
+                  <RadicleDesignSystem />
+                  <Separator direction="horizontal" />
+                  <PolkadotDelegationDashboard />
+                </RouteLayout>
+              }
+            />
+            <Route
+              path="/about"
+              element={
+                <RouteLayout includeVerticalPadding>
+                  <About />
+                </RouteLayout>
+              }
+            />
+            <Route
+              path="/with-desktop"
+              element={
+                <RouteLayout gap={1}>
+                  <AutoProject />
+                  <Separator direction="horizontal" />
+                  <RadicleDesktopApp />
+                  <Separator direction="horizontal" />
+                  <RadicleDesignSystem />
+                  <Separator direction="horizontal" />
+                  <PolkadotDelegationDashboard />
+                </RouteLayout>
+              }
+            />
+            <Route path="/notes" element={<RouteLayout gap={1}>Notes come here</RouteLayout>} />
+          </Routes>
+        </ErrorBoundary>
         <FixedRight />
       </div>
     </div>

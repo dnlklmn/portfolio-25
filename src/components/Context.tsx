@@ -1,33 +1,49 @@
 import React, { createContext, useState, useEffect, ReactNode } from "react";
 
-export interface State {
+export interface LayoutState {
   fontSize: number;
-  padding: number;
-  // Add more properties as needed
+  basePadding: number;
+  userPaddingOffset: number;
+  padding: number; // Computed property for backwards compatibility
 }
 
-export interface ContextProps {
-  state: State;
-  setState: React.Dispatch<React.SetStateAction<State>>;
+export interface LayoutContextProps {
+  state: LayoutState;
+  setState: React.Dispatch<React.SetStateAction<LayoutState>>;
 }
 
-const defaultState: State = {
-  fontSize: 16,
-  padding: 16,
-  // Add more default values as needed
-};
-
-const MyContext = createContext<ContextProps>({
-  state: defaultState,
+const LayoutContext = createContext<LayoutContextProps>({
+  state: { fontSize: 16, basePadding: 16, userPaddingOffset: 0, padding: 16 },
   setState: () => {},
 });
 
-interface MyProviderProps {
+interface LayoutProviderProps {
   children: ReactNode;
 }
 
-export const MyProvider: React.FC<MyProviderProps> = ({ children }) => {
-  const [state, setState] = useState<State>(defaultState);
+export const LayoutProvider: React.FC<LayoutProviderProps> = ({ children }) => {
+  const [internalState, setInternalState] = useState({
+    fontSize: 16,
+    basePadding: 16,
+    userPaddingOffset: 0,
+  });
+
+  const state: LayoutState = {
+    ...internalState,
+    padding: internalState.basePadding + internalState.userPaddingOffset,
+  };
+
+  const setState: React.Dispatch<React.SetStateAction<LayoutState>> = (update) => {
+    setInternalState((prev) => {
+      const prevState = { ...prev, padding: prev.basePadding + prev.userPaddingOffset };
+      const newState = typeof update === "function" ? update(prevState) : update;
+      return {
+        fontSize: newState.fontSize,
+        basePadding: newState.basePadding,
+        userPaddingOffset: newState.userPaddingOffset,
+      };
+    });
+  };
 
   useEffect(() => {
     const handleResize = () => {
@@ -42,9 +58,9 @@ export const MyProvider: React.FC<MyProviderProps> = ({ children }) => {
         padding = 16;
       }
 
-      setState((prevState) => ({
-        ...prevState,
-        padding,
+      setInternalState((prev) => ({
+        ...prev,
+        basePadding: padding,
       }));
     };
 
@@ -56,7 +72,7 @@ export const MyProvider: React.FC<MyProviderProps> = ({ children }) => {
     };
   }, []);
 
-  return <MyContext.Provider value={{ state, setState }}>{children}</MyContext.Provider>;
+  return <LayoutContext.Provider value={{ state, setState }}>{children}</LayoutContext.Provider>;
 };
 
-export default MyContext;
+export default LayoutContext;
