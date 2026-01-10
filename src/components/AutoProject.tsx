@@ -12,7 +12,7 @@ export default function AutoProject() {
       id="auto-workflow-builder"
       title="Auto: Visual Workflow Builder"
       subtitle="Blockchain Automation Made Visual"
-      description="A visual workflow automation builder for cryptocurrency operations, built with a systematic parallel development approach using AI agents."
+      description="A visual workflow builder that bridges on-chain and off-chain automation. Use blockchain triggers to kick off workflows, or aggregate off-chain data to construct on-chain transactions."
       tags={["UX", "UI", "Front End", "Architecture"]}
       year={2025}
       links={[
@@ -34,10 +34,11 @@ export default function AutoProject() {
           <p className="text-start font-bold">Challenge and Goals</p>
           <div className="flex flex-col text-start" style={{ gap: state.padding }}>
             <p>
-              Building complex workflow automation tools typically requires balancing visual
-              clarity with technical capability. The challenge was to create a block-based workflow
-              builder that could handle real blockchain events while maintaining a clean,
-              understandable interface.
+              Blockchain automation requires bridging two worlds: on-chain events that trigger
+              off-chain workflows (monitoring accounts, updating dashboards), and off-chain data
+              that constructs on-chain transactions (sentiment analysis timing token airdrops).
+              The challenge was creating a visual interface that made these complex interactions
+              intuitive.
             </p>
             <p>
               The project also served as an experiment in systematic development: could a complex
@@ -50,49 +51,142 @@ export default function AutoProject() {
           <p className="text-start font-bold">Process and Responsibilities</p>
           <div className="flex flex-col text-start" style={{ gap: state.padding }}>
             <p>
-              I architected and documented the complete system specification, breaking it into
-              modular components that could be developed independently. I then orchestrated five
-              specialized development agents, each responsible for a distinct layer of the
-              application.
+              I designed the complete interaction model and visual system, then created detailed
+              specifications for each component. The design process emphasized clarity through
+              color-coded block types, intuitive data flow visualization, and progressive
+              disclosure of complexity.
             </p>
             <p>
-              The approach emphasized clear separation of concerns, comprehensive type safety, and
-              security-conscious design throughout the development process.
+              After designing the system, I orchestrated five specialized development agents to
+              build it in parallel, reducing development time by approximately 70% while
+              maintaining design fidelity.
             </p>
           </div>
         </div>
       </div>
       <Separator direction="horizontal" />
-      <Section title="Block-Based Visual System">
+      <Section title="Research and Early Experiments">
         <p>
-          The interface centers around five distinct block types, each with its own purpose and
-          visual identity. Listener blocks (yellow) trigger workflows from blockchain events.
-          Action blocks (purple) perform operations like sending notifications or writing data.
-          Logic blocks (cyan) enable conditional branching. Utility blocks (orange) transform data
-          between blocks. Historical blocks query past blockchain data.
+          Before settling on the final design, I explored multiple approaches through working
+          prototypes. This iterative process helped identify which interaction patterns worked
+          best for blockchain workflows and informed key design decisions in the final version.
+        </p>
+        <div
+          className="w-full flex flex-col"
+          style={{
+            gap: state.padding * 2,
+            paddingTop: state.padding * 2,
+            paddingBottom: state.padding * 2,
+          }}
+        >
+          <div className="w-full bg-secondary" style={{ aspectRatio: "16/9" }} />
+          <div className="flex flex-col" style={{ gap: state.padding }}>
+            <p>
+              <strong>n8n Fork with AI Workflow Generation</strong> - Extended n8n's existing
+              interface to explore AI-powered workflow generation and blockchain-specific node
+              types. This experiment revealed the limitations of adapting existing tools versus
+              designing purpose-built interfaces.
+            </p>
+            <p>
+              <a
+                href="https://github.com/dnlklmn/n8n"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="txt-secondary hover:txt-primary"
+              >
+                View n8n Fork →
+              </a>
+            </p>
+          </div>
+        </div>
+        <div
+          className="w-full flex flex-col"
+          style={{
+            gap: state.padding * 2,
+            paddingBottom: state.padding * 2,
+          }}
+        >
+          <div className="w-full bg-secondary" style={{ aspectRatio: "16/9" }} />
+          <div className="flex flex-col" style={{ gap: state.padding }}>
+            <p>
+              <strong>Early Prototype: Block-Based Interface</strong> - First exploration of a
+              custom block-based design. Tested different approaches to block configuration,
+              connection visualization, and data flow representation to find the most intuitive
+              patterns.
+            </p>
+            <p>
+              <a
+                href="https://github.com/dnlklmn/auto-proto-1"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="txt-secondary hover:txt-primary"
+              >
+                View Prototype 1 →
+              </a>
+            </p>
+          </div>
+        </div>
+        <div
+          className="w-full flex flex-col"
+          style={{
+            gap: state.padding * 2,
+            paddingBottom: state.padding * 2,
+          }}
+        >
+          <div className="w-full bg-secondary" style={{ aspectRatio: "16/9" }} />
+          <div className="flex flex-col" style={{ gap: state.padding }}>
+            <p>
+              <strong>Canvas-Based Workflow Editor</strong> - Explored a more flexible canvas
+              approach with free-form positioning. User testing showed that automatic layout was
+              preferable to manual positioning, informing the final design's layout engine.
+            </p>
+            <p>
+              <a
+                href="https://github.com/dnlklmn/auto-proto-2"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="txt-secondary hover:txt-primary"
+              >
+                View Prototype 2 →
+              </a>
+            </p>
+          </div>
+        </div>
+      </Section>
+      <Section title="Block-Based Visual System">
+        <div className="w-full bg-secondary" style={{ aspectRatio: "16/9", marginBottom: state.padding * 2 }} />
+        <p>
+          The design uses color as a primary navigation tool. Five distinct block types each have
+          their own hue: Listener blocks (yellow) for blockchain triggers, Action blocks (purple)
+          for operations, Logic blocks (cyan) for conditionals, Utility blocks (orange) for
+          transforms, and Historical blocks for querying past data. This color system lets users
+          quickly scan complex workflows and understand execution patterns at a glance.
         </p>
         <p>
-          Blocks connect via visual links that define the execution flow. The canvas supports
-          pan/zoom navigation and features an automatic layout engine that positions blocks
-          intelligently based on their connections, maintaining visual clarity as workflows grow
-          complex.
+          Visual connection lines show execution flow between blocks. The interface includes an
+          automatic layout engine that positions blocks intelligently based on their
+          relationships, preventing the visual clutter that typically emerges in workflow tools
+          as complexity grows.
         </p>
       </Section>
-      <Section title="Data Flow Architecture">
+      <Section title="Data Flow and Token System">
+        <div className="w-full bg-secondary" style={{ aspectRatio: "16/9", marginBottom: state.padding * 2 }} />
         <p>
-          A key design challenge was enabling blocks to reference data from previous blocks in the
-          workflow. The solution uses a backtick-wrapped token system: <code>`blockName.field`</code>{" "}
-          resolves to specific fields from earlier blocks. This provides powerful data composition
-          while remaining readable and secure.
+          A key design challenge was making data references between blocks both powerful and
+          approachable. The interface uses a backtick-wrapped token system:{" "}
+          <code>`blockName.field`</code> resolves to specific outputs from earlier blocks. This
+          syntax is familiar to developers while remaining readable enough for non-technical
+          users to understand and modify.
         </p>
         <p>
-          The execution engine performs depth-first traversal from the listener block, evaluating
-          conditions and transforming data at each step. All executions are tracked with automatic
-          versioning, allowing users to see how workflow structure changes affect outputs over
-          time.
+          The execution view shows how data flows through the workflow in real-time, with each
+          block's output visualized as it processes. Version tracking lets users see how changes
+          to workflow structure affect results over time, making iteration and debugging more
+          transparent.
         </p>
       </Section>
       <Section title="Blockchain Integration">
+        <div className="w-full bg-secondary" style={{ aspectRatio: "16/9", marginBottom: state.padding * 2 }} />
         <p>
           Real blockchain events drive the workflows through Alchemy SDK integration. Users can
           listen to specific addresses, track transactions, and trigger automated responses to
@@ -100,56 +194,57 @@ export default function AutoProject() {
           data for testing workflows before deploying them to live blockchain networks.
         </p>
       </Section>
-      <Section title="Security-First Design">
+      <Section title="Constrained Design for Security">
         <p>
-          The transform system deliberately avoids arbitrary code execution. Rather than allowing
-          custom JavaScript expressions, the application provides 20+ predefined, validated
-          transforms for common operations: hex conversion, date formatting, string manipulation,
-          JSON parsing, and more. This constraint prevents injection attacks while covering the
-          majority of real-world use cases.
+          Instead of allowing arbitrary code execution, the interface provides 20+ predefined
+          transforms through a searchable menu. Users select operations like hex conversion, date
+          formatting, or JSON parsing from validated options. This constraint-based design
+          prevents security vulnerabilities while covering the majority of real-world use cases,
+          proving that good design can enhance security rather than compromise it.
         </p>
         <p>
-          Path validation prevents directory traversal attacks, and all user inputs are sanitized
-          before processing. The TypeScript architecture enforces type safety throughout, catching
-          potential issues at compile time rather than runtime.
+          The transform selection interface uses autocomplete and categorization to make finding
+          the right operation fast, turning a security requirement into a feature that actually
+          improves usability.
         </p>
       </Section>
-      <Section last title="Systematic Development Approach">
+      <Section last title="Design-Led Development Process">
         <p>
-          The project implemented a novel parallel development methodology. After creating
-          comprehensive specifications, I coordinated five specialized agents working
-          simultaneously:
+          After finalizing the design system and interaction specifications, I coordinated five
+          specialized development agents working in parallel. Each agent received detailed design
+          documentation including component specs, interaction patterns, and visual guidelines.
         </p>
         <div
           className="flex flex-col text-start"
           style={{ gap: state.padding, paddingTop: state.padding }}
         >
           <p>
-            <strong>Foundation Engineer</strong> - Project setup, TypeScript configuration, design
-            system, and core types. Established the architectural foundation and design tokens.
+            <strong>Foundation Engineer</strong> - Implemented the design system, typography scale,
+            color tokens, spacing system, and core component primitives from the design specs.
           </p>
           <p>
-            <strong>State Manager</strong> - All Svelte stores managing workflow state, execution
-            tracking, UI state, settings persistence, and data storage. Created the reactive data
-            layer.
+            <strong>State Manager</strong> - Built reactive data layer for workflow state, UI
+            state, and settings, ensuring the interface could handle complex state changes
+            smoothly.
           </p>
           <p>
-            <strong>Core Libraries Engineer</strong> - Utilities for validation, transforms, data
-            reference resolution, layout engine, and security. Built the functional core.
+            <strong>Core Libraries Engineer</strong> - Implemented the automatic layout engine,
+            data transform system, and validation logic specified in the design documentation.
           </p>
           <p>
-            <strong>Execution Engineer</strong> - Workflow execution engine, blockchain service
-            integration, versioning system. Implemented the runtime logic.
+            <strong>Execution Engineer</strong> - Built the workflow execution engine and
+            blockchain integration that powers the designed interactions.
           </p>
           <p>
-            <strong>UI Engineer</strong> - All components from canvas to configuration panels,
-            routing, and complete user interface. Brought everything together visually.
+            <strong>UI Engineer</strong> - Assembled all designed components, from the canvas
+            interface to configuration panels, implementing every interaction pattern and visual
+            detail.
           </p>
         </div>
         <p>
-          This approach reduced development time by approximately 70% compared to sequential
-          implementation, completing a 50-70 hour project in roughly 15-18 hours through parallel
-          execution and clear module boundaries.
+          This design-first approach with parallel development reduced implementation time by
+          approximately 70%, completing the project in roughly 15-18 hours instead of 50-70 hours,
+          while maintaining complete design fidelity.
         </p>
       </Section>
     </Project>

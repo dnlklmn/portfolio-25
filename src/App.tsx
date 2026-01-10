@@ -20,24 +20,12 @@ import Tray from "./components/Tray";
 import MenuIcon from "./assets/MenuIcon";
 import CloseIcon from "./assets/CloseIcon";
 import Boop from "./components/Boop";
-import MinusIcon from "./assets/Icons/MinusIcon";
-import PlusIcon from "./assets/Icons/PlusIcon";
 import RouteLayout from "./components/RouteLayout";
 import ErrorBoundary from "./components/ErrorBoundary";
 
 function FixedLeft() {
   const { state, setState } = useContext(LayoutContext);
   const [isTrayOpen, setIsTrayOpen] = useState(false);
-
-  const handleSliderChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const newFontSize = parseInt(event.target.value, 10);
-    const offset = newFontSize - 16;
-    setState((prevState) => ({
-      ...prevState,
-      fontSize: newFontSize,
-      userPaddingOffset: offset,
-    }));
-  };
 
   const toggleTheme = () => {
     const root = document.documentElement;
@@ -88,48 +76,7 @@ function FixedLeft() {
         >
           DANIEL KALMAN
         </Link>
-        <div className="font-Gentium font-bold md:flex-col gap-8 items-center justify-between hidden md:flex">
-          <Boop>
-            <button
-              onClick={() => {
-                setState((prevState) => ({
-                  ...prevState,
-                  fontSize: prevState.fontSize - 1,
-                  userPaddingOffset: prevState.userPaddingOffset - 1,
-                }));
-              }}
-            >
-              <MinusIcon size={state.fontSize} />
-            </button>
-          </Boop>
-          <div className="flex justify-center items-center p-4 w-8 h-fit">
-            <input
-              type="range"
-              min="12"
-              max="24"
-              value={state.fontSize}
-              onChange={handleSliderChange}
-              className="appearance-none md:rotate-90 slider w-16"
-            />
-          </div>
-          <Boop>
-            <button
-              onClick={() => {
-                setState((prevState) => ({
-                  ...prevState,
-                  fontSize: prevState.fontSize + 1,
-                  userPaddingOffset: prevState.userPaddingOffset + 1,
-                }));
-              }}
-            >
-              <PlusIcon size={state.fontSize} />
-            </button>
-          </Boop>
-        </div>
-        <div
-          className="p-1 hidden md:flex h-[200px] items-end"
-          onClick={toggleTheme}
-        >
+        <div className="p-1 hidden md:flex h-[200px] items-end" onClick={toggleTheme}>
           <div className="cursor-pointer">
             <Boop>
               {document.documentElement.getAttribute("data-theme") === "dark" ? (

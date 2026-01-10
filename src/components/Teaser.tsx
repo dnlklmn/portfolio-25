@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import MyContext from "./Context";
+import LayoutContext from "./Context";
 import { useContext } from "react";
 import Boop from "./Boop";
 
@@ -12,9 +12,9 @@ interface TeaserProps {
 }
 
 export default function Teaser({ link, title, subtitle, tags, draft }: TeaserProps) {
-  const { state } = useContext(MyContext);
+  const { state } = useContext(LayoutContext);
   return (
-    <Boop className="w-full" scale={draft ? 1 : 1.05}>
+    <Boop className="w-full" scale={draft ? 1 : 1.02}>
       <Link
         to={link}
         onClick={draft ? (event) => event.preventDefault() : undefined}
