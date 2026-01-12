@@ -158,6 +158,8 @@ const Navigation = () => {
                 <RouteLayout>
                   <AutoProject />
                   <Separator direction="horizontal" />
+                  <RadicleDesktopApp />
+                  <Separator direction="horizontal" />
                   <RadicleDesignSystem />
                   <Separator direction="horizontal" />
                   <PolkadotDelegationDashboard />

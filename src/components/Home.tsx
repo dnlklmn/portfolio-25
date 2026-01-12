@@ -1,6 +1,10 @@
 import { useContext } from "react";
 import MyContext from "../components/Context";
 import Teaser from "./Teaser";
+import autoImage from "../assets/auto/image 8.png";
+import radicleDesktopImage from "../assets/RadicleDesktopApp/patches.png";
+import radicleDesignSystemImage from "../assets/RadicleDesignSystem/uikit-dark.png";
+import polkadotDelegationImage from "../assets/polkadot-delegation-screens.png";
 
 export default function Home() {
   const { state } = useContext(MyContext);
@@ -47,24 +51,29 @@ export default function Home() {
           link="/project#auto-workflow-builder"
           title="Auto: Workflow Builder"
           subtitle="Blockchain Automation Made Visual"
+          bgImage={autoImage}
         />
         <Teaser
           tags={["UX", "UI"]}
           link="/project#radicle-desktop-app"
           title="RADICLE DESKTOP APP"
           subtitle="Soon online"
+          bgImage={radicleDesktopImage}
         />
         <Teaser
-          tags={["UI", "Front End"]} //bgImage="url('src/assets/tokens-in-figma.png')"
+          tags={["UI", "Front End"]}
           link="/project#radicle-design-system"
           title="Radicle Design System"
           subtitle="Consistency By Design"
+          bgImage={radicleDesignSystemImage}
         />
         <Teaser
           tags={["UX", "UI", "Front End"]}
           link="/project#polkadot-delegation-dashboard"
           title="Polkadot Delegate Dashboard"
           subtitle="Participate in Governance"
+          bgImage={polkadotDelegationImage}
+          bgScale={1.25}
         />
       </div>
     </div>
