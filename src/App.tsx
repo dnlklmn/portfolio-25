@@ -1,6 +1,12 @@
 import { useState, useEffect, useContext } from "react";
 import Home from "./components/Home";
-import { BrowserRouter as Router, Routes, Route, Link, useLocation } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link,
+  useLocation,
+} from "react-router-dom";
 import RadicleDesignSystem from "./components/RadicleDesignSystem";
 import Separator from "./components/Separator";
 import MyContext from "./components/Context";
@@ -64,7 +70,10 @@ function FixedLeft() {
     <div
       id="fixed-left"
       className="fixed top-0 left-0 w-full md:w-fit h-fit md:h-full flex "
-      style={{ paddingTop: state.padding * 2, paddingBottom: state.padding * 2 }}
+      style={{
+        paddingTop: state.padding * 2,
+        paddingBottom: state.padding * 2,
+      }}
     >
       <div
         className="w-full h-12 md:h-full flex md:flex-col justify-between items-center mx-3 md:mx-0  "
@@ -115,7 +124,10 @@ function FixedLeft() {
             </button>
           </Boop>
         </div>
-        <div className="p-1 hidden md:flex h-[200px] items-end" onClick={toggleTheme}>
+        <div
+          className="p-1 hidden md:flex h-[200px] items-end"
+          onClick={toggleTheme}
+        >
           <div className="cursor-pointer">
             <Boop>
               {currentTheme === "dark" ? (
@@ -127,7 +139,11 @@ function FixedLeft() {
           </div>
         </div>
         <button className="md:hidden" onClick={toggleTray}>
-          {isTrayOpen ? <CloseIcon size={state.fontSize} /> : <MenuIcon size={state.fontSize} />}
+          {isTrayOpen ? (
+            <CloseIcon size={state.fontSize} />
+          ) : (
+            <MenuIcon size={state.fontSize} />
+          )}
         </button>
       </div>
       <Separator direction="vertical" />
@@ -142,7 +158,10 @@ function FixedRight() {
     <div
       id="fixed-right"
       className="hidden fixed top-0 right-0 w-fit h-full md:flex  "
-      style={{ paddingTop: state.padding * 2, paddingBottom: state.padding * 2 }}
+      style={{
+        paddingTop: state.padding * 2,
+        paddingBottom: state.padding * 2,
+      }}
     >
       <Separator className="hidden md:block" direction="vertical" />
       <Separator className="block md:hidden" direction="horizontal" />
@@ -192,7 +211,10 @@ const Navigation = () => {
             element={
               <div
                 className="overflow-y-scroll w-full gap-8"
-                style={{ paddingLeft: state.padding * 3, paddingRight: state.padding * 3 }}
+                style={{
+                  paddingLeft: state.padding * 3,
+                  paddingRight: state.padding * 3,
+                }}
               >
                 <Home />
               </div>
@@ -209,6 +231,8 @@ const Navigation = () => {
                   gap: state.padding * 2,
                 }}
               >
+                <RadicleDesktopApp />
+                <Separator direction="horizontal" />
                 <RadicleDesignSystem />
                 <Separator direction="horizontal" />
                 <PolkadotDelegationDashboard />

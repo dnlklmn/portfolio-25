@@ -14,7 +14,10 @@ export default function Home() {
         paddingBottom: state.padding * 2,
       }}
     >
-      <div className=" w-full flex flex-col mt-2 md:mt-0 " style={{ gap: state.padding / 1.5 }}>
+      <div
+        className=" w-full flex flex-col mt-2 md:mt-0 "
+        style={{ gap: state.padding / 1.5 }}
+      >
         <div className="w-full h-1 inverted" />
         <div className="w-full h-2 inverted" />
         <div className="w-full h-4 inverted" />
@@ -28,16 +31,19 @@ export default function Home() {
           className="font-Franklin font-black leading-tight "
           style={{ fontSize: state.fontSize * 3.5 }}
         >
-          DIGITAL PRODUCT DESIGNER
+          DESIGN ENGINEER
         </p>
         <p className="font-Gentium " style={{ fontSize: state.fontSize * 1.5 }}>
-          UX, UI, and Design Systems
+          I design and build digital products. From understanding user needs to
+          orchestrating implementation.
         </p>
       </div>
-      <div className="flex md:h-fit flex-col md:flex-row " style={{ gap: state.padding * 1.5 }}>
+      <div
+        className="flex md:h-fit flex-col md:flex-row "
+        style={{ gap: state.padding * 1.5 }}
+      >
         <Teaser
           tags={["UX", "UI"]}
-          draft
           link="/project#radicle-desktop-app"
           title="RADICLE DESKTOP APP"
           subtitle="Soon online"

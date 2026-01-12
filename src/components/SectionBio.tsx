@@ -8,7 +8,13 @@ interface SectionProps {
   children?: React.ReactNode;
   current?: boolean;
 }
-export default function SectionBio({ time, children, months, location, current }: SectionProps) {
+export default function SectionBio({
+  time,
+  children,
+  months,
+  location,
+  current,
+}: SectionProps) {
   const { state } = useContext(MyContext);
 
   return (
@@ -24,7 +30,10 @@ export default function SectionBio({ time, children, months, location, current }
         {time}
         <p className="txt-secondary">{location}</p>
       </div>
-      <div className="w-3/4 flex flex-col" style={{ padding: state.padding }}>
+      <div
+        className="md:w-1/2 flex flex-col"
+        style={{ padding: state.padding }}
+      >
         {children}
       </div>
     </div>

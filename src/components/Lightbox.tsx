@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 interface LightboxProps {
   image: string;
@@ -18,6 +18,19 @@ const Lightbox: React.FC<LightboxProps> = ({ image, className, alt }) => {
   const handleClose = () => {
     setIsOpen(false);
   };
+
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        handleClose();
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener("keydown", handleEscape);
+      return () => document.removeEventListener("keydown", handleEscape);
+    }
+  }, [isOpen]);
 
   return (
     <div className="relative">
