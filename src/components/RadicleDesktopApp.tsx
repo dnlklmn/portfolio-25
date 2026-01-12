@@ -2,7 +2,6 @@ import Separator from "./Separator";
 import { useContext } from "react";
 import MyContext from "./Context";
 import Section from "./Section";
-import radicleDesktopAppImage from "../assets/radicle-desktop-app.png";
 import inboxSidebarImage from "../assets/RadicleDesktopApp/inbox-sidebar.png";
 import cliAndAppImage from "../assets/RadicleDesktopApp/cli-and-app.png";
 import wireframes1Image from "../assets/RadicleDesktopApp/wireframes-1.png";
