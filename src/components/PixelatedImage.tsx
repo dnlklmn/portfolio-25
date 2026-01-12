@@ -3,9 +3,10 @@ import { useEffect, useRef } from 'react';
 interface PixelatedImageProps {
   src: string;
   pixelSize?: number;
+  scale?: number;
 }
 
-export default function PixelatedImage({ src, pixelSize = 8 }: PixelatedImageProps) {
+export default function PixelatedImage({ src, pixelSize = 8, scale = 1 }: PixelatedImageProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -24,13 +25,37 @@ export default function PixelatedImage({ src, pixelSize = 8 }: PixelatedImagePro
       canvas.width = width;
       canvas.height = height;
 
+      // Calculate cover dimensions (like background-size: cover)
+      const imgRatio = img.width / img.height;
+      const canvasRatio = width / height;
+      
+      let drawWidth, drawHeight, offsetX, offsetY;
+      
+      if (imgRatio > canvasRatio) {
+        // Image is wider - fit to height
+        drawHeight = height;
+        drawWidth = height * imgRatio;
+        offsetX = (width - drawWidth) / 2;
+        offsetY = 0;
+      } else {
+        // Image is taller - fit to width
+        drawWidth = width;
+        drawHeight = width / imgRatio;
+        offsetX = 0;
+        offsetY = (height - drawHeight) / 2;
+      }
+
       // Calculate dimensions for pixelation
       const smallWidth = Math.ceil(width / pixelSize);
       const smallHeight = Math.ceil(height / pixelSize);
 
-      // Draw image small
+      // Draw image small with cover sizing
       ctx.imageSmoothingEnabled = false;
-      ctx.drawImage(img, 0, 0, smallWidth, smallHeight);
+      const smallDrawWidth = drawWidth / (width / smallWidth);
+      const smallDrawHeight = drawHeight / (height / smallHeight);
+      const smallOffsetX = offsetX / (width / smallWidth);
+      const smallOffsetY = offsetY / (height / smallHeight);
+      ctx.drawImage(img, smallOffsetX, smallOffsetY, smallDrawWidth, smallDrawHeight);
 
       // Scale up to create pixelated effect
       ctx.drawImage(canvas, 0, 0, smallWidth, smallHeight, 0, 0, width, height);
@@ -64,13 +89,17 @@ export default function PixelatedImage({ src, pixelSize = 8 }: PixelatedImagePro
 
       ctx.putImageData(imageData, 0, 0);
     };
-  }, [src, pixelSize]);
+  }, [src, pixelSize, scale]);
 
   return (
     <canvas
       ref={canvasRef}
       className="absolute inset-0 w-full h-full"
-      style={{ imageRendering: 'pixelated' }}
+      style={{ 
+        imageRendering: 'pixelated',
+        transform: `scale(${scale})`,
+        transformOrigin: 'center'
+      }}
     />
   );
 }

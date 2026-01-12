@@ -43,9 +43,11 @@ export default {
         secondary: {
           light: {
             bg: colors.neutral[400],
+            txt: colors.neutral[500],
           },
           dark: {
             bg: colors.neutral[700],
+            txt: colors.neutral[400],
           },
         },
         light: {

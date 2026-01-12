@@ -29,15 +29,17 @@ export default function Teaser({ link, title, subtitle, tags, draft, bgImage, bg
         {bgImage && (
           <>
             <div className="opacity-30 group-hover:opacity-0 transition-opacity duration-300">
-              <PixelatedImage src={bgImage} pixelSize={8} />
+              <PixelatedImage src={bgImage} pixelSize={8} scale={bgScale} />
             </div>
             <div
               className="absolute inset-0 opacity-0 group-hover:opacity-50 transition-opacity duration-300"
               style={{
                 backgroundImage: `url(${bgImage})`,
-                backgroundSize: bgScale !== 1 ? `${bgScale * 100}%` : 'cover',
+                backgroundSize: 'cover',
                 backgroundPosition: 'center',
                 backgroundRepeat: 'no-repeat',
+                transform: `scale(${bgScale})`,
+                transformOrigin: 'center'
               }}
             />
           </>

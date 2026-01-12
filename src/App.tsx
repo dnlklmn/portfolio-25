@@ -156,8 +156,6 @@ const Navigation = () => {
               path="/project"
               element={
                 <RouteLayout>
-                  <AutoProject />
-                  <Separator direction="horizontal" />
                   <RadicleDesktopApp />
                   <Separator direction="horizontal" />
                   <RadicleDesignSystem />

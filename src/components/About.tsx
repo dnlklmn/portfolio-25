@@ -98,13 +98,12 @@ function Right() {
     >
       <SectionBio
         current
+        company="Entropy"
         location="Berlin, Germany"
         months={6}
         time="June 2025 - present"
+        title="Blockchain workflow automation platform"
       >
-        <p>
-          <strong>Entropy - Crypto Workflow Automation</strong>
-        </p>
         <p>
           I am responsible for everything design. Research and ideation,
           building and testing prototypes and planning execution of the front
@@ -112,13 +111,12 @@ function Right() {
         </p>
       </SectionBio>
       <SectionBio
+        company="Radicle"
         location="Berlin, Germany"
         months={19}
         time="May 2023 - June 2025"
+        title="Sovereign code collaboration"
       >
-        <p>
-          <strong>Radicle - Sovereign Code Forge</strong>
-        </p>
         <p>
           I was responsible for the UX of the web and desktop apps, and the
           design system. I also helped refine the front end, implement the
@@ -127,13 +125,12 @@ function Right() {
         </p>
       </SectionBio>
       <SectionBio
+        company="Parity Technologies"
         location="Berlin, Germany"
         months={27}
         time="Oct 2021 - Jan 2024"
+        title="Infrastructure and tools for Polkadot"
       >
-        <p>
-          <strong>Parity Technologies - Maintainers of Polkadot</strong>
-        </p>
         <p>
           As a product designer at Parity, I helped create the Polkadot design
           system, and worked on decentralized apps like the Delegation
@@ -141,26 +138,24 @@ function Right() {
         </p>
       </SectionBio>
       <SectionBio
+        company="Quarters"
         location="Berlin, Germany"
         months={6}
         time="November 2020 - May 2021"
+        title="Co-living management platform"
       >
-        <p>
-          <strong>Quarters - Co-living</strong>
-        </p>
         <p>
           I joined Quarters as a (failed) attempt to return to web2. I quickly
           realized my heart lies with decenrtralization and distributed systems.
         </p>
       </SectionBio>
       <SectionBio
+        company="Satoshipay"
         location="Berlin, Germany"
         months={33}
         time="Mar 2018 - Nov 2020"
+        title="Cryptocurrency payments and content monetization"
       >
-        <p>
-          <strong>Satoshipay - Content Monetization with Stellar</strong>
-        </p>
         <p>
           As the first product designer I designed and build prototypes for
           monetizing content using cryptocurrency, and an app to facilitate
@@ -168,26 +163,24 @@ function Right() {
         </p>
       </SectionBio>
       <SectionBio
+        company="Linkurious"
         location="Paris, France"
         months={6}
         time="January 2017 - July 2017"
+        title="Graph visualization and analysis"
       >
-        <p>
-          <strong>Linkurious - Data Visualisation</strong>
-        </p>
         <p>
           As a UX consultant I helped Linkurious improve the usability of their
           graph visualization tool.
         </p>
       </SectionBio>
       <SectionBio
+        company="TOTL"
         location="San Francisco, CA"
         months={22}
         time="January 2017 - July 2017"
+        title="Experimental data visualization platform"
       >
-        <p>
-          <strong>TOTL - Automatic Journaling</strong>
-        </p>
         <p>
           Joining this experimental project helped refine my skills in data
           visualization and rapid prototyping. I also learned a lot about the
@@ -195,15 +188,12 @@ function Right() {
         </p>
       </SectionBio>
       <SectionBio
+        company="Dotloop"
         location="San Francisco, CA"
         months={4}
         time="Jan 2015 - Apr 2015"
+        title="Real estate transaction management"
       >
-        <p>
-          <strong>
-            Dotloop - Paperless Project Management for Real Estate
-          </strong>
-        </p>
         <p>
           As a UX consultant I helped integrate a camera into the Dotloop app to
           make it easier for real estate agents to document the acquisition of
@@ -211,13 +201,12 @@ function Right() {
         </p>
       </SectionBio>
       <SectionBio
+        company="Prezi"
         location="Budapest, Hungary"
         months={42}
         time="Jul 2011 - Dec 2014"
+        title="Zooming presentation software"
       >
-        <p>
-          <strong>Prezi - Zooming Presentations and Mindmapping Tool</strong>
-        </p>
         <p>
           My first job with the time UX designer, I learned about the importance
           of user research, A/B testing, and how rapid prototyping helps with

@@ -50,8 +50,8 @@ export default function Home() {
           tags={["UX", "UI", "Front End", "Architecture"]}
           link="/project#auto-workflow-builder"
           title="Auto: Workflow Builder"
-          subtitle="Blockchain Automation Made Visual"
-          bgImage={autoImage}
+          subtitle="Soon online"
+          draft
         />
         <Teaser
           tags={["UX", "UI"]}
