@@ -50,7 +50,7 @@ export default function MainLayout() {
   };
 
   const loadThemePreference = () => {
-    const theme = localStorage.getItem("theme") || "light";
+    const theme = localStorage.getItem("theme") || "dark";
     const root = document.documentElement;
     root.setAttribute("data-theme", theme);
     if (theme === "dark") {
