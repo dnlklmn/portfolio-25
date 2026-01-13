@@ -80,6 +80,11 @@ export default {
         ".writing-mode-sideways-lr": {
           "writing-mode": "sideways-lr",
         },
+        ".hyphens-auto": {
+          "hyphens": "auto",
+          "-webkit-hyphens": "auto",
+          "-ms-hyphens": "auto",
+        },
       };
 
       addUtilities(newUtilities, ["responsive"]);

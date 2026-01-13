@@ -25,20 +25,20 @@ export default function PixelatedImage({ src, pixelSize = 8, scale = 1 }: Pixela
       canvas.width = width;
       canvas.height = height;
 
-      // Calculate cover dimensions (like background-size: cover)
+      // Calculate cover dimensions (like background-size: cover) to fill thumbnail
       const imgRatio = img.width / img.height;
       const canvasRatio = width / height;
       
       let drawWidth, drawHeight, offsetX, offsetY;
       
       if (imgRatio > canvasRatio) {
-        // Image is wider - fit to height
+        // Image is wider - fit to height and crop sides
         drawHeight = height;
         drawWidth = height * imgRatio;
         offsetX = (width - drawWidth) / 2;
         offsetY = 0;
       } else {
-        // Image is taller - fit to width
+        // Image is taller - fit to width and crop top/bottom
         drawWidth = width;
         drawHeight = width / imgRatio;
         offsetX = 0;

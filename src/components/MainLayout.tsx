@@ -1,7 +1,8 @@
-import { useContext, useEffect } from "react";
-import { useSpring, animated, config } from "@react-spring/web";
+import { useContext, useEffect, useState } from "react";
+import { useSpring, animated } from "@react-spring/web";
 import MyContext from "./Context";
 import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
+import MobileHeader from "./MobileHeader";
 
 const AnimatedLink = animated(Link);
 import MoonIcon from "../assets/Icons/MoonIcon";
@@ -15,15 +16,24 @@ export default function MainLayout() {
   const location = useLocation();
   const navigate = useNavigate();
   const isAboutPage = location.pathname === "/about";
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const aboutTextSpring = useSpring({
     rotation: isAboutPage ? 0 : -90,
     config: { tension: 200, friction: 26 },
+    immediate: isMobile,
   });
 
   const aboutContentSpring = useSpring({
     opacity: isAboutPage ? 1 : 0,
     config: { tension: 200, friction: 26 },
+    immediate: isMobile,
   });
 
   const toggleTheme = () => {
@@ -55,14 +65,16 @@ export default function MainLayout() {
   }, []);
 
   return (
-    <div
-      className="h-full w-full flex flex-col md:flex-row"
-      style={{
-        fontSize: state.fontSize,
-        paddingTop: state.padding * 2,
-        paddingBottom: state.padding * 2,
-      }}
-    >
+    <>
+      <MobileHeader />
+      <div
+        className="h-full w-full flex flex-col md:flex-row"
+        style={{
+          fontSize: state.fontSize,
+          paddingTop: state.padding * 2,
+          paddingBottom: state.padding * 2,
+        }}
+      >
       {/* Left Sidebar */}
       <div
         className={`hidden md:flex flex-shrink-0 flex-col justify-between items-center fixed left-0 transition-all duration-300 ${isAboutPage ? "md:w-16" : "md:w-16"}`}
@@ -112,7 +124,7 @@ export default function MainLayout() {
 
       {/* Main Content - This will be replaced by routes */}
       <div
-        className={`flex-1 flex flex-col md:ml-8 overflow-visible transition-all duration-300 md:mr-8`}
+        className={`flex-1 flex flex-col md:ml-8 overflow-y-auto overflow-x-visible md:overflow-visible transition-all duration-300 md:mr-8`}
         style={{ minWidth: 0 }}
       >
         <Outlet />
@@ -175,7 +187,7 @@ export default function MainLayout() {
           </div>
           {isAboutPage && (
             <animated.button
-              onClick={() => navigate("/")}
+              onClick={() => navigate(-1)}
               className="cursor-pointer font-semibold hover:opacity-70 transition-opacity"
               style={{
                 fontSize: state.fontSize * 1.5,
@@ -205,5 +217,6 @@ export default function MainLayout() {
         )}
       </div>
     </div>
+    </>
   );
 }

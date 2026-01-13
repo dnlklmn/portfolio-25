@@ -14,7 +14,7 @@ const RouteLayout = memo(
 
     return (
       <div
-        className="overflow-y-scroll overflow-x-visible w-full flex flex-col"
+        className="overflow-y-auto md:overflow-y-auto overflow-x-visible w-full flex flex-col"
         style={{
           gap: padding * gap,
           marginTop: -padding * 2,
@@ -22,6 +22,8 @@ const RouteLayout = memo(
           paddingTop: padding * 2,
           paddingBottom: padding * 2,
           height: `calc(100% + ${padding * 4}px)`,
+          WebkitOverflowScrolling: 'touch',
+          overflowClipMargin: 'content-box',
           ...(includeVerticalPadding && {
             paddingTop: padding * 2,
             paddingBottom: padding * 2,

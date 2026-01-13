@@ -9,7 +9,6 @@ import {
 import RadicleDesignSystem from "./components/RadicleDesignSystem";
 import Separator from "./components/Separator";
 import RadicleDesktopApp from "./components/RadicleDesktopApp";
-import About from "./components/About";
 import PolkadotDelegationDashboard from "./components/PolkadotDelegationDashboard";
 import AutoProject from "./components/AutoProject";
 import RouteLayout from "./components/RouteLayout";
@@ -21,9 +20,12 @@ const Navigation = () => {
 
   useEffect(() => {
     if (location.hash) {
-      const element = document.getElementById(location.hash.substring(1));
+      // Try to scroll to the wrapper first (for mobile), then fall back to the main element
+      const hashId = location.hash.substring(1);
+      const wrapperElement = document.getElementById(`${hashId}-wrapper`);
+      const element = wrapperElement || document.getElementById(hashId);
       if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
+        element.scrollIntoView({ behavior: "smooth", block: "start" });
       }
     }
   }, [location]);

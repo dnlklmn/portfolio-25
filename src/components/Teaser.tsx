@@ -20,7 +20,7 @@ export default function Teaser({ link, title, subtitle, tags, draft, bgImage, bg
       <Link
         to={link}
         onClick={draft ? (event) => event.preventDefault() : undefined}
-        className={`${draft ? "primary bord-secondary border-[1px] pointer-events-none" : "primary"} text-xl  justify-end  w-full flex flex-col text-start h-fit md:h-[25vh] relative overflow-hidden`}
+        className={`${draft ? "primary bord-secondary border-[1px] pointer-events-none" : "primary"} text-xl justify-end w-full flex flex-col text-start h-fit md:h-[25vh] relative overflow-hidden ${!bgImage && draft ? '' : ''}`}
         style={{
           gap: state.padding / 4,
           padding: state.padding * 1.5,
@@ -51,7 +51,7 @@ export default function Teaser({ link, title, subtitle, tags, draft, bgImage, bg
           {title}
         </p>
         <p
-          className="hidden md:block txt-secondary italic font-Gentium transition-all duration-230 relative z-10"
+          className="hidden md:block opacity-60 italic font-Gentium transition-all duration-230 relative z-10"
           style={{ fontSize: state.fontSize }}
         >
           {subtitle}

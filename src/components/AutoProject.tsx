@@ -13,7 +13,7 @@ export default function AutoProject() {
       title="Auto: Visual Workflow Builder"
       subtitle="Blockchain Automation Made Visual"
       description="A visual workflow builder that bridges on-chain and off-chain automation. Use blockchain triggers to kick off workflows, or aggregate off-chain data to construct on-chain transactions."
-      tags={["UX", "UI", "Front End", "Architecture"]}
+      tags={["UX", "UI", "Front End"]}
       year={2025}
       links={[
         {

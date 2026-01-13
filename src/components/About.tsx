@@ -1,5 +1,5 @@
-import { useState, useContext } from "react";
-import { useSpring, useTrail, animated } from "@react-spring/web";
+import { useState, useContext, useEffect } from "react";
+import { useTrail, animated, config } from "@react-spring/web";
 import Separator from "./Separator";
 import MyContext from "./Context";
 import SectionBio from "./SectionBio";
@@ -8,15 +8,22 @@ import ProfilePicture from "../assets/dk.png";
 export function AboutBio() {
   const { state } = useContext(MyContext);
   const [isLoading, setIsLoading] = useState(true);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   // Items: name, bio paragraphs (3), separator, paragraphs (2), links
   const items = Array(8).fill(null);
   
   const textTrail = useTrail(items.length, {
     opacity: 1,
-    from: { opacity: 0 },
-    config: { duration: 50 },
-    delay: 250, // Match the descriptions delay
+    from: { opacity: isMobile ? 1 : 0 },
+    config: { duration: isMobile ? 0 : 50 },
+    delay: isMobile ? 0 : 250, // Match the descriptions delay
   });
 
   return (
@@ -103,20 +110,27 @@ export function AboutBio() {
 export function AboutTimeline() {
   const { state } = useContext(MyContext);
   const [showContent, setShowContent] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
   useEffect(() => {
-    const timer = setTimeout(() => setShowContent(true), 400);
-    return () => clearTimeout(timer);
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setShowContent(true), isMobile ? 0 : 400);
+    return () => clearTimeout(timer);
+  }, [isMobile]);
 
   const items = Array(9).fill(null); // 9 SectionBio components
 
   const trail = useTrail(items.length, {
-    from: { opacity: 0, transform: "translateX(-20px)" },
+    from: { opacity: isMobile ? 1 : 0, transform: isMobile ? "translateX(0px)" : "translateX(-20px)" },
     to: showContent
       ? { opacity: 1, transform: "translateX(0px)" }
-      : { opacity: 0, transform: "translateX(-20px)" },
-    config: { ...config.gentle, tension: 180, friction: 28 },
+      : { opacity: isMobile ? 1 : 0, transform: isMobile ? "translateX(0px)" : "translateX(-20px)" },
+    config: isMobile ? { duration: 0 } : { ...config.gentle, tension: 180, friction: 28 },
   });
 
   return (
