@@ -43,9 +43,11 @@ export default {
         secondary: {
           light: {
             bg: colors.neutral[400],
+            txt: colors.neutral[500],
           },
           dark: {
             bg: colors.neutral[700],
+            txt: colors.neutral[400],
           },
         },
         light: {
@@ -77,6 +79,11 @@ export default {
         },
         ".writing-mode-sideways-lr": {
           "writing-mode": "sideways-lr",
+        },
+        ".hyphens-auto": {
+          "hyphens": "auto",
+          "-webkit-hyphens": "auto",
+          "-ms-hyphens": "auto",
         },
       };
 

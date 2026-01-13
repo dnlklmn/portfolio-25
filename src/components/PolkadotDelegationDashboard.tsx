@@ -18,7 +18,7 @@ export default function PolkadotDelegationDashboard() {
     <div className="w-full flex gap-8 text-center py-4 h-fit">
       <Project
         id="polkadot-delegation-dashboard"
-        title="Polkadot Delegation Dashboard"
+        title="Polka­dot Del­e­ga­tion Dash­board"
         subtitle="Participate in governance"
         description=" By delegating their voting power users can support organizations in the Polkadot network"
         tags={["UX", "UI", "Front End"]}

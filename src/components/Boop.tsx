@@ -16,6 +16,7 @@ export default function Boop({ scale = 1.5, timing = 150, children, className }:
   const style = useSpring({
     display: "inline-block",
     transform: isBooped ? `scale(${scale}) translate(0px, 0px)` : `scale(1) translate(0px, 0px)`,
+    config: { tension: 180, friction: 26 },
   });
   React.useEffect(() => {
     if (!isBooped) {

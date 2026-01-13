@@ -16,7 +16,7 @@ export default function Section({ title, children, last, thick, id }: SectionPro
   return (
     <div
       id={id}
-      className="w-full text-center flex flex-col overflow-visible pt-4 md:py-0 "
+      className="w-full text-center flex flex-col overflow-visible pt-4 md:py-0"
       style={{ gap: state.padding * 2 }}
     >
       <div
