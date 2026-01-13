@@ -20,7 +20,15 @@ interface LeftProps {
   id?: string;
 }
 
-function Left({ title, subtitle, description, tags, year, links, id }: LeftProps) {
+function Left({
+  title,
+  subtitle,
+  description,
+  tags,
+  year,
+  links,
+  id,
+}: LeftProps) {
   const { state } = useContext(MyContext);
 
   return (
@@ -48,7 +56,9 @@ function Left({ title, subtitle, description, tags, year, links, id }: LeftProps
         <p>{description}</p>
       </div>
       <div className="flex flex-col gap-1 text-start items-start w-full py-2 md:py-0">
-        {links?.map((link, index) => <Hyperlink link={link.link} text={link.text} key={index} />)}
+        {links?.map((link, index) => (
+          <Hyperlink link={link.link} text={link.text} key={index} />
+        ))}
       </div>
       <Tags tags={tags} year={year} />
     </div>

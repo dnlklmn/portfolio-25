@@ -48,11 +48,7 @@ const Navigation = () => {
             />
             <Route
               path="/about"
-              element={
-                <RouteLayout includeVerticalPadding>
-                  <About />
-                </RouteLayout>
-              }
+              element={<Home />}
             />
             <Route
               path="/with-desktop"

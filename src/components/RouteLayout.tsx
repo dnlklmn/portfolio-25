@@ -14,9 +14,14 @@ const RouteLayout = memo(
 
     return (
       <div
-        className="overflow-y-scroll w-full flex flex-col"
+        className="overflow-y-scroll overflow-x-visible w-full flex flex-col"
         style={{
           gap: padding * gap,
+          marginTop: -padding * 2,
+          marginBottom: -padding * 2,
+          paddingTop: padding * 2,
+          paddingBottom: padding * 2,
+          height: `calc(100% + ${padding * 4}px)`,
           ...(includeVerticalPadding && {
             paddingTop: padding * 2,
             paddingBottom: padding * 2,
