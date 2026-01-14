@@ -466,33 +466,21 @@ export default function Home() {
           <p
             className="font-Franklin font-black leading-tight"
             style={{
-              fontSize: `clamp(${state.fontSize * 2}px, 10vw, ${state.fontSize * 3.5}px)`,
-            }}
-          >
-            DESIGN ENGINEER
-          </p>
-          <p
-            className="font-Gentium"
-            style={{
-              fontSize: isMobile ? state.fontSize : state.fontSize * 1.5,
-            }}
-          >
-            I design and build digital products. From understanding user needs
-            to orchestrating implementation.
-          </p>
-          {isMobile && (
-            <Link
-              to="/about"
-              className="font-Franklin font-semibold uppercase bg-white text-black"
-              style={{
-                fontSize: state.fontSize,
-                padding: `${state.padding}px ${state.padding * 2}px`,
-              }}
-            >
-              About
-            </Link>
-          )}
-        </animated.div>
+            fontSize: `clamp(${state.fontSize * 2}px, 10vw, ${state.fontSize * 3.5}px)`,
+          }}
+        >
+          DESIGN ENGINEER
+        </p>
+        <p
+          className="font-Gentium"
+          style={{
+            fontSize: isMobile ? state.fontSize : state.fontSize * 1.5,
+          }}
+        >
+          I design and build digital products. From understanding user needs
+          to orchestrating implementation.
+        </p>
+      </animated.div>
         <animated.div
           className="flex md:h-fit flex-col md:flex-row order-3 md:order-3 w-full"
           style={{
@@ -534,19 +522,6 @@ export default function Home() {
             bgScale={1.75}
           />
         </animated.div>
-        {isAboutPage && isMobile && (
-          <button
-            onClick={() => navigate(-1)}
-            className="font-Franklin font-semibold uppercase bg-white text-black fixed bottom-0 left-1/2 -translate-x-1/2 z-50"
-            style={{
-              fontSize: state.fontSize,
-              padding: `${state.padding}px ${state.padding * 2}px`,
-              marginBottom: state.padding * 2,
-            }}
-          >
-            Close
-          </button>
-        )}
       </div>
     </div>
   );

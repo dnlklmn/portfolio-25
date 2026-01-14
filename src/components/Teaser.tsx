@@ -20,7 +20,7 @@ export default function Teaser({ link, title, subtitle, tags, draft, bgImage, bg
       <Link
         to={link}
         onClick={draft ? (event) => event.preventDefault() : undefined}
-        className={`${draft ? "primary bord-secondary border-[1px] pointer-events-none" : "primary"} text-xl justify-end w-full flex flex-col text-start h-fit md:h-[25vh] relative overflow-hidden ${!bgImage && draft ? '' : ''}`}
+        className={`${draft ? "primary bord-secondary border-[1px] pointer-events-none" : bgImage ? "dark:primary" : "primary"} text-xl justify-end w-full flex flex-col text-start h-fit md:h-[25vh] relative overflow-hidden ${!bgImage && draft ? '' : ''}`}
         style={{
           gap: state.padding / 4,
           padding: state.padding * 1.5,
@@ -28,11 +28,11 @@ export default function Teaser({ link, title, subtitle, tags, draft, bgImage, bg
       >
         {bgImage && (
           <>
-            <div className="opacity-30 group-hover:opacity-0 transition-opacity duration-300">
+            <div className="opacity-100 dark:opacity-30 group-hover:opacity-0 transition-opacity duration-300">
               <PixelatedImage src={bgImage} pixelSize={8} scale={bgScale} />
             </div>
             <div
-              className="absolute inset-0 opacity-0 group-hover:opacity-50 transition-opacity duration-300"
+              className="absolute inset-0 opacity-0 group-hover:opacity-100 dark:group-hover:opacity-50 transition-opacity duration-300"
               style={{
                 backgroundImage: `url(${bgImage})`,
                 backgroundSize: 'cover',
@@ -44,18 +44,20 @@ export default function Teaser({ link, title, subtitle, tags, draft, bgImage, bg
             />
           </>
         )}
-        <p
-          className="uppercase font-semibold font-Franklin leading-tight transition-all duration-230 relative z-10"
-          style={{ fontSize: state.fontSize }}
-        >
-          {title}
-        </p>
-        <p
-          className="hidden md:block opacity-60 italic font-Gentium transition-all duration-230 relative z-10"
-          style={{ fontSize: state.fontSize }}
-        >
-          {subtitle}
-        </p>
+        <div className="bg-neutral-50 dark:bg-neutral-950 relative z-10" style={{ padding: state.padding }}>
+          <p
+            className="uppercase font-semibold font-Franklin leading-tight transition-all duration-230"
+            style={{ fontSize: state.fontSize }}
+          >
+            {title}
+          </p>
+          <p
+            className="hidden md:block opacity-60 italic font-Gentium transition-all duration-230"
+            style={{ fontSize: state.fontSize }}
+          >
+            {subtitle}
+          </p>
+        </div>
         <div className="font-semibold flex gap-2 pt-2 transition-all duration-230 relative z-10">
           {tags?.map((tag, index) => (
             <p

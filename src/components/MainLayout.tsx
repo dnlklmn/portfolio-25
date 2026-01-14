@@ -2,7 +2,6 @@ import { useContext, useEffect, useState } from "react";
 import { useSpring, animated } from "@react-spring/web";
 import MyContext from "./Context";
 import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
-import MobileHeader from "./MobileHeader";
 
 const AnimatedLink = animated(Link);
 import MoonIcon from "../assets/Icons/MoonIcon";
@@ -66,7 +65,6 @@ export default function MainLayout() {
 
   return (
     <>
-      <MobileHeader />
       <div
         className="h-full w-full flex flex-col md:flex-row"
         style={{
@@ -212,8 +210,45 @@ export default function MainLayout() {
             className="md:writing-mode-vertical-lr font-semibold whitespace-nowrap txt-secondary"
             style={{ fontSize: state.fontSize }}
           >
-            BLOG
-          </p>
+          BLOG
+        </p>
+      )}
+      </div>
+
+      {/* Mobile Navigation Buttons */}
+      <div className="md:hidden fixed bottom-0 left-0 right-0 flex justify-between z-50" style={{ padding: state.padding * 2 }}>
+        <Link
+          to="/"
+          className="font-Franklin font-semibold uppercase bg-neutral-800 text-neutral-50 dark:bg-neutral-200 dark:text-neutral-900"
+          style={{
+            fontSize: state.fontSize,
+            padding: `${state.padding}px ${state.padding * 2}px`,
+          }}
+        >
+          HOME
+        </Link>
+        {!isAboutPage ? (
+          <Link
+            to="/about"
+            className="font-Franklin font-semibold uppercase bg-neutral-800 text-neutral-50 dark:bg-neutral-200 dark:text-neutral-900"
+            style={{
+              fontSize: state.fontSize,
+              padding: `${state.padding}px ${state.padding * 2}px`,
+            }}
+          >
+            ABOUT
+          </Link>
+        ) : (
+          <button
+            onClick={() => navigate(-1)}
+            className="font-Franklin font-semibold uppercase bg-neutral-800 text-neutral-50 dark:bg-neutral-200 dark:text-neutral-900"
+            style={{
+              fontSize: state.fontSize,
+              padding: `${state.padding}px ${state.padding * 2}px`,
+            }}
+          >
+            CLOSE
+          </button>
         )}
       </div>
     </div>
