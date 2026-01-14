@@ -466,21 +466,33 @@ export default function Home() {
           <p
             className="font-Franklin font-black leading-tight"
             style={{
-            fontSize: `clamp(${state.fontSize * 2}px, 10vw, ${state.fontSize * 3.5}px)`,
-          }}
-        >
-          DESIGN ENGINEER
-        </p>
-        <p
-          className="font-Gentium"
-          style={{
-            fontSize: isMobile ? state.fontSize : state.fontSize * 1.5,
-          }}
-        >
-          I design and build digital products. From understanding user needs
-          to orchestrating implementation.
-        </p>
-      </animated.div>
+              fontSize: `clamp(${state.fontSize * 2}px, 10vw, ${state.fontSize * 3.5}px)`,
+            }}
+          >
+            DESIGN ENGINEER
+          </p>
+          <p
+            className="font-Gentium"
+            style={{
+              fontSize: isMobile ? state.fontSize : state.fontSize * 1.5,
+            }}
+          >
+            I design and build digital products. From understanding user needs
+            to orchestrating implementation.
+          </p>
+          {isMobile && (
+            <Link
+              to="/about"
+              className="font-Franklin font-semibold uppercase bg-neutral-800 text-neutral-50 dark:bg-neutral-200 dark:text-neutral-900"
+              style={{
+                fontSize: state.fontSize,
+                padding: `${state.padding}px ${state.padding * 2}px`,
+              }}
+            >
+              ABOUT
+            </Link>
+          )}
+        </animated.div>
         <animated.div
           className="flex md:h-fit flex-col md:flex-row order-3 md:order-3 w-full"
           style={{
@@ -501,7 +513,7 @@ export default function Home() {
             tags={["UX", "UI"]}
             link="/project#radicle-desktop-app"
             title="RADICLE DESKTOP APP"
-            subtitle="Your Work on Your Machine"
+            subtitle="Your Code on Your Machine"
             bgImage={radicleDesktopImage}
             bgScale={1.75}
           />

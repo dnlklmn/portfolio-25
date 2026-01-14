@@ -46,6 +46,7 @@ export function AboutBio() {
         onError={() => setIsLoading(false)}
         style={{
           display: isLoading ? "none" : "block",
+          paddingTop: isMobile ? state.padding * 2 : 0,
         }}
       />
       <animated.p

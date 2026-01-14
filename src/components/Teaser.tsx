@@ -44,16 +44,16 @@ export default function Teaser({ link, title, subtitle, tags, draft, bgImage, bg
             />
           </>
         )}
-        <div className="bg-neutral-50 dark:bg-neutral-950 relative z-10" style={{ padding: state.padding }}>
+        <div className={`${draft ? "secondary" : "bg-neutral-50 dark:bg-neutral-950"} relative z-10 w-fit flex flex-col`} style={{ padding: state.padding, gap: state.padding }}>
           <p
-            className="uppercase font-semibold font-Franklin leading-tight transition-all duration-230"
+            className={`uppercase font-semibold font-Franklin leading-tight transition-all duration-230 ${draft ? "text-black opacity-100" : ""}`}
             style={{ fontSize: state.fontSize }}
           >
             {title}
           </p>
           <p
-            className="hidden md:block opacity-60 italic font-Gentium transition-all duration-230"
-            style={{ fontSize: state.fontSize }}
+            className={`hidden md:block italic font-Gentium transition-all duration-230 ${draft ? "text-black opacity-100" : "opacity-60"}`}
+            style={{ fontSize: state.fontSize, lineHeight: 1 }}
           >
             {subtitle}
           </p>
@@ -61,7 +61,7 @@ export default function Teaser({ link, title, subtitle, tags, draft, bgImage, bg
         <div className="font-semibold flex gap-2 pt-2 transition-all duration-230 relative z-10">
           {tags?.map((tag, index) => (
             <p
-              className={`${draft ? "secondary" : "primary"} transition-all duration-230 `}
+              className={`${draft ? "secondary text-black opacity-100" : "primary"} transition-all duration-230`}
               key={index}
               style={{
                 fontSize: state.fontSize * 0.75,

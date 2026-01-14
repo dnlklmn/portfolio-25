@@ -15,6 +15,7 @@ export default function MainLayout() {
   const location = useLocation();
   const navigate = useNavigate();
   const isAboutPage = location.pathname === "/about";
+  const isHomePage = location.pathname === "/";
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
   useEffect(() => {
@@ -69,8 +70,8 @@ export default function MainLayout() {
         className="h-full w-full flex flex-col md:flex-row"
         style={{
           fontSize: state.fontSize,
-          paddingTop: state.padding * 2,
-          paddingBottom: state.padding * 2,
+          paddingTop: isMobile && !isHomePage ? 0 : state.padding * 2,
+          paddingBottom: isMobile && !isHomePage ? 0 : state.padding * 2,
         }}
       >
       {/* Left Sidebar */}
@@ -216,6 +217,7 @@ export default function MainLayout() {
       </div>
 
       {/* Mobile Navigation Buttons */}
+      {!isHomePage && (
       <div className="md:hidden fixed bottom-0 left-0 right-0 flex justify-between z-50" style={{ padding: state.padding * 2 }}>
         <Link
           to="/"
@@ -251,6 +253,7 @@ export default function MainLayout() {
           </button>
         )}
       </div>
+      )}
     </div>
     </>
   );

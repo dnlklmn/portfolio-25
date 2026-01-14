@@ -18,7 +18,7 @@ export default function RadicleDesktopApp() {
     <Project
       id="radicle-desktop-app"
       title="Radicle Desktop App"
-      subtitle="Your Work on Your Machine"
+      subtitle="Your Code on Your Machine"
       description="The Radicle desktop app allows you to manage issues and patches, review code, and
       receive change notifications directly on your machine, whether you're online or offline."
       tags={["UI", "UX"]}
