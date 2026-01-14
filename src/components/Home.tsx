@@ -1,6 +1,6 @@
 import { useContext, useEffect, useRef, useState } from "react";
 import { useSpring, useTrail, animated } from "@react-spring/web";
-import { useLocation, Link, useNavigate } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import MyContext from "../components/Context";
 import Teaser from "./Teaser";
 import { AboutBio } from "./About";
@@ -11,7 +11,6 @@ import polkadotDelegationImage from "../assets/polkadot-delegation-screens.png";
 export default function Home() {
   const { state } = useContext(MyContext);
   const location = useLocation();
-  const navigate = useNavigate();
   const isAboutPage = location.pathname === "/about";
   const containerRef = useRef<HTMLDivElement>(null);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
