@@ -14,6 +14,7 @@ import AutoProject from "./components/AutoProject";
 import RouteLayout from "./components/RouteLayout";
 import ErrorBoundary from "./components/ErrorBoundary";
 import MainLayout from "./components/MainLayout";
+import Bankmonitor from "./components/Bankmonitor";
 
 const Navigation = () => {
   const location = useLocation();
@@ -69,6 +70,14 @@ const Navigation = () => {
             <Route
               path="/notes"
               element={<RouteLayout gap={1}>Notes come here</RouteLayout>}
+            />
+            <Route
+              path="/bankmonitor"
+              element={
+                <RouteLayout>
+                  <Bankmonitor />
+                </RouteLayout>
+              }
             />
           </Route>
         </Routes>

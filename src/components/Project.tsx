@@ -54,11 +54,15 @@ function Left({
       }}
       id={id}
     >
-      <div className="flex flex-col items-center w-full overflow-hidden" style={{ gap: isMobile ? state.padding * 2 : state.padding * 2 }}>
+      <div className="flex flex-col items-center w-full overflow-hidden" style={{ gap: state.padding * 2 }}>
         {!isMobile && (
           <p
             className="uppercase font-Franklin font-black leading-none w-full"
-            style={{ fontSize: `clamp(${state.fontSize * 1.5}px, 3vw, ${state.fontSize * 3}px)` }}
+            style={{ 
+              fontSize: title.length > 10 
+                ? `clamp(${state.fontSize * 1.2}px, 2.5vw, ${state.fontSize * 2.2}px)` 
+                : `clamp(${state.fontSize * 1.5}px, 3vw, ${state.fontSize * 3}px)` 
+            }}
           >
             {title}
           </p>
@@ -70,14 +74,16 @@ function Left({
           <p className="font-Franklin uppercase font-semibold">{subtitle}</p>
           <p>{description}</p>
         </div>
+        {links && links.length > 0 && (
+          <div className="flex flex-col gap-1 text-start items-start w-full py-2 md:py-0 md:indent-4">
+            {links.map((link, index) => (
+              <Hyperlink link={link.link} text={link.text} key={index} />
+            ))}
+          </div>
+        )}
       </div>
       <div className="flex flex-col items-center w-full" style={{ gap: state.padding * 2 }}>
         <Tags tags={tags} year={year} />
-        <div className="flex flex-col gap-1 text-start items-start w-full py-2 md:py-0">
-          {links?.map((link, index) => (
-            <Hyperlink link={link.link} text={link.text} key={index} />
-          ))}
-        </div>
       </div>
     </div>
   );
