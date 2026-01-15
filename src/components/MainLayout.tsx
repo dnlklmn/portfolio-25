@@ -123,7 +123,7 @@ export default function MainLayout() {
 
       {/* Main Content - This will be replaced by routes */}
       <div
-        className={`flex-1 flex flex-col md:ml-8 overflow-y-auto overflow-x-visible md:overflow-visible transition-all duration-300 md:mr-8`}
+        className={`flex-1 flex flex-col md:ml-8 overflow-y-auto overflow-x-visible md:overflow-visible transition-all duration-300 md:mr-8 no-scrollbar`}
         style={{ minWidth: 0 }}
       >
         <Outlet />
@@ -200,7 +200,7 @@ export default function MainLayout() {
         </div>
         {isAboutPage && (
           <animated.div
-            className="w-full flex-1 overflow-y-auto"
+            className="w-full flex-1 overflow-y-auto no-scrollbar"
             style={{ opacity: aboutContentSpring.opacity }}
           >
             <AboutBio />

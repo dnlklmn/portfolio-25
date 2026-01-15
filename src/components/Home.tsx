@@ -232,7 +232,7 @@ export default function Home() {
   return (
     <div
       ref={containerRef}
-      className={`w-full flex flex-col ${isAboutPage ? "overflow-y-auto overflow-x-visible" : "md:overflow-hidden h-full md:h-full"}`}
+      className={`w-full flex flex-col no-scrollbar ${isAboutPage ? "overflow-y-auto overflow-x-visible" : "md:overflow-hidden h-full md:h-full"}`}
       style={
         isAboutPage
           ? {
@@ -250,16 +250,8 @@ export default function Home() {
         className="flex flex-col w-full h-full"
         style={{
           gap: isMobile && !isAboutPage ? state.padding * 4 : 0,
-          paddingLeft: isMobile
-            ? state.padding * 2
-            : isAboutPage
-              ? state.padding * 4
-              : 0,
-          paddingRight: isMobile
-            ? state.padding * 2
-            : isAboutPage
-              ? state.padding * 4
-              : 0,
+          paddingLeft: isMobile ? state.padding * 2 : 0,
+          paddingRight: isMobile ? state.padding * 2 : 0,
         }}
       >
         {isAboutPage && isMobile && (
@@ -440,12 +432,12 @@ export default function Home() {
                 >
                   {data.title && (
                     <p
-                      className={`font-bold ${isMobile ? "line-clamp-4" : ""}`}
+                      className={`font-bold ${isMobile ? "line-clamp-4 leading-relaxed" : ""}`}
                     >
                       {data.title}
                     </p>
                   )}
-                  <p className={isMobile ? "line-clamp-6" : ""}>
+                  <p className={isMobile ? "line-clamp-6 leading-relaxed" : ""}>
                     {data.description}
                   </p>
                 </animated.div>

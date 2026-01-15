@@ -59,28 +59,28 @@ export function AboutBio() {
         className="md:h-full flex flex-col align-left text-left"
         style={{ gap: state.padding }}
       >
-        <animated.p style={textTrail[1]}>
+        <animated.p className={isMobile ? "leading-relaxed" : ""} style={textTrail[1]}>
           I'm a design engineer with 15 years of design experience and 7 years
           on the front of front end.
         </animated.p>
-        <animated.p style={textTrail[2]}>
+        <animated.p className={isMobile ? "leading-relaxed" : ""} style={textTrail[2]}>
           I've always operated between design and code: playing with ideas in
           Figma, then trying them out in prototypes built with real logic and
           data. I build design systems help maintain consistency and formalize
           decisions as the product evolves.
         </animated.p>
-        <animated.p style={textTrail[3]}>
+        <animated.p className={isMobile ? "leading-relaxed" : ""} style={textTrail[3]}>
           Since AI has supercharged my building capacity I can experiment way
           quicker and make better decisions.
         </animated.p>
         <animated.div style={{ height: "24px", display: "flex", alignItems: "center", ...textTrail[4] }}>
           <Separator direction="horizontal" />
         </animated.div>
-        <animated.p style={textTrail[5]}>
+        <animated.p className={isMobile ? "leading-relaxed" : ""} style={textTrail[5]}>
           I believe in a decentralized future where individuals have full
           ownership and control over their personal data in the digital world.
         </animated.p>
-        <animated.p style={textTrail[6]}>I'm a father of 2, based in Berlin, Germany.</animated.p>
+        <animated.p className={isMobile ? "leading-relaxed" : ""} style={textTrail[6]}>I'm a father of 2, based in Berlin, Germany.</animated.p>
       </div>
       <animated.div
         className="flex text-start justify-start md:justify-center w-full"
