@@ -325,7 +325,7 @@ const Bankmonitor = () => {
 
           <div>
             <p className="font-bold mb-2">Alapadatok</p>
-            <p><strong>Óradíj</strong>: 100 €/óra</p>
+            <p><strong>Óradíj</strong>: 85 €/óra</p>
             <p><strong>Munkavégzés</strong>: 20 óra/hét (félidős együttműködés)</p>
           </div>
 
@@ -333,20 +333,20 @@ const Bankmonitor = () => {
             <p className="font-bold mb-2">Teljes befektetés mérföldkövek szerint</p>
             <div className="flex flex-col" style={{ gap: state.padding }}>
               <div className="border-l-4 border-neutral-400 dark:border-neutral-600 pl-4">
-                <p className="font-semibold">Minimum viable rendszer</p>
-                <p className="text-neutral-400 dark:text-neutral-300 mb-2">12 hét (240 óra) · <strong>24 000 €</strong></p>
+                <p className="font-semibold">Minimum életképes rendszer</p>
+                <p className="text-neutral-400 dark:text-neutral-300 mb-2">12 hét (240 óra) · <strong>20 400 €</strong></p>
                 <p className="text-neutral-400 dark:text-neutral-300">B2C termékek teljesen működőképesek validált design systemmel</p>
               </div>
 
               <div className="border-l-4 border-neutral-400 dark:border-neutral-600 pl-4">
-                <p className="font-semibold">Teljes multi-product</p>
-                <p className="text-neutral-400 dark:text-neutral-300 mb-2">24 hét (480 óra) · <strong>48 000 €</strong></p>
+                <p className="font-semibold">Teljes többtermékes rendszer</p>
+                <p className="text-neutral-400 dark:text-neutral-300 mb-2">24 hét (480 óra) · <strong>40 800 €</strong></p>
                 <p className="text-neutral-400 dark:text-neutral-300">B2C + KKV + Belső eszközök egységesítve</p>
               </div>
 
               <div className="border-l-4 border-neutral-400 dark:border-neutral-600 pl-4">
-                <p className="font-semibold">Teljes whitelabel</p>
-                <p className="text-neutral-400 dark:text-neutral-300 mb-2">28 hét (560 óra) · <strong>56 000 €</strong></p>
+                <p className="font-semibold">Teljes whitelabel rendszer</p>
+                <p className="text-neutral-400 dark:text-neutral-300 mb-2">28 hét (560 óra) · <strong>47 600 €</strong></p>
                 <p className="text-neutral-400 dark:text-neutral-300">Teljes rendszer partner testreszabással</p>
               </div>
             </div>
@@ -357,18 +357,18 @@ const Bankmonitor = () => {
             <div className="flex flex-col" style={{ gap: state.padding }}>
               <div className="bg-neutral-100 dark:bg-neutral-800 p-4 rounded">
                 <p className="font-semibold">A opció: Teljes elkötelezettség (Ajánlott)</p>
-                <p className="text-neutral-400 dark:text-neutral-300">Összes fázis: 56 000 € · 28 hét összesen</p>
+                <p className="text-neutral-400 dark:text-neutral-300">Összes fázis: 47 600 € · 28 hét összesen</p>
               </div>
 
               <div>
                 <p className="font-semibold">B opció: Fázisos megközelítés</p>
-                <p className="text-neutral-400 dark:text-neutral-300 mb-2">Kezdés az Alapozással (16 000 €)</p>
+                <p className="text-neutral-400 dark:text-neutral-300 mb-2">Kezdés az Alapozással (13 600 €)</p>
                 <p className="text-neutral-400 dark:text-neutral-300">Validálás A/B tesztekkel, alacsonyabb kezdeti kockázat</p>
               </div>
 
               <div>
-                <p className="font-semibold">C opció: Minimum viable</p>
-                <p className="text-neutral-400 dark:text-neutral-300 mb-2">Alapozás + B2C bevezetés: 24 000 € · 12 hét</p>
+                <p className="font-semibold">C opció: Minimum életképes csomag</p>
+                <p className="text-neutral-400 dark:text-neutral-300 mb-2">Alapozás + B2C bevezetés: 20 400 € · 12 hét</p>
                 <p className="text-neutral-400 dark:text-neutral-300">Lehetőség későbbi bővítésre</p>
               </div>
             </div>

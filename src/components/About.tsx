@@ -12,18 +12,18 @@ export function AboutBio() {
 
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth < 768);
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   // Items: name, bio paragraphs (3), separator, paragraphs (2), links
   const items = Array(8).fill(null);
-  
+
   const textTrail = useTrail(items.length, {
     opacity: 1,
     from: { opacity: isMobile ? 1 : 0 },
     config: { duration: isMobile ? 0 : 50 },
-    delay: isMobile ? 0 : 250, // Match the descriptions delay
+    delay: isMobile ? 0 : 50, // Reduced delay to appear quicker after columns animation
   });
 
   return (
@@ -32,6 +32,7 @@ export function AboutBio() {
       style={{
         fontSize: state.fontSize,
         gap: state.padding * 2,
+        paddingBottom: state.padding * 4, // Add padding at bottom for scroll space
       }}
     >
       {isLoading && (
@@ -59,28 +60,53 @@ export function AboutBio() {
         className="md:h-full flex flex-col align-left text-left"
         style={{ gap: state.padding }}
       >
-        <animated.p className={isMobile ? "leading-relaxed" : ""} style={textTrail[1]}>
+        <animated.p
+          className={isMobile ? "leading-relaxed" : ""}
+          style={textTrail[1]}
+        >
           I'm a design engineer with 15 years of design experience and 7 years
           on the front of front end.
         </animated.p>
-        <animated.p className={isMobile ? "leading-relaxed" : ""} style={textTrail[2]}>
-          I've always operated between design and code: playing with ideas in
-          Figma, then trying them out in prototypes built with real logic and
-          data. I build design systems help maintain consistency and formalize
-          decisions as the product evolves.
+        <animated.p
+          className={isMobile ? "leading-relaxed" : ""}
+          style={textTrail[2]}
+        >
+          I operate between design and code: from exploring concepts to building
+          functional prototypes and creating design systems to formalize
+          decisions as products evolve.
         </animated.p>
-        <animated.p className={isMobile ? "leading-relaxed" : ""} style={textTrail[3]}>
-          Since AI has supercharged my building capacity I can experiment way
-          quicker and make better decisions.
+        <animated.p
+          className={isMobile ? "leading-relaxed" : ""}
+          style={textTrail[3]}
+        >
+          I've been progressively integrating AI into my workflow, starting with
+          exploring the problem space, then expanding to ideation and rapid
+          prototyping, and more recently orchestrating multi-agent systems for
+          complex production challenges.
         </animated.p>
-        <animated.div style={{ height: "24px", display: "flex", alignItems: "center", ...textTrail[4] }}>
+        <animated.div
+          style={{
+            height: "24px",
+            display: "flex",
+            alignItems: "center",
+            ...textTrail[4],
+          }}
+        >
           <Separator direction="horizontal" />
         </animated.div>
-        <animated.p className={isMobile ? "leading-relaxed" : ""} style={textTrail[5]}>
+        <animated.p
+          className={isMobile ? "leading-relaxed" : ""}
+          style={textTrail[5]}
+        >
           I believe in a decentralized future where individuals have full
           ownership and control over their personal data in the digital world.
         </animated.p>
-        <animated.p className={isMobile ? "leading-relaxed" : ""} style={textTrail[6]}>I'm a father of 2, based in Berlin, Germany.</animated.p>
+        <animated.p
+          className={isMobile ? "leading-relaxed" : ""}
+          style={textTrail[6]}
+        >
+          I'm a father of 2, based in Berlin, Germany.
+        </animated.p>
       </div>
       <animated.div
         className="flex text-start justify-start md:justify-center w-full"
@@ -115,8 +141,8 @@ export function AboutTimeline() {
 
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth < 768);
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   useEffect(() => {
@@ -127,11 +153,19 @@ export function AboutTimeline() {
   const items = Array(9).fill(null); // 9 SectionBio components
 
   const trail = useTrail(items.length, {
-    from: { opacity: isMobile ? 1 : 0, transform: isMobile ? "translateX(0px)" : "translateX(-20px)" },
+    from: {
+      opacity: isMobile ? 1 : 0,
+      transform: isMobile ? "translateX(0px)" : "translateX(-20px)",
+    },
     to: showContent
       ? { opacity: 1, transform: "translateX(0px)" }
-      : { opacity: isMobile ? 1 : 0, transform: isMobile ? "translateX(0px)" : "translateX(-20px)" },
-    config: isMobile ? { duration: 0 } : { ...config.gentle, tension: 180, friction: 28 },
+      : {
+          opacity: isMobile ? 1 : 0,
+          transform: isMobile ? "translateX(0px)" : "translateX(-20px)",
+        },
+    config: isMobile
+      ? { duration: 0 }
+      : { ...config.gentle, tension: 180, friction: 28 },
   });
 
   return (
@@ -196,7 +230,8 @@ export function AboutTimeline() {
         >
           <p>
             I joined Quarters as a (failed) attempt to return to web2. I quickly
-            realized my heart lies with decenrtralization and distributed systems.
+            realized my heart lies with decenrtralization and distributed
+            systems.
           </p>
         </SectionBio>
       </animated.div>
@@ -224,8 +259,8 @@ export function AboutTimeline() {
           title="Graph visualization and analysis"
         >
           <p>
-            As a UX consultant I helped Linkurious improve the usability of their
-            graph visualization tool.
+            As a UX consultant I helped Linkurious improve the usability of
+            their graph visualization tool.
           </p>
         </SectionBio>
       </animated.div>
@@ -253,9 +288,10 @@ export function AboutTimeline() {
           title="Real estate transaction management"
         >
           <p>
-            As a UX consultant I helped integrate a camera into the Dotloop app to
-            make it easier for real estate agents to document the acquisition of
-            properties. The company was acquired by Zillow shortly thereafter.
+            As a UX consultant I helped integrate a camera into the Dotloop app
+            to make it easier for real estate agents to document the acquisition
+            of properties. The company was acquired by Zillow shortly
+            thereafter.
           </p>
         </SectionBio>
       </animated.div>
@@ -268,10 +304,10 @@ export function AboutTimeline() {
           title="Zooming presentation software"
         >
           <p>
-            My first job with the time UX designer, I learned about the importance
-            of user research, A/B testing, and how rapid prototyping helps with
-            these efforts. I designed the capability to reuse content from
-            previous presentations.
+            My first job with the time UX designer, I learned about the
+            importance of user research, A/B testing, and how rapid prototyping
+            helps with these efforts. I designed the capability to reuse content
+            from previous presentations.
           </p>
         </SectionBio>
       </animated.div>
