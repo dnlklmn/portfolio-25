@@ -79,10 +79,9 @@ export function AboutBio() {
           className={isMobile ? "leading-relaxed" : ""}
           style={textTrail[3]}
         >
-          I've been progressively integrating AI into my workflow, starting with
-          exploring the problem space, then expanding to ideation and rapid
-          prototyping, and more recently orchestrating multi-agent systems for
-          complex production challenges.
+          AI has become integral to my workflow. My agents are with me from
+          problem space exploration and ideation to rapid prototyping and
+          orchestrating multiple agents to tackle complex production challenges.
         </animated.p>
         <animated.div
           style={{
