@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# LLM-readable content
+# See https://dnlklmn.online/llms.txt for a structured overview
+# See https://dnlklmn.online/llms-full.txt for full site content
+
+Sitemap: https://dnlklmn.online/sitemap.xml

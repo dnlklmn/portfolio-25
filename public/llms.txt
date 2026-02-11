@@ -1,0 +1,31 @@
+# Daniel Kalman — Design Engineer
+
+> Personal portfolio of Daniel Kalman, a design engineer with 15+ years of design experience and 7 years of front-end development, based in Berlin, Germany.
+
+## About
+
+Daniel Kalman is a design engineer who operates between design and code: from exploring concepts to building functional prototypes and creating design systems to formalize decisions as products evolve. AI is integral to his workflow, from problem space exploration and ideation to rapid prototyping and orchestrating multiple agents for complex production challenges. He believes in a decentralized future where individuals have full ownership and control over their personal data.
+
+- Website: https://dnlklmn.online
+- GitHub: https://github.com/dnlklmn
+- Bluesky: https://bsky.app/profile/dnlklmn.online
+- Email: dnl.klmn@gmail.com
+
+## Projects
+
+- [Auto: Workflow Builder](https://dnlklmn.online/project#auto-workflow-builder): A visual workflow builder with real-time collaboration for blockchain automation. Bridges on-chain and off-chain worlds. Built with Yjs and WebRTC. (2025)
+- [Radicle Desktop App](https://dnlklmn.online/project#radicle-desktop-app): A local-first desktop app for sovereign code collaboration. Manage issues, patches, and review code on your machine, online or offline. (2024)
+- [Radicle Design System](https://dnlklmn.online/project#radicle-design-system): A design system for Radicle's open-source code forge. Semantic color tokens, type scale, component library, and Figma-to-code pipeline. (2024)
+- [Polkadot Delegation Dashboard](https://dnlklmn.online/project#polkadot-delegation-dashboard): A governance tool enabling Polkadot token holders to delegate voting power to trusted community members. (2022)
+
+## Experience
+
+- Entropy (June 2025 – present): Blockchain workflow automation platform. Responsible for all design — research, ideation, prototyping, and front-end planning.
+- Radicle (May 2023 – June 2025): Sovereign code collaboration. UX for web and desktop apps, design system, and front-end implementation.
+- Parity Technologies (Oct 2021 – Jan 2024): Infrastructure and tools for Polkadot. Polkadot design system, Delegation Dashboard, Multisig Commander.
+- Satoshipay (Mar 2018 – Nov 2020): Cryptocurrency payments and content monetization. First product designer — prototypes and cross-border payment apps.
+- Prezi (Jul 2011 – Dec 2014): Zooming presentation software. UX design, user research, A/B testing, rapid prototyping.
+
+## Full Content
+
+For comprehensive content about all projects and experience, see: https://dnlklmn.online/llms-full.txt

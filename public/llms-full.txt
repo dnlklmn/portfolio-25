@@ -1,0 +1,238 @@
+# Daniel Kalman — Design Engineer
+
+Personal portfolio: https://dnlklmn.online
+
+---
+
+## About
+
+I'm a design engineer with 15 years of design experience and 7 years on the front of front end.
+
+I operate between design and code: from exploring concepts to building functional prototypes and creating design systems to formalize decisions as products evolve.
+
+AI has become integral to my workflow. My agents are with me from problem space exploration and ideation to rapid prototyping and orchestrating multiple agents to tackle complex production challenges.
+
+I believe in a decentralized future where individuals have full ownership and control over their personal data in the digital world.
+
+I'm a father of 2, based in Berlin, Germany.
+
+### Links
+
+- GitHub: https://github.com/dnlklmn
+- Bluesky: https://bsky.app/profile/dnlklmn.online
+- Email: dnl.klmn@gmail.com
+
+---
+
+## Projects
+
+### Auto: Workflow Builder (2025)
+
+**Visual Workflow Builder for Blockchain Automation**
+
+Tags: UX, UI, Front End
+Live Demo: https://auto-workflow-builder.netlify.app
+
+A visual workflow builder with real-time collaboration that bridges on-chain and off-chain automation. Use blockchain triggers to kick off workflows, or aggregate off-chain data to construct on-chain transactions.
+
+#### Challenge and Goals
+
+The goal was to create a crypto-native workflow automation tool that bridges on-chain and off-chain worlds. On-chain events should trigger off-chain workflows, and off-chain data should construct on-chain transactions.
+
+The challenge: could we build a better workflow builder altogether, or would making it crypto-native be our only advantage? Use cases vary widely, and workflow builders already exist.
+
+#### Process and Responsibilities
+
+I started exploring how workflows can be built, what are common structures for recurring crypto workflows, and where these 2 meet.
+
+Once I landed on a set of requirements, I started designing the interface with a limited set of nodes and connectors to check if the structure works, the primary goal being to reduce cognitive load.
+
+Once the initial user tests eliminated the usability issues I implemented a simple multiplayer experience using Yjs and WebRTC to enable real-time collaboration. I am currently running user tests on this prototype as the requirements for the production MVP form.
+
+#### Early Experiments
+
+The initial research happened on 2 tracks: I wanted to explore what's the best way to build workflow maps, and in parallel, find out what a good workflow is that we'd like to map.
+
+I built multiple prototypes to explore different approaches to building workflow maps. Should we direct the flow or let the user go freeform? Should we build atomic nodes users can build anything from or more complex ones to solve for particular use cases? Is a condition a connector or a node?
+
+I then forked n8n so I can experiment with a real workflow builder and find out what users should be aiming for. What is a good workflow, what are the workflows we'd like to let users build and what are some we don't need to accommodate? Do we need loops and recursion? What are the most common crypto workflows people struggle with and how could we prototype them quickly?
+
+#### MVP Requirements
+
+The requirements for the MVP are based on where the 2 research paths met: simplified use cases we need to solve first, and a simplified workflow builder we can build them with.
+
+A limited set of blocks, each serving a distinct purpose reduce cognitive load. Good defaults educate users about ideal outcomes.
+
+#### Real-Time Collaboration
+
+Real-time collaboration sets our platform apart, allowing users to work together on projects in real-time. This feature is powered by Yjs, which enables real-time communication between users through WebRTC.
+
+CRDTs allow to share updates without a central server which is great for privacy and traceability but also makes prototyping very quick.
+
+---
+
+### Radicle Desktop App (2024)
+
+**Your Code on Your Machine**
+
+Tags: UX, UI
+Get the app: https://app.radicle.xyz/nodes/seed.radicle.xyz/rad:z4D5UCArafTzTQpDZNQRuqswh3ury
+Get started with Radicle: https://radicle.xyz
+
+The Radicle desktop app allows you to manage issues and patches, review code, and receive change notifications directly on your machine, whether you're online or offline.
+
+#### Challenge and Goals
+
+We envision the desktop app as an integral component of the Radicle toolchain, designed to enhance your workflow.
+
+Creating a local-first code review app for the Radicle code forge presents unique UX challenges due to the shift from cloud-based services and the use of a peer-to-peer network.
+
+#### Process and Responsibilities
+
+I started by designing flow charts to understand the Radicle protocol and match Radicle CLI's functions. Once the flows were discussed and validated, I moved on to creating high fidelity mockups and prototypes and started testing.
+
+#### Foundations
+
+Getting the foundations right matters. I took the time needed to nail down the structure and hierarchy, exploring different options and weighing user needs against ease-of-use, before moving on to mockups. Patch structure and the ability to review changes are central to the Radicle desktop app.
+
+#### Local First
+
+In local-first and peer-to-peer architectures, you're never entirely sure if you're viewing the latest version. Radicle also operates differently from centralized networks — users won't receive updates from unknown peers, even if they've both contributed to the same repository. Peer discovery is challenging and doesn't happen within the app itself.
+
+To address these challenges, I made sure the differentiation between canonical and non-canonical branches is visible in the UI and clear from the hierarchy. Everything is trackable by displaying IDs for all entities, always showing revisions and the nodes that published them. Since everything is signed, you can always trace the source of information — so we clearly indicate where data comes from and provide the necessary details for verification, along with connectivity and sync status.
+
+#### True to Code
+
+The app mirrors the underlying protocol and CLI tools closely. This makes it easier for users to move between the desktop app and command line without switching mental models. Everything in Radicle is immutable and signed, so the UI reflects that — you can always see what's changed, by whom, and trace it back to its source.
+
+---
+
+### Radicle Design System (2024)
+
+**Consistency By Design**
+
+Tags: UI, Front End
+Radicle Tokens on Radicle: https://app.radicle.xyz/nodes/seed.radicle.garden/rad:z4Vy9mFPHWxFNrZxM6f1p8PXs6svF
+
+I joined Radicle to improve consistency and create a consistent design system. Design consistency is crucial in any project, but it can be particularly challenging in open source projects due to the diverse and distributed nature of contributors.
+
+#### Challenge and Goals
+
+Radicle Explorer is an open-source web application that anyone can deploy on their own. To ensure its success and usability, it is crucial that the design is consistent, easy to extend, and low maintenance.
+
+Contributors should be able to navigate the application effortlessly, match colors and text styles with specific use cases.
+
+#### Process and Responsibilities
+
+After carefully auditing the current UI and its patterns, I developed a color system, a typographic scale, and components in Figma.
+
+Once all stakeholders agreed I created the pipeline to export and transform tokens into stylesheets and implemented these in the Svelte front end.
+
+#### Stable Base Scales
+
+Selecting a harmonious set of base colors limits the palette to a manageable number while providing enough flexibility to address new and unforeseen use cases. Contributors can be confident that any two colors will work well together. Neighboring colors can highlight accents and suggest interactions, while colors further apart indicate hierarchy and relationships.
+
+We use a simplified type scale with only the essential font styles. This ensures visual harmony and readability without unnecessary complexity.
+
+#### Semantic Definitions
+
+Abstracting design decisions into meaningful, reusable tokens improves collaboration between designers and developers by providing a common language. This streamlines the workflow and makes design systems more efficient.
+
+Semantic tokens should address known use cases, while global tokens are available for new scenarios. With a shared understanding of the naming conventions for semantic tokens, developers can easily select the appropriate styles without needing further consultation with designers.
+
+#### Components
+
+The UI kit consists only of the components currently used in the app. No unused button variants or typography styles allowed.
+
+The behavior of components in Figma matches those in production. It is often quicker to experiment with Figma's properties to design the API than having to do it all in code.
+
+#### Seamless Implementation
+
+Colors and font styles are managed in Figma, where they are incorporated into the UI kit and optimized for both dark and light modes. These tokenized design elements are then exported and converted into specific style sheets, which can be utilized in production components. The tokens are stored in a shared repo on Radicle that serves as a single source of truth.
+
+We use Tokens Studio to manage tokens in Figma and store them in a shared JSON file. From this JSON they get transformed automatically into separate style sheets for easier management. Whenever a token gets updated, the style sheets and with them the components in production will also update.
+
+To minimize bloat and make maintenance easier, the documentation is attached directly to the tokens in the form of code comments.
+
+#### Delightful Details
+
+At Radicle we're building developer tools. It's crucial to prioritize readability and a clear, easy-to-understand hierarchy while keeping decorative elements to a minimum. However, a design system should also have character. Radicle's style pays homage to the barefoot developers, drawing inspiration from the aesthetics of 90s programming games and interfaces.
+
+---
+
+### Polkadot Delegation Dashboard (2022)
+
+**Participate in Governance**
+
+Tags: UX, UI, Front End
+
+By delegating their voting power users can support organizations in the Polkadot network.
+
+#### Challenge and Goals
+
+The goal of the project was to enhance participation in governance. However, engaging in governance can be challenging, with a steep learning curve. Voting without adequate information may potentially cause more harm than good.
+
+#### Process and Responsibilities
+
+I led the design, prototyping, and user testing processes from the outset. I created low-fidelity wireframes, gathered user feedback, and iterated on the designs until we developed the Delegation Dashboard that met our expectations.
+
+Additionally, I contributed to the front-end development and implementation of the Polkadot Design System.
+
+#### Design Iterations
+
+**I. Tinder for Voting**: Inspired by a public forum post, the swiping interface was meant to make voting on Polkadot Open Governance proposals easier and more accessible, building on a familiar gesture. Evaluation: Simple to use, focused on 1 referendum — but swiping is strange on desktop, difficult to filter for types of referenda, and might favor quick uninformed decisions.
+
+**II. Governance Portal**: In a second iteration the goal was to be more explicit, and offer a view with referenda one is interested in voting on, and try to understand how community members vote. We'd display news, stats about governance activity, list proposals and delegates. Evaluation: Everything in one place, informative, helpful for those fluent in governance — but too much information, doesn't help get started.
+
+**III. Delegation First**: After more testing and further aligning with the goals of the network, we narrowed our focus to delegation: instead of letting more users participate in governance, we shifted our focus on getting more tokens to participate. More tokens make decisions quicker, and with that, they make democracy more efficient. The delegation-first structure allows for token holders to find the people they trust, but also offers a peek into how open governance works, and how they can participate by themselves.
+
+I contributed to building the web app by implementing the Polkadot Design System I created, and various front-end refinements from responsiveness to animations.
+
+---
+
+## Experience
+
+### Entropy (June 2025 – present)
+**Blockchain workflow automation platform** — Berlin, Germany
+
+I am responsible for everything design. Research and ideation, building and testing prototypes and planning execution of the front end.
+
+### Radicle (May 2023 – June 2025)
+**Sovereign code collaboration** — Berlin, Germany
+
+I was responsible for the UX of the web and desktop apps, and the design system. I also helped refine the front end, implement the design system and work on the visual design of the apps once the designs were done.
+
+### Parity Technologies (Oct 2021 – Jan 2024)
+**Infrastructure and tools for Polkadot** — Berlin, Germany
+
+As a product designer at Parity, I helped create the Polkadot design system, and worked on decentralized apps like the Delegation Dashboard, and Multisig Commander.
+
+### Quarters (November 2020 – May 2021)
+**Co-living management platform** — Berlin, Germany
+
+I joined Quarters as a (failed) attempt to return to web2. I quickly realized my heart lies with decentralization and distributed systems.
+
+### Satoshipay (Mar 2018 – Nov 2020)
+**Cryptocurrency payments and content monetization** — Berlin, Germany
+
+As the first product designer I designed and built prototypes for monetizing content using cryptocurrency, and an app to facilitate cross-border payments.
+
+### Linkurious (January 2017 – July 2017)
+**Graph visualization and analysis** — Paris, France
+
+As a UX consultant I helped Linkurious improve the usability of their graph visualization tool.
+
+### TOTL (January 2017 – July 2017)
+**Experimental data visualization platform** — San Francisco, CA
+
+Joining this experimental project helped refine my skills in data visualization and rapid prototyping. I also learned a lot about the importance of user research and testing.
+
+### Dotloop (Jan 2015 – Apr 2015)
+**Real estate transaction management** — San Francisco, CA
+
+As a UX consultant I helped integrate a camera into the Dotloop app to make it easier for real estate agents to document the acquisition of properties. The company was acquired by Zillow shortly thereafter.
+
+### Prezi (Jul 2011 – Dec 2014)
+**Zooming presentation software** — Budapest, Hungary
+
+My first job with the title UX designer, I learned about the importance of user research, A/B testing, and how rapid prototyping helps with these efforts. I designed the capability to reuse content from previous presentations.
