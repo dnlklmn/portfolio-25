@@ -34,13 +34,13 @@ function Left({
 
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth < 768);
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   return (
     <div
-      className={`w-full md:w-1/4 ${isMobile ? '' : 'sticky'} font-Gentium flex flex-col pb-4 justify-between items-center text-center overflow-visible md:px-0`}
+      className={`w-full md:w-1/4 ${isMobile ? "" : "sticky"} font-Gentium flex flex-col pb-4 justify-between items-center text-center overflow-visible md:px-0`}
       style={{
         paddingLeft: isMobile ? state.padding * 2 : 0,
         paddingRight: isMobile ? state.padding * 2 : 0,
@@ -54,14 +54,18 @@ function Left({
       }}
       id={id}
     >
-      <div className="flex flex-col items-center w-full overflow-hidden" style={{ gap: state.padding * 2 }}>
+      <div
+        className="flex flex-col items-center w-full overflow-hidden"
+        style={{ gap: state.padding * 2 }}
+      >
         {!isMobile && (
           <p
             className="uppercase font-Franklin font-black leading-none w-full"
-            style={{ 
-              fontSize: title.length > 10 
-                ? `clamp(${state.fontSize * 1.2}px, 2.5vw, ${state.fontSize * 2.2}px)` 
-                : `clamp(${state.fontSize * 1.5}px, 3vw, ${state.fontSize * 3}px)` 
+            style={{
+              fontSize:
+                title.length > 10
+                  ? `clamp(${state.fontSize * 1.2}px, 2.5vw, ${state.fontSize * 2.2}px)`
+                  : `clamp(${state.fontSize * 1.5}px, 3vw, ${state.fontSize * 3}px)`,
             }}
           >
             {title}
@@ -82,7 +86,10 @@ function Left({
           </div>
         )}
       </div>
-      <div className="flex flex-col items-center w-full" style={{ gap: state.padding * 2 }}>
+      <div
+        className="flex flex-col items-center w-full"
+        style={{ gap: state.padding * 2 }}
+      >
         <Tags tags={tags} year={year} />
       </div>
     </div>
@@ -95,15 +102,19 @@ function Right({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth < 768);
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   return (
     <div
-      id="radicle-desktop-app"
       className="w-full md:w-3/4 font-Gentium flex flex-col leading-snug overflow-visible md:px-0"
-      style={{ fontSize: state.fontSize, gap: state.padding * 2, paddingLeft: isMobile ? state.padding * 2 : 0, paddingRight: isMobile ? state.padding * 2 : 0 }}
+      style={{
+        fontSize: state.fontSize,
+        gap: state.padding * 2,
+        paddingLeft: isMobile ? state.padding * 2 : 0,
+        paddingRight: isMobile ? state.padding * 2 : 0,
+      }}
     >
       {children}
     </div>
@@ -125,15 +136,15 @@ export default function RadicleDesktopApp({
 
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth < 768);
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   const scrollToTop = () => {
     if (id) {
       const element = document.getElementById(`${id}-wrapper`);
       if (element) {
-        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        element.scrollIntoView({ behavior: "smooth", block: "start" });
       }
     }
   };
@@ -142,20 +153,22 @@ export default function RadicleDesktopApp({
     <div id={`${id}-wrapper`} className="w-full flex flex-col overflow-visible">
       {/* Sticky title for mobile */}
       {isMobile && (
-        <div 
+        <div
           className="sticky top-0 w-full"
           onClick={scrollToTop}
-          style={{ cursor: 'pointer', paddingBottom: state.padding * 2 }}
+          style={{ cursor: "pointer", paddingBottom: state.padding * 2 }}
         >
           <p
             className="uppercase font-Franklin font-black leading-none py-4 px-4 text-center"
-            style={{ fontSize: `clamp(${state.fontSize * 1.5}px, 8vw, ${state.fontSize * 3}px)` }}
+            style={{
+              fontSize: `clamp(${state.fontSize * 1.5}px, 8vw, ${state.fontSize * 3}px)`,
+            }}
           >
             {title}
           </p>
         </div>
       )}
-      
+
       <div
         id={id}
         className="w-full flex flex-col md:flex-row text-center overflow-visible"

@@ -7,6 +7,7 @@ import { AboutBio } from "./About";
 import radicleDesktopImage from "../assets/RadicleDesktopApp/patches.png";
 import radicleDesignSystemImage from "../assets/RadicleDesignSystem/uikit-dark.png";
 import polkadotDelegationImage from "../assets/polkadot-delegation-screens.png";
+import Header from "../assets/auto/header.png";
 
 export default function Home() {
   const { state } = useContext(MyContext);
@@ -496,9 +497,10 @@ export default function Home() {
           <Teaser
             tags={["UX", "UI", "Front End"]}
             link="/project#auto-workflow-builder"
-            title="Local First Multiplayer Workflow Builder"
-            subtitle="Soon online"
-            draft
+            title="Auto: Workflow Builder"
+            subtitle="Blockchain Automation Made Visual"
+            bgImage={Header}
+            bgScale={1.75}
           />
           <Teaser
             tags={["UX", "UI"]}
