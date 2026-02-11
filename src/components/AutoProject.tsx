@@ -3,7 +3,6 @@ import { useContext } from "react";
 import MyContext from "./Context";
 import Section from "./Section";
 import Project from "./Project";
-import PasswordProtected from "./PasswordProtected";
 import Lightbox from "./Lightbox";
 import Conditions from "../assets/auto/conditions.png";
 import NestedBlocks from "../assets/auto/nested-blocks.png";
@@ -15,7 +14,7 @@ import SimplerBlocks from "../assets/auto/simpler-blocks.png";
 import RealTimeCollab from "../assets/auto/real-time-collab.png";
 import Header from "../assets/auto/header.png";
 
-function AutoProjectContent() {
+export default function AutoProject() {
   const { state } = useContext(MyContext);
 
   return (
@@ -143,16 +142,5 @@ function AutoProjectContent() {
         </p>
       </Section>
     </Project>
-  );
-}
-
-export default function AutoProject() {
-  return (
-    <PasswordProtected
-      storageKey="auto-project-unlocked"
-      correctPassword="blockchain"
-    >
-      <AutoProjectContent />
-    </PasswordProtected>
   );
 }
